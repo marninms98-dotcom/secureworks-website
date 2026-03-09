@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureWorks — B2B Call Sheet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #293C46; line-height: 1.4; padding: 20px; max-width: 900px; margin: 0 auto; font-size: 13px; }
+  h1 { font-size: 22px; margin-bottom: 4px; color: #293C46; }
+  .subtitle { color: #666; margin-bottom: 20px; font-size: 13px; }
+  .section { margin-bottom: 20px; }
+  .section-header { background: #293C46; color: white; padding: 8px 12px; font-size: 13px; font-weight: 600; border-radius: 4px 4px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .section-header .tag { background: #F15A29; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
+  .pitch { background: #f0f4f7; padding: 8px 12px; font-size: 12px; font-style: italic; border-left: 3px solid #F15A29; margin: 0; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #f5f5f5; text-align: left; padding: 5px 8px; font-size: 10px; text-transform: uppercase; color: #666; border-bottom: 2px solid #ddd; }
+  td { padding: 5px 8px; border-bottom: 1px solid #eee; font-size: 12px; vertical-align: top; }
+  tr:hover { background: #fafafa; }
+  .phone { font-weight: 700; color: #293C46; white-space: nowrap; }
+  .phone a { color: #293C46; text-decoration: none; }
+  .action { display: inline-block; font-size: 9px; font-weight: 600; padding: 2px 5px; border-radius: 3px; text-transform: uppercase; white-space: nowrap; }
+  .action-call { background: #F15A29; color: white; }
+  .action-apply { background: #293C46; color: white; }
+  .action-email { background: #4C6A7C; color: white; }
+  .action-register { background: #6b9b37; color: white; }
+  .company { font-weight: 600; }
+  .contact-name { color: #4C6A7C; font-size: 11px; }
+  .note { color: #666; font-size: 11px; }
+  .checkbox { width: 20px; text-align: center; }
+  input[type="checkbox"] { width: 15px; height: 15px; cursor: pointer; }
+  .footer { text-align: center; color: #999; font-size: 11px; margin-top: 20px; padding-top: 10px; border-top: 1px solid #eee; }
+  .count { font-size: 11px; opacity: 0.7; font-weight: 400; margin-left: 6px; }
+  .row-note { width: 100%; border: 1px solid #e0e0e0; border-radius: 3px; padding: 3px 5px; font-size: 11px; font-family: inherit; color: #293C46; resize: none; min-height: 24px; background: #fafafa; }
+  .row-note:focus { outline: 2px solid #F15A29; background: white; }
+  .row-note::placeholder { color: #bbb; }
+  .notes-section { margin-top: 24px; margin-bottom: 20px; }
+  .notes-section h2 { font-size: 16px; margin-bottom: 8px; color: #293C46; }
+  .notes-section textarea { width: 100%; min-height: 120px; border: 2px solid #e0e0e0; border-radius: 6px; padding: 10px; font-size: 13px; font-family: inherit; color: #293C46; resize: vertical; }
+  .notes-section textarea:focus { outline: none; border-color: #F15A29; }
+  .notes-section textarea::placeholder { color: #bbb; }
+  tr.done { opacity: 0.4; }
+  tr.done td { text-decoration: line-through; }
+  tr.done td.checkbox, tr.done td:last-child { text-decoration: none; }
+  .progress-bar { background: #eee; border-radius: 10px; height: 8px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { background: #F15A29; height: 100%; border-radius: 10px; transition: width 0.3s; }
+  .progress-text { font-size: 11px; color: #666; margin-top: 4px; }
+  .clear-btn { background: none; border: 1px solid #ddd; border-radius: 4px; padding: 4px 10px; font-size: 11px; color: #999; cursor: pointer; margin-left: 8px; }
+  .clear-btn:hover { border-color: #F15A29; color: #F15A29; }
+
+  @media print {
+    body { padding: 8px; font-size: 11px; }
+    .section { page-break-inside: avoid; }
+    td { padding: 3px 6px; font-size: 11px; }
+    input[type="checkbox"] { -webkit-appearance: none; appearance: none; width: 12px; height: 12px; border: 2px solid #293C46; border-radius: 2px; }
+    tr:hover { background: none; }
+    .phone a { color: #293C46; }
+    .notes-section textarea { border: 1px solid #ccc; }
+    .clear-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>SecureWorks — B2B Call Sheet</h1>
+<p class="subtitle">Week of 8 March 2026 &nbsp;|&nbsp; Work top to bottom. $0 cost. Tap numbers to call.<button class="clear-btn" onclick="if(confirm('Clear all notes and checkboxes?')){localStorage.clear();location.reload()}">Reset All</button></p>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+<p class="progress-text" id="progressText">0 / 74 done</p>
+
+<!-- ===== INSURANCE BUILDERS ===== -->
+<div class="section">
+  <div class="section-header">
+    1. Insurance Builder Panels — 5-40+ jobs/month <span class="count">(8 items)</span> <span class="tag">MON</span>
+  </div>
+  <div class="pitch">"We do patios, pergolas, carports and fencing. We already do make-safe — we can handle the rebuild component end-to-end."</div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company / Contact</th><th>Phone</th><th>Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">WA Insurance Builders</span><br><span class="contact-name">David Beaver (MD)</span></td><td class="phone"><a href="tel:0415689490">0415 689 490</a></td><td class="note">Neerabup — your area. Best first call.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">WA Insurance Builders</span><br><span class="contact-name">Rachael Ferguson (GM)</span></td><td class="phone"><a href="tel:0413964792">0413 964 792</a></td><td class="note">Alt contact.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-apply">Apply</span></td><td><span class="company">Rebuild Group</span></td><td class="phone"><a href="tel:0893454444">(08) 9345 4444</a></td><td class="note">rebuildgroup.com.au/contact-us/subcontractor-application/</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Johns Lyng Group</span></td><td class="phone"><a href="tel:0862414300">(08) 6241 4300</a></td><td class="note">Australia's largest. 2/17 Halley Rd, Balcatta.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-apply">Apply</span></td><td><span class="company">Ambrose Construct Group</span></td><td class="phone"><a href="tel:1300262767">1300 262 767</a></td><td class="note">ambrosebuilding.com.au/wwu/</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Solutions Building Group</span></td><td class="phone"><a href="tel:0893001068">(08) 9300 1068</a></td><td class="note">Local, 17+ years.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-register">Register</span></td><td><span class="company">AIBN</span></td><td>aibn.com.au/trades/</td><td class="note">Free. Connects you with insurance repair managers.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-apply">Apply</span></td><td><span class="company">ABC Group</span></td><td>abcg.com.au/work-with-us-2/</td><td class="note">Online application.</td></tr>
+  </table>
+</div>
+
+<!-- ===== LANDSCAPERS ===== -->
+<div class="section">
+  <div class="section-header">
+    2. Landscaper Partnerships — 5-30 jobs/month <span class="count">(15 items)</span> <span class="tag">TUE-WED</span>
+  </div>
+  <div class="pitch">"We do the structural patio/pergola. You keep the landscaping. We sub to you or you sub to us — whatever works. Let's do one job together."</div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company</th><th>Phone</th><th>Area / Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Tim Davies Landscaping</span></td><td class="phone"><a href="tel:0894410200">(08) 9441 0200</a></td><td class="note">Osborne Park. WA's most awarded. 40+ yrs. $50-200K+ jobs. Top target.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Principal Landscapes</span></td><td class="phone"><a href="tel:0402902346">0402 902 346</a></td><td class="note">Scarborough. Award-winning. Pools + full backyards.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Cultivart Landscape Design</span><br><span class="contact-name">Janine Mendel</span></td><td class="phone"><a href="tel:0414865747">0414 865 747</a></td><td class="note">Karrinyup. Design-only firm — specs patios but needs a builder. Top referral target.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Northshore Landscape Construction</span></td><td class="phone"><a href="tel:0419009085">0419 009 085</a></td><td class="note">Wangara. Right in northern corridor. No patio building.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Indian Ocean Landscapes</span></td><td class="phone"><a href="tel:0893024685">(08) 9302 4685</a></td><td class="note">Wangara / Duncraig. No patios listed.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Kinetic Landscaping</span></td><td class="phone"><a href="tel:0433901250">0433 901 250</a></td><td class="note">Two Rocks. Services all northern suburbs. No patios.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Silverfern Landscaping</span></td><td class="phone"><a href="tel:0433748192">0433 748 192</a></td><td class="note">Joondalup. No patio building.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Advanced Aspects</span></td><td class="phone"><a href="tel:0430125268">0430 125 268</a></td><td class="note">Quinns Rocks / Clarkson. Retaining walls, limestone. No patios.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Waterwise Landscaping</span></td><td class="phone"><a href="tel:0410401417">0410 401 417</a></td><td class="note">Clarkson. Since 2007. No patios.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Landscape By Design</span></td><td class="phone"><a href="tel:0476675617">0476 675 617</a></td><td class="note">30 years. Northern suburbs specialist. No patios.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Tom's Landscaping</span></td><td class="phone"><a href="tel:0480212544">0480 212 544</a></td><td class="note">Wanneroo based.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">The Greenscape Collective</span></td><td class="phone"><a href="tel:0861025202">(08) 6102 5202</a></td><td class="note">Perth metro. 20+ yrs. No patios.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Landscapes WA</span></td><td class="phone"><a href="tel:0892093385">(08) 9209 3385</a></td><td class="note">Belmont. No patio structures listed.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Luke's Landscaping</span></td><td class="phone"><a href="tel:0894931000">(08) 9493 1000</a></td><td class="note">Services northern suburbs. No patios.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Perth Landscaping Group</span></td><td class="phone"><a href="tel:0862634632">(08) 6263 4632</a></td><td class="note">Perth metro. No patios.</td></tr>
+  </table>
+</div>
+
+<!-- ===== RENOVATION BUILDERS ===== -->
+<div class="section">
+  <div class="section-header">
+    3. Renovation / Extension Builders — 2-8 jobs/month <span class="count">(12 items)</span> <span class="tag">THU</span>
+  </div>
+  <div class="pitch">"We handle the outdoor structure component of your reno projects end-to-end — patio, pergola, decking. One less trade for you to manage."</div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company</th><th>Phone</th><th>Area / Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Amerex Renovations</span></td><td class="phone"><a href="tel:0892271822">(08) 9227 1822</a></td><td class="note">Osborne Park. 30+ yrs. Rear extensions with alfresco. Perfect fit.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Addstyle Master Builders</span></td><td class="phone"><a href="tel:0893452333">(08) 9345 2333</a></td><td class="note">Balcatta. 220+ awards. High-end $200-500K+ renos.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Next Level Extensions</span></td><td class="phone"><a href="tel:1300948094">1300 948 094</a></td><td class="note">Balcatta. 40+ yrs. Exclusively extensions.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Summit Renovations</span></td><td class="phone"><a href="tel:0893170141">(08) 9317 0141</a></td><td class="note">3,500+ homes. Volume reno player.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Green-Shore Builders</span><br><span class="contact-name">Quentin & Clint (Owners)</span></td><td class="phone"><a href="tel:0892486122">(08) 9248 6122</a></td><td class="note">Malaga. Award-winning. Home renos + extensions.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Sertorio Homes</span></td><td class="phone"><a href="tel:0892441993">(08) 9244 1993</a></td><td class="note">Balcatta. 40+ yrs family-run. Character home renos.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Smith & Sons</span> (Como)</td><td class="phone"><a href="tel:1300787577">1300 787 577</a></td><td class="note">National franchise. $100-300K renos.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Mindful Homes</span></td><td class="phone"><a href="tel:0438972682">0438 972 682</a></td><td class="note">Ellenbrook. Extensions + 2nd storey.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Equinox Homes</span></td><td class="phone"><a href="tel:0418515636">0418 515 636</a></td><td class="note">Subiaco, Mt Hawthorn area. Boutique.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Renovation Capital</span></td><td class="phone"><a href="tel:0893886667">(08) 9388 6667</a></td><td class="note">Subiaco showroom. Award-winning.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">New Room Renovations</span></td><td class="phone"><a href="tel:0418616458">0418 616 458</a></td><td class="note">Ocean Reef. 40 yrs. Extensions + additions.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Modus Property</span></td><td class="phone"><a href="tel:1300136384">1300 136 384</a></td><td class="note">Commercial + residential renos.</td></tr>
+  </table>
+</div>
+
+<!-- ===== PROPERTY MANAGERS ===== -->
+<div class="section">
+  <div class="section-header">
+    4. Property Managers — 3-10 jobs/month <span class="count">(7 items)</span> <span class="tag">THU-FRI</span>
+  </div>
+  <div class="pitch">"We do patio, pergola, fencing and decking installs and repairs. Fast turnaround — quote within 48 hours, scheduled within the week."</div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company</th><th>Phone / Link</th><th>Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-apply">Apply</span></td><td><span class="company">Realmark</span></td><td>realmark.com.au/contractor</td><td class="note">Formal contractor application. Attach insurance certs.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-email">Email</span></td><td><span class="company">Blackburne PM</span></td><td>pm@blackburne.com.au</td><td class="note">Preferred Contractor Programme. Send certs + capability statement.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Momentum Wealth</span></td><td class="phone"><a href="tel:0892216399">(08) 9221 6399</a></td><td class="note">Ask for PM Maintenance Coordinator.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Tango Property</span><br><span class="contact-name">Sean Lowrey (Licensee)</span></td><td class="phone"><a href="tel:0894503398">(08) 9450 3398</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">HERE Property</span></td><td class="phone"><a href="tel:1300077005">1300 077 005</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">D Residential</span></td><td class="phone"><a href="tel:0402888550">0402 888 550</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Perth Property Management WA</span></td><td class="phone"><a href="tel:0862610666">(08) 6261 0666</a></td><td class="note"></td></tr>
+  </table>
+</div>
+
+<!-- ===== STRATA ===== -->
+<div class="section">
+  <div class="section-header">
+    5. Strata Managers — 5-20 identical jobs per complex <span class="count">(8 items)</span> <span class="tag">FRI</span>
+  </div>
+  <div class="pitch">"We do patio and outdoor structure replacements for unit complexes. We quote all units in one visit and batch the install — saves you coordinating multiple trades."</div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company</th><th>Phone</th><th>Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-register">Register</span></td><td><span class="company">ESM Strata</span></td><td class="phone"><a href="tel:0893621166">(08) 9362 1166</a></td><td class="note">Supplier registration: esmstrata.com.au/suppliers/</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Richardson Strata</span></td><td class="phone"><a href="tel:0894721833">(08) 9472 1833</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Dominion Strata</span></td><td class="phone"><a href="tel:0862858183">(08) 6285 8183</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Oakfield Strata</span></td><td class="phone"><a href="tel:0863555225">(08) 6355 5225</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Strata Administration Services</span></td><td class="phone"><a href="tel:0893302806">(08) 9330 2806</a></td><td class="note">250+ complexes, 25+ years.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Prestige Strata</span></td><td class="phone"><a href="tel:0894727377">(08) 9472 7377</a></td><td class="note">High-end complexes.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Strata Town</span></td><td class="phone"><a href="tel:1300078696">1300 078 696</a></td><td class="note"></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Perth Strata Co</span></td><td class="phone"><a href="tel:0863881189">(08) 6388 1189</a></td><td class="note"></td></tr>
+  </table>
+</div>
+
+<!-- ===== CHILDCARE + SCHOOLS ===== -->
+<div class="section">
+  <div class="section-header">
+    6. Childcare Builders & Schools — Insulated COLAs (market gap) <span class="count">(7 items)</span> <span class="tag">NEXT WEEK</span>
+  </div>
+  <div class="pitch">"We build insulated panel covered outdoor areas — better acoustics than shade sails, better thermal performance, longer lifespan, no fabric replacement."</div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company / Contact</th><th>Phone</th><th>Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Macri Builders</span><br><span class="contact-name">Frank Macri</span></td><td class="phone"><a href="tel:0894449829">(08) 9444 9829</a></td><td class="note"><strong>85+ childcare centres built.</strong> Top priority.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">IQ Construction</span></td><td class="phone"><a href="tel:0893996715">(08) 9399 6715</a></td><td class="note">Childcare + aged care specialist.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Goodstart Early Learning</span></td><td class="phone"><a href="tel:1800222543">1800 222 543</a></td><td class="note">40+ Perth centres. Ask for Property/Facilities.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-email">Email</span></td><td><span class="company">Catholic Education WA</span></td><td>supplieronboarding@cewa.edu.au</td><td class="note">Register as supplier. 158 schools.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-register">Register</span></td><td><span class="company">AISWA Buyer Connect</span></td><td>ais.wa.edu.au</td><td class="note">155 independent schools. $23.9M in capital grants.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Novus Projects</span></td><td>novusprojects.au</td><td class="note">Childcare + medical centre builder.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Aveling Developments</span></td><td>avelingdevelopments.com.au</td><td class="note">Preferred builder for multiple childcare operators.</td></tr>
+  </table>
+</div>
+
+<!-- ===== HOSPITALITY + COMMERCIAL ===== -->
+<div class="section">
+  <div class="section-header">
+    7. Hospitality & Commercial Builders <span class="count">(4 items)</span> <span class="tag">NEXT WEEK</span>
+  </div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company / Contact</th><th>Phone</th><th>Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Spyda Construction</span><br><span class="contact-name">Daniel Erceg (Director)</span></td><td class="phone"><a href="tel:0861199235">(08) 6119 9235</a></td><td class="note">Breweries, bars, restaurants, hotels.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">PACT Construction</span> (ABN Group)<br><span class="contact-name">Richard Botfield (Procurement)</span></td><td class="phone"><a href="tel:0892089000">(08) 9208 9000</a></td><td class="note">Commercial arm. Built The Camfield. Commercial margins.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Cygnet West</span></td><td class="phone"><a href="tel:0892616611">(08) 9261 6611</a></td><td class="note">WA's largest independent commercial RE. 110+ properties.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">FIRM Construction</span></td><td>info@firmconstruction.com.au</td><td class="note">Award-winning aged care builder WA.</td></tr>
+  </table>
+</div>
+
+<!-- ===== AGED CARE ===== -->
+<div class="section">
+  <div class="section-header">
+    8. Aged Care Providers — $991M industry funding <span class="count">(6 items)</span> <span class="tag">NEXT WEEK</span>
+  </div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Company</th><th>Phone</th><th>Notes</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Aegis Aged Care</span></td><td class="phone"><a href="tel:0862548211">(08) 6254 8211</a></td><td class="note">30 facilities in Perth/SW.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Hall & Prior</span></td><td>hallprior.com.au/contact-us</td><td class="note">15 Perth metro homes.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Juniper</span></td><td class="phone"><a href="tel:1300313000">1300 313 000</a></td><td class="note">25+ locations. WA's leading NFP aged care.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Amana Living</span></td><td class="phone"><a href="tel:1300262626">1300 26 26 26</a></td><td class="note">13 nursing homes + 17 retirement villages.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Bethanie</span></td><td class="phone"><a href="tel:131151">131 151</a></td><td class="note">WA's leading NFP aged care.</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Regents Garden</span></td><td class="phone"><a href="tel:0862435500">(08) 6243 5500</a></td><td class="note">Premium/luxury. 4 locations.</td></tr>
+  </table>
+</div>
+
+<!-- ===== ONLINE REGISTRATIONS ===== -->
+<div class="section">
+  <div class="section-header">
+    9. Online Registrations — 15 min each <span class="count">(7 items)</span> <span class="tag">WEEKEND</span>
+  </div>
+  <table>
+    <tr><th class="checkbox">&#10003;</th><th>Action</th><th>Platform</th><th>Link / Contact</th></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-register">Register</span></td><td><span class="company">ICN Gateway</span> (miners find you)</td><td>gateway.icn.org.au</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-register">Register</span></td><td><span class="company">Tenders WA</span></td><td>tenders.wa.gov.au</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-register">Register</span></td><td><span class="company">AusTender</span></td><td>tenders.gov.au</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-email">Email</span></td><td><span class="company">City of Wanneroo</span></td><td>contracts_purchasing@wanneroo.wa.gov.au</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-email">Email</span></td><td><span class="company">City of Stirling</span></td><td>procurement@stirling.wa.gov.au</td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">HIA WA</span> (networking events)</td><td class="phone"><a href="tel:1300650620">1300 650 620</a></td></tr>
+    <tr><td class="checkbox"><input type="checkbox"></td><td><span class="action action-call">Call</span></td><td><span class="company">Master Builders WA</span></td><td class="phone"><a href="tel:0894769800">(08) 9476 9800</a></td></tr>
+  </table>
+</div>
+
+<!-- ===== NOTES ===== -->
+<div class="notes-section">
+  <h2>General Notes</h2>
+  <textarea id="generalNotes" placeholder="Add notes here — who called back, next steps, follow-ups..."></textarea>
+</div>
+
+<div class="footer">
+  SecureWorks WA — B2B Call Sheet — 74 contacts — Generated 8 March 2026
+</div>
+
+<script>
+// Add a "Notes" column to every data row
+document.querySelectorAll('table').forEach(table => {
+  const headerRow = table.querySelector('tr');
+  if (headerRow) {
+    const th = document.createElement('th');
+    th.textContent = 'NOTES';
+    th.style.minWidth = '120px';
+    headerRow.appendChild(th);
+  }
+  table.querySelectorAll('tr:not(:first-child)').forEach((row, i) => {
+    const td = document.createElement('td');
+    const textarea = document.createElement('textarea');
+    textarea.className = 'row-note';
+    textarea.placeholder = 'Notes...';
+    textarea.rows = 1;
+    td.appendChild(textarea);
+    row.appendChild(td);
+  });
+});
+
+// Give every row a unique ID based on position
+const allRows = document.querySelectorAll('table tr:not(:first-child)');
+allRows.forEach((row, i) => row.dataset.id = i);
+
+// Save/load state from localStorage
+function saveState() {
+  const state = { checks: {}, notes: {}, general: '' };
+  allRows.forEach(row => {
+    const id = row.dataset.id;
+    const cb = row.querySelector('input[type="checkbox"]');
+    const note = row.querySelector('.row-note');
+    if (cb) state.checks[id] = cb.checked;
+    if (note) state.notes[id] = note.value;
+  });
+  state.general = document.getElementById('generalNotes').value;
+  localStorage.setItem('sw-callsheet', JSON.stringify(state));
+  updateProgress();
+}
+
+function loadState() {
+  try {
+    const state = JSON.parse(localStorage.getItem('sw-callsheet'));
+    if (!state) return;
+    allRows.forEach(row => {
+      const id = row.dataset.id;
+      const cb = row.querySelector('input[type="checkbox"]');
+      const note = row.querySelector('.row-note');
+      if (cb && state.checks[id]) { cb.checked = true; row.classList.add('done'); }
+      if (note && state.notes[id]) note.value = state.notes[id];
+    });
+    if (state.general) document.getElementById('generalNotes').value = state.general;
+  } catch(e) {}
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = allRows.length;
+  let done = 0;
+  allRows.forEach(row => {
+    const cb = row.querySelector('input[type="checkbox"]');
+    if (cb && cb.checked) done++;
+  });
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = done + ' / ' + total + ' done';
+}
+
+// Event listeners
+allRows.forEach(row => {
+  const cb = row.querySelector('input[type="checkbox"]');
+  if (cb) cb.addEventListener('change', () => {
+    row.classList.toggle('done', cb.checked);
+    saveState();
+  });
+  const note = row.querySelector('.row-note');
+  if (note) note.addEventListener('input', saveState);
+});
+document.getElementById('generalNotes').addEventListener('input', saveState);
+
+// Auto-grow textareas
+document.querySelectorAll('.row-note').forEach(ta => {
+  ta.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+});
+
+loadState();
+</script>
+
+</body>
+</html>

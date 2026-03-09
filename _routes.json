@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/",
+    "/_astro/*",
+    "/.assetsignore",
+    "/robots.txt",
+    "/video/*",
+    "/images/*",
+    "/frames/*",
+    "/about",
+    "/contact",
+    "/decking-perth/*",
+    "/fencing-perth/*",
+    "/patios-perth/*",
+    "/projects"
+  ]
+}
