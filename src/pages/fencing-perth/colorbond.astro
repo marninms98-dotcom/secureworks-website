@@ -1,0 +1,395 @@
+---
+/**
+ * Colorbond Fencing Perth — Child Service Page
+ * Detailed page on Colorbond fencing with colour swatch grid.
+ * Links back to parent /fencing-perth/ only (silo rules).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Colorbond colour palette with approximate hex values
+const colorbondColours = [
+  { name: 'Surfmist',       hex: '#e8e4dc' },
+  { name: 'Classic Cream',  hex: '#e6d5a8' },
+  { name: 'Paperbark',      hex: '#c5b9a0' },
+  { name: 'Shale Grey',     hex: '#b2b1a2' },
+  { name: 'Dune',           hex: '#b5a68c' },
+  { name: 'Basalt',         hex: '#6b6e6a' },
+  { name: 'Woodland Grey',  hex: '#4d4f47' },
+  { name: 'Monument',       hex: '#3a3c3e' },
+  { name: 'Night Sky',      hex: '#2b2d2f' },
+];
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "SecureWorks Group",
+      "url": "https://secureworksgroup.com.au",
+      "telephone": "1300000000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Perth",
+        "addressRegion": "WA",
+        "addressCountry": "AU"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "priceRange": "$$"
+    },
+    {
+      "@type": "Service",
+      "name": "Colorbond Fencing Perth",
+      "description": "Colorbond steel fencing installation in Perth. Wind-rated, fire-resistant, termite-proof fencing with a 10-year warranty by SecureWorks Group.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "SecureWorks Group"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "serviceType": "Colorbond Fencing Installation"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Colorbond Fencing Perth — Wind-Rated Steel Fencing"
+  description="Colorbond fencing installation in Perth. N2/N3 wind-rated, fire-resistant, termite-proof. 9 colours available. 10-year warranty. Professional installation by SecureWorks Group."
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+
+  <!-- ========== BREADCRUMB ========== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/fencing-perth/">Fencing Perth</a>
+      <span aria-hidden="true">/</span>
+      <span>Colorbond Fencing</span>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Colorbond Fencing Perth</span>
+      <h1>Colorbond Fencing — Built for Perth Weather</h1>
+      <p class="hero-subtitle">
+        The go-to fencing material for Australian homes, and for good reason. Colorbond steel handles Perth's heat, wind, and coastal salt air without rusting, warping, or needing constant maintenance. We supply and install Colorbond boundary fences, side returns, front features, and retaining wall top panels across Perth's northern suburbs.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Get a Colorbond Fencing Quote</a>
+    </div>
+    <div class="container">
+      <img src="/images/colorbond-fence-lattice.jpg" alt="Colorbond fence with lattice top detail" width="1200" height="525" style="aspect-ratio: 16/7; object-fit: cover; width: 100%; border-radius: 12px; margin-top: var(--space-md);" />
+    </div>
+  </section>
+
+  <!-- ========== COLOUR PALETTE ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Choose Your Colour</span>
+      <h2>Colorbond Colour Range</h2>
+      <p class="section-intro">
+        Nine contemporary colours designed to complement Australian homes. From the light, airy tones of Surfmist through to the bold statement of Night Sky, there is a colour for every streetscape. The most popular choices in Perth are Monument, Woodland Grey, and Basalt — all pair well with modern rendered facades.
+      </p>
+
+      <div class="colour-grid" data-stagger>
+        {colorbondColours.map((colour) => (
+          <div class="colour-swatch">
+            <div class="swatch-sample" style={`background-color: ${colour.hex};`}></div>
+            <span class="swatch-name">{colour.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="colour-note">
+        Colours shown are approximate screen representations. We can bring physical samples to your site visit so you can see how each colour looks against your home.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== KEY BENEFITS ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Why Colorbond</span>
+      <h2>Benefits of Colorbond Fencing in Perth</h2>
+
+      <div class="benefits-grid" data-stagger>
+        <div class="benefit-card">
+          <h3>Wind Resistance</h3>
+          <p>
+            Colorbond fencing panels are engineered and tested for Australian wind conditions. In Perth, most suburban properties fall under wind region N2, while coastal areas like Hillarys, Scarborough, and Mindarie require N3 ratings. We install to the correct specification for your location, including appropriate post spacing, footing depth, and panel gauge — so your fence stays standing when the Fremantle Doctor turns into a proper storm.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Fire Rating</h3>
+          <p>
+            Colorbond steel is non-combustible, making it a smart choice for properties in bushfire-prone areas around Perth's urban fringe. Unlike timber fences that can carry fire from property to property, a Colorbond fence acts as a barrier. It meets BAL (Bushfire Attack Level) requirements where timber fencing cannot.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Termite Proof</h3>
+          <p>
+            Perth has some of the most aggressive termite species in Australia. Timber fences in WA are a known target — and once termites find your fence, your home could be next. Colorbond steel eliminates this risk entirely. No chemical treatments needed, no annual inspections for your fence line.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Zero Maintenance</h3>
+          <p>
+            No painting, no staining, no sealing, no replacing rotted palings. Colorbond's Activate technology provides a self-healing zinc-aluminium-magnesium coating that protects against corrosion, even at cut edges. The baked-on polyester paint finish resists UV fading so your fence looks as good in year ten as it did on day one.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>10-Year Warranty</h3>
+          <p>
+            BlueScope backs their Colorbond steel with a 10-year warranty on material integrity. Combined with our workmanship guarantee, you have confidence that your investment is protected. We use genuine Colorbond products — not imported look-alikes that do not carry the same warranty or performance credentials.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Privacy & Security</h3>
+          <p>
+            Unlike paling or pool-style fencing, Colorbond panels provide complete visual privacy with no gaps between boards. At 1.8 metres standard height, your backyard becomes a private retreat. We can also install at custom heights where council permits allow — ideal for properties on busy roads or overlooked blocks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COLORBOND VS TIMBER ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container content-block">
+      <span class="label">The Comparison</span>
+      <h2>Colorbond vs Timber Fencing in Perth</h2>
+      <p>
+        Timber fencing has been a Perth staple for decades, but it comes with significant drawbacks in our climate. Hardwood palings shrink and split in summer heat, softwood treated pine warps and requires re-staining every two to three years, and both are vulnerable to termites — which are active year-round in WA's sandy soils.
+      </p>
+      <p>
+        The upfront cost of Colorbond is comparable to quality hardwood fencing, but the lifetime cost tells the real story. Over ten years, a timber fence will need at least two full re-stains (labour and materials), replacement of damaged or rotted palings, and potentially chemical termite treatment. A Colorbond fence needs nothing — the occasional hose-down if you feel like it.
+      </p>
+      <p>
+        From an aesthetic standpoint, Colorbond has evolved well beyond the industrial look of older corrugated fencing. Modern Colorbond fencing uses clean, flat panels with concealed fixings. The colour range is curated to match contemporary home designs, and the consistent finish on both sides means your fence looks great from the street and from your yard.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== INSTALLATION DETAILS ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container content-block">
+      <span class="label">Installation</span>
+      <h2>How We Install Colorbond Fencing</h2>
+      <p>
+        Every Colorbond fence installation starts with a proper site assessment. We check levels across the fence run, identify any services (water, gas, electrical) along the line, and assess soil conditions. Perth's predominantly sandy soils require specific footing depths and concrete volumes to achieve the wind rating for your area.
+      </p>
+      <p>
+        Posts are set in concrete footings at spacings determined by the wind rating — typically 2.35 metres for N2 and closer for N3 and exposed locations. We use galvanised steel posts (65x65mm or 75x75mm depending on height and wind loading) with bottom rails and Colorbond panels lock-fitted between. All fixings are concealed for a clean finish.
+      </p>
+      <p>
+        For sloping blocks — common across Perth's northern suburbs — we step the panels to follow the grade. Each step is level, with infill panels at the bottom where required. We also handle retaining wall top fencing, with posts anchored through the retaining wall cap for a solid, integrated result.
+      </p>
+      <p>
+        Most standard boundary fence replacements (30 to 50 metres) are completed in one to two days. We remove and dispose of your old fence, install the new Colorbond system, and leave your site clean.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--alt cta-section" data-animate="fade-up">
+    <div class="container cta-block">
+      <h2>Let Us Quote Your Colorbond Fence</h2>
+      <p>
+        Tell us about your fencing project and we will arrange a site visit. We will measure up, discuss colour choices, and provide a fixed-price quote — typically within 48 hours of the visit. No pushy follow-ups, no hidden costs.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn--primary">Request a Consultation</a>
+        <a href="/fencing-perth/" class="btn btn--outline">Back to Fencing Services</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumb */
+  .breadcrumb {
+    padding-top: calc(var(--header-height) + var(--space-sm));
+    padding-bottom: 0;
+  }
+
+  .breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+  }
+
+  .breadcrumb a {
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-sm);
+    max-width: 700px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    max-width: 640px;
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  .hero-image {
+    margin-top: var(--space-md);
+    border-radius: 12px;
+  }
+
+  /* Image Placeholder */
+  .image-placeholder {
+    background: var(--tint);
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* Colour Grid */
+  .colour-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .colour-swatch {
+    text-align: center;
+  }
+
+  .swatch-sample {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 0.5rem;
+  }
+
+  .swatch-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--dark-blue);
+  }
+
+  .colour-note {
+    font-size: 0.8125rem;
+    color: var(--mid-blue);
+    font-style: italic;
+  }
+
+  .section-intro {
+    max-width: 700px;
+    margin-bottom: var(--space-lg);
+    color: var(--mid-blue);
+  }
+
+  .section .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .benefit-card {
+    background: var(--pale-bg);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .benefit-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .benefit-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+  }
+
+  /* Content block */
+  .content-block {
+    max-width: 780px;
+  }
+
+  .content-block h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .content-block .label {
+    display: block;
+  }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .colour-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

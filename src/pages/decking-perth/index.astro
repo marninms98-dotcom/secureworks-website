@@ -1,0 +1,410 @@
+---
+/**
+ * Decking Perth — Parent Service Page
+ * Overview of decking options: composite and hardwood.
+ * SEO-optimised for "decking Perth" keywords.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "SecureWorks Group",
+      "url": "https://secureworksgroup.com.au",
+      "telephone": "1300000000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Perth",
+        "addressRegion": "WA",
+        "addressCountry": "AU"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "priceRange": "$$"
+    },
+    {
+      "@type": "Service",
+      "name": "Decking Perth",
+      "description": "Professional decking installation in Perth. Composite and hardwood decking for pool surrounds, entertaining areas, and front entries by SecureWorks Group.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "SecureWorks Group"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "serviceType": "Decking Installation"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Decking Perth — Composite & Hardwood Decking Installation"
+  description="Professional decking installation in Perth. Composite and hardwood options for pool surrounds, outdoor entertaining, and front entries. 1,200+ jobs completed by SecureWorks Group."
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Decking Perth</span>
+      <h1>Decking That Works for Perth Living</h1>
+      <p class="hero-subtitle">
+        Perth's outdoor lifestyle demands outdoor spaces you can actually use. A well-built deck transforms dead zones beside the pool, awkward side areas, and tired back yards into functional living space you will use every week. We install composite and hardwood decking — designed for our climate, built to handle bare feet all year round.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn--primary">Discuss Your Decking Project</a>
+        <a href="/decking-perth/composite/" class="btn btn--outline">Explore Composite Decking</a>
+      </div>
+    </div>
+    <div class="container">
+      <img src="/images/deck-patio-golden.jpg" alt="Timber decking with patio at sunset in Perth" width="1200" height="525" style="aspect-ratio: 16/7; object-fit: cover; width: 100%; border-radius: 12px;" />
+    </div>
+  </section>
+
+  <!-- ========== WHY DECKING ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container content-block">
+      <span class="label">Why Decking</span>
+      <h2>Extend Your Home Without the Build Cost</h2>
+      <p>
+        Adding a deck is one of the most cost-effective ways to gain usable outdoor space. Unlike a full extension or renovation, a deck does not require structural changes to your home, rarely needs council approval (under 500mm height in most Perth councils), and can be completed in days rather than months.
+      </p>
+      <p>
+        In Perth, where we spend eight to nine months of the year outdoors, a deck is not a luxury — it is a practical investment that adds genuine living space and real property value. Our clients typically use their new decks for weekend barbecues, morning coffees, kids play areas, and year-round entertaining. Many pair their deck with one of our insulated patio roofs for a fully usable outdoor room.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== DECKING TYPES ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Decking Options</span>
+      <h2>Composite vs Hardwood — Which Is Right for You?</h2>
+      <p class="section-intro">
+        Both options have their strengths. The right choice depends on your priorities — maintenance commitment, aesthetic preference, budget, and where the deck will be installed. Here is an honest breakdown.
+      </p>
+
+      <div class="comparison-grid" data-stagger>
+        <!-- Composite -->
+        <div class="option-card">
+          <img src="/images/patio-decking-wide-angle.jpg" alt="Composite decking with patio overhead in Perth home" loading="lazy" width="600" height="338" style="aspect-ratio: 16/9; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Composite Decking</h3>
+          <p>
+            Made from a blend of recycled wood fibres and polymer, composite decking boards look like timber but require almost zero maintenance. No oiling, no sanding, no staining — ever. They will not splinter, warp, or get eaten by termites. Modern composites come in realistic timber-grain finishes that hold up under Perth's UV without fading.
+          </p>
+          <p>
+            Best for: Pool surrounds (slip-resistant surface), low-maintenance entertaining areas, and anyone who does not want to spend weekends maintaining their deck.
+          </p>
+          <a href="/decking-perth/composite/" class="btn btn--outline btn--sm">Learn About Composite</a>
+        </div>
+
+        <!-- Hardwood -->
+        <div class="option-card">
+          <img src="/images/decking-edge-detail.jpg" alt="Hardwood timber decking edge detail showing natural grain" loading="lazy" width="600" height="338" style="aspect-ratio: 16/9; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Hardwood Decking</h3>
+          <p>
+            Nothing matches the natural warmth and character of real timber. We work with Merbau, Spotted Gum, and Jarrah — all dense hardwoods with natural resistance to rot and insects. Hardwood decking develops a beautiful patina over time or can be maintained to keep its original colour with annual oiling.
+          </p>
+          <p>
+            Best for: Feature decks, front entries, and homeowners who appreciate natural materials and do not mind the annual maintenance ritual.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POPULAR USES ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Popular Applications</span>
+      <h2>How Perth Homeowners Use Their Decks</h2>
+
+      <div class="uses-grid" data-stagger>
+        <div class="use-card">
+          <img src="/images/patio-decking-wide-angle.jpg" alt="Decking around pool area with patio in Perth backyard" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Pool Surrounds</h3>
+          <p>
+            The most popular decking application in Perth. Composite decking is ideal around pools — it is slip-resistant when wet, does not splinter under bare feet, stays cooler than pavers, and handles constant moisture and chlorine splash without degrading. We build pool decks with hidden fixings for a clean, screw-free surface that is safe for the whole family.
+          </p>
+        </div>
+
+        <div class="use-card">
+          <img src="/images/deck-patio-golden.jpg" alt="Outdoor entertaining deck with patio at golden hour" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Outdoor Entertaining</h3>
+          <p>
+            A dedicated deck area for your barbecue, outdoor dining table, and lounge setting creates a defined entertaining zone. Paired with one of our insulated patios overhead, you get a true outdoor room — shaded, sheltered, and usable even when Perth delivers one of its surprise summer rain showers.
+          </p>
+        </div>
+
+        <div class="use-card">
+          <img src="/images/decking-edge-detail.jpg" alt="Timber decking front entry with clean edge detail" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Front Entries & Porches</h3>
+          <p>
+            A timber or composite deck at your front entry lifts your home's street appeal immediately. We build raised front decks with integrated steps, handrails where required, and screening for privacy. It is one of the highest-impact changes you can make to a home's first impression.
+          </p>
+        </div>
+
+        <div class="use-card">
+          <img src="/images/drone-bush-patio-deck.jpg" alt="Aerial view of decking pathway alongside Perth home" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Side Yard Access</h3>
+          <p>
+            That narrow strip down the side of your house does not have to be wasted space. A raised deck pathway connects your front and back yards, covers ugly services and pipes, and creates a clean surface that stays mud-free during Perth's wet winter months.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OUR PROCESS ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">How It Works</span>
+      <h2>Our Decking Process</h2>
+      <div class="process-grid" data-stagger>
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Design Consultation</h3>
+          <p>We visit your home, discuss how you want to use the space, and recommend the right material, layout, and size. We will talk through composite vs hardwood honestly — what suits your situation, not what has the biggest margin.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Detailed Quote</h3>
+          <p>You receive a fixed-price quote covering materials, subframe, installation, and any finishing details. Everything itemised, nothing hidden. We include 3D visuals for larger or more complex deck designs.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Build & Install</h3>
+          <p>Our team builds the subframe from treated pine or steel (depending on height and span), installs the decking boards with hidden clip systems, and fits any stairs, balustrades, or edge trims. Most decks are finished in two to four days.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Handover</h3>
+          <p>We walk you through care instructions for your chosen material, clean the site, and make sure every board is perfect. For hardwood decks, we apply the first coat of oil as part of the install.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--alt cta-section" data-animate="fade-up">
+    <div class="container cta-block">
+      <h2>Ready to Add a Deck?</h2>
+      <p>
+        Whether it is a pool surround, an entertaining area under your patio, or a front entry that lifts your street appeal — let us help you work out what will suit your space. No pressure, just a straight conversation about what is possible.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-sm);
+    max-width: 700px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    max-width: 640px;
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-image {
+    border-radius: 12px;
+  }
+
+  /* Image Placeholder */
+  .image-placeholder {
+    background: var(--tint);
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* Content block */
+  .content-block {
+    max-width: 780px;
+  }
+
+  .content-block h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .content-block .label {
+    display: block;
+  }
+
+  .section-intro {
+    max-width: 700px;
+    margin-bottom: var(--space-lg);
+    color: var(--mid-blue);
+  }
+
+  .section .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Comparison Grid (2-col) */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .option-card {
+    background: var(--pale-bg);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .option-card .image-placeholder {
+    margin-bottom: var(--space-sm);
+  }
+
+  .option-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .option-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    margin-bottom: var(--space-sm);
+  }
+
+  .btn--sm {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* Uses Grid (2x2) */
+  .uses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .use-card {
+    background: var(--white);
+    border: 1px solid var(--tint);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .use-card .image-placeholder {
+    margin-bottom: var(--space-sm);
+  }
+
+  .use-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .use-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .process-step {
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .process-step h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .process-step p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+  }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .comparison-grid,
+    .uses-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

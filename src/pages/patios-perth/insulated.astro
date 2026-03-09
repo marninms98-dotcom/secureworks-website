@@ -1,0 +1,680 @@
+---
+/**
+ * Child page — /patios-perth/insulated/
+ * Deep-dive into insulated patios using SolarSpan panels.
+ * Links back to parent /patios-perth/ only (silo rule).
+ * Copy adapted from proven Google Ads insulated patio landing page.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Comparison table data (proven from landing page)
+const comparisonRows = [
+  { feature: 'Temperature',   insulated: 'Up to 22°C cooler',     colorbond: 'Hot — radiates heat',  poly: 'Greenhouse effect' },
+  { feature: 'Rain Noise',    insulated: 'Silent',                 colorbond: 'Very loud',            poly: 'Loud' },
+  { feature: 'Ceiling Finish', insulated: 'Flat ceiling included', colorbond: 'Exposed corrugated',   poly: 'See-through' },
+  { feature: 'Max Span',      insulated: '8m+ beam-to-beam',      colorbond: 'Requires battens',     poly: 'Limited spans' },
+  { feature: 'Insulation',    insulated: 'R1.2 – R2.4+',          colorbond: 'None (R0)',            poly: 'Minimal' },
+  { feature: 'Property Value', insulated: 'Adds premium value',   colorbond: 'Functional only',      poly: 'Dated look' },
+  { feature: 'Price Range',   insulated: '$$$',                    colorbond: '$$',                   poly: '$' },
+];
+
+// FAQ (proven from landing page — insulated-specific)
+const faqs = [
+  {
+    question: 'How much does an insulated patio cost in Perth?',
+    answer: 'Insulated patios typically range from $12,000 for a small attached flat patio to $45,000+ for large gable or flyover designs. The final cost depends on size, roof style, site conditions, and council requirements. Our quotes are fully itemised with no hidden costs — engineering, drafting, and council fees are included.',
+  },
+  {
+    question: 'What\'s the difference between insulated and non-insulated?',
+    answer: 'Standard patios use single-skin Colorbond sheets — cheaper but they transmit heat and amplify rain noise. Insulated panels (SolarSpan) are a sandwich of steel, EPS foam insulation, and a pre-finished steel ceiling. You get thermal insulation (up to R2.4), acoustic dampening, and a flat ceiling finish all in one panel. They also span further without battens, giving you cleaner lines and fewer posts.',
+  },
+  {
+    question: 'What Colorbond colours are available?',
+    answer: 'Over 22 Colorbond colours are available. Popular choices in Perth include Surfmist, Paperbark, Shale Grey, Dune, Evening Haze, Basalt, Woodland Grey, and Monument. With insulated panels, you can choose different colours for the top and ceiling surfaces independently.',
+  },
+  {
+    question: 'Can I add lighting, fans, and downlights?',
+    answer: 'The flat ceiling of insulated panels is perfect for recessed downlights and ceiling fans. We coordinate with electricians to pre-plan penetration locations before installation. Outdoor-rated LED downlights and fans are popular additions that make your patio fully functional day and night.',
+  },
+  {
+    question: 'Do I need council approval?',
+    answer: 'Almost always, yes. Patios are classified as Class 10a buildings under the National Construction Code. If your patio meets standard setback and height requirements, it qualifies for a CDC (1–3 weeks). If variations are needed, a DA is required (6–12 weeks). We handle the entire process for you.',
+  },
+  {
+    question: 'How long does the whole process take?',
+    answer: 'From acceptance to completion, a typical insulated patio takes 6–8 weeks: 1–2 weeks for drafting and engineering, 1–3 weeks for CDC approval, 1 week for materials, and 2–3 days for installation. DA projects take longer (12+ weeks). We keep you updated throughout.',
+  },
+];
+---
+
+<BaseLayout
+  title="Insulated Patios Perth — SolarSpan by Bondor"
+  description="Insulated patios in Perth using SolarSpan panels by Bondor. Up to 22°C cooler, silent in rain, flat ceiling finish. R1.2 to R2.4 insulation. From ~$650/m2."
+>
+  <!-- JSON-LD: LocalBusiness + Service -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://secureworksgroup.com.au/#business",
+        "name": "SecureWorks Group",
+        "url": "https://secureworksgroup.com.au",
+        "telephone": "+61489267774",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Perth",
+          "addressRegion": "WA",
+          "addressCountry": "AU"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Perth"
+        },
+        "priceRange": "$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "100"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://secureworksgroup.com.au/patios-perth/insulated/#service",
+        "name": "Insulated Patio Construction Perth",
+        "provider": { "@id": "https://secureworksgroup.com.au/#business" },
+        "serviceType": "Insulated Patio Construction",
+        "areaServed": {
+          "@type": "City",
+          "name": "Perth"
+        },
+        "description": "Custom insulated patios in Perth using SolarSpan panels by Bondor. Roof, ceiling, and insulation in one panel. Up to 22°C cooler, silent in rain. R-values from R1.2 to R2.4."
+      }
+    ]
+  })} />
+
+  <!-- ========== BREADCRUMB ========== -->
+  <nav class="breadcrumb container" aria-label="Breadcrumb">
+    <a href="/patios-perth/">Patios Perth</a>
+    <span aria-hidden="true">/</span>
+    <span>Insulated Patios</span>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Insulated Patios Perth</span>
+      <h1>SolarSpan Insulated Patios</h1>
+      <p class="hero-subtitle">Roof + Ceiling + Insulation — in One Panel</p>
+      <p class="hero-intro">
+        Transform your outdoor area into a comfortable, all-season living space. SolarSpan by
+        Bondor combines structural roofing, thermal insulation, and a clean flat ceiling into a
+        single panel — no exposed beams, no layered build-up, no compromises.
+      </p>
+      <p class="hero-intro">
+        The difference is immediate. Stand under a standard Colorbond roof on a 38-degree Perth
+        afternoon and you'll feel the heat radiating down. Stand under SolarSpan and it's up to
+        22 degrees cooler. That's the EPS foam core doing its job — blocking radiant heat before
+        it reaches your living space.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn--primary">Get Your Free Quote</a>
+        <a href="#comparison" class="btn btn--outline">Compare Options</a>
+      </div>
+      <img src="/images/insulated-patio-wide.jpg" alt="Insulated SolarSpan patio with flat ceiling finish in Perth" width="1200" height="525" style="aspect-ratio: 16/7; object-fit: cover; width: 100%; border-radius: 12px; margin-top: var(--space-md);" />
+    </div>
+  </section>
+
+  <!-- ========== BENEFITS (with proven stats) ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <span class="label">The Solution</span>
+      <h2>Why Insulated Patios Are Different</h2>
+      <p>
+        SolarSpan insulated panels combine roofing, insulation, and a finished ceiling in a single
+        panel. It's not just a patio — it's a room without walls.
+      </p>
+
+      <div class="feature-grid" data-stagger>
+        <div class="feature">
+          <h4>Up to 22 Degrees Cooler</h4>
+          <p>
+            The EPS foam core creates a thermal barrier between the scorching roof surface and your
+            living space. Enjoy your patio even in peak Perth summer when temperatures push past 40.
+          </p>
+          <span class="feature-stat">R-value up to R2.4 (100mm panel)</span>
+        </div>
+        <div class="feature">
+          <h4>Silent in Heavy Rain</h4>
+          <p>
+            The insulated core absorbs sound instead of amplifying it. Hold conversations, watch TV,
+            and entertain while Perth storms pass overhead.
+          </p>
+          <span class="feature-stat">Acoustic dampening built in</span>
+        </div>
+        <div class="feature">
+          <h4>Flat Ceiling Finish</h4>
+          <p>
+            No exposed beams or corrugated underside. Choose smooth Plain or classic VJ lining. Looks
+            like an extension of your house, not a shed roof. Ready for downlights, fans, and speakers.
+          </p>
+          <span class="feature-stat">Plain or VJ ceiling options</span>
+        </div>
+        <div class="feature">
+          <h4>Spans Up to 8m+</h4>
+          <p>
+            SolarSpan panels are structural — they span beam-to-beam without battens. Fewer posts,
+            cleaner lines, and more open space underneath.
+          </p>
+          <span class="feature-stat">No battens required</span>
+        </div>
+        <div class="feature">
+          <h4>Engineered for Perth</h4>
+          <p>
+            Every installation is structurally certified to Australian Standards (AS/NZS 1170.2) for
+            Perth wind conditions. CodeMark certified and NCC compliant.
+          </p>
+          <span class="feature-stat">AS/NZS 1170 wind rated</span>
+        </div>
+        <div class="feature">
+          <h4>22+ Colorbond Colours</h4>
+          <p>
+            Match your existing roof, gutters, and home exterior perfectly. Top and ceiling colours
+            can be chosen independently for the exact look you want.
+          </p>
+          <span class="feature-stat">Full Colorbond range</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== R-VALUE TABLE ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Insulation Performance</span>
+      <h2>SolarSpan Panel Thickness Options</h2>
+      <p>
+        Choose the right panel thickness for your project. Thicker panels mean better insulation
+        and longer spans.
+      </p>
+
+      <div class="panel-specs" data-stagger>
+        <div class="panel-card">
+          <div class="panel-thickness">50<span>mm</span></div>
+          <span class="panel-rvalue">R1.2</span>
+          <p>Standard patios and carports. Good thermal performance for most applications.</p>
+        </div>
+        <div class="panel-card panel-card--popular">
+          <span class="panel-badge">Most Popular</span>
+          <div class="panel-thickness">75<span>mm</span></div>
+          <span class="panel-rvalue">R1.8</span>
+          <p>Larger spans with better insulation. The sweet spot for comfort and value.</p>
+        </div>
+        <div class="panel-card">
+          <div class="panel-thickness">100<span>mm</span></div>
+          <span class="panel-rvalue">R2.4</span>
+          <p>Maximum comfort and longest spans. Premium choice for large outdoor rooms.</p>
+        </div>
+      </div>
+
+      <p class="table-note">
+        Higher R-values mean better thermal resistance. For most Perth patios, 50mm (R1.2) provides
+        solid performance. If your patio faces west and cops the full afternoon sun, stepping up to
+        75mm or 100mm is worth considering.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== COMPARISON TABLE ========== -->
+  <section class="section section--alt" id="comparison" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Compare Options</span>
+      <h2>Insulated vs Standard Roofing</h2>
+      <p>Not all patios are created equal. Here's how insulated panels compare.</p>
+
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-insulated">Insulated (SolarSpan)</th>
+              <th>Colorbond Sheet</th>
+              <th>Polycarbonate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                <td class="feature-cell">{row.feature}</td>
+                <td class="check-cell">{row.insulated}</td>
+                <td class="neutral-cell">{row.colorbond}</td>
+                <td class="neutral-cell">{row.poly}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COST GUIDE ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Pricing</span>
+      <h2>Insulated Patio Cost Guide</h2>
+      <p>
+        Every patio is different, so exact pricing depends on your specific design, site conditions,
+        and council requirements. These are installed prices — materials, labour, engineering, and
+        standard finishes included. Our quotes are fully itemised with no hidden costs.
+      </p>
+
+      <div class="cost-grid" data-stagger>
+        <div class="cost-card">
+          <h4>Flat / Skillion</h4>
+          <span class="cost-label">Base Rate</span>
+          <p class="cost-figure">~$650 /m<sup>2</sup></p>
+          <p class="cost-range">Typical range: $550 – $750 /m<sup>2</sup></p>
+          <p>
+            The most common and cost-effective option. Clean lines, single slope for drainage,
+            suits the majority of Perth homes.
+          </p>
+        </div>
+        <div class="cost-card">
+          <h4>Gable</h4>
+          <span class="cost-label">1.25x Base</span>
+          <p class="cost-figure">~$815 /m<sup>2</sup></p>
+          <p class="cost-range">Typical range: $690 – $935 /m<sup>2</sup></p>
+          <p>
+            The peaked roof structure requires additional framework and engineering. Great for
+            traditional homes where height and presence matter.
+          </p>
+        </div>
+        <div class="cost-card">
+          <h4>Hip</h4>
+          <span class="cost-label">1.35x Base</span>
+          <p class="cost-figure">~$880 /m<sup>2</sup></p>
+          <p class="cost-range">Typical range: $745 – $1,010 /m<sup>2</sup></p>
+          <p>
+            The most complex roof style with slopes on all sides. Premium finish, requires the
+            most engineering and material. Suits larger, higher-end builds.
+          </p>
+        </div>
+        <div class="cost-card">
+          <h4>Freestanding</h4>
+          <span class="cost-label">1.15x Base</span>
+          <p class="cost-figure">~$750 /m<sup>2</sup></p>
+          <p class="cost-range">Typical range: $635 – $860 /m<sup>2</sup></p>
+          <p>
+            Standalone structures need their own footing system on all sides. Ideal for poolside
+            pavilions and garden structures.
+          </p>
+        </div>
+      </div>
+
+      <p class="cost-note">
+        Prices are indicative and based on standard residential sites in Perth metro. Factors that
+        can move the price include: site access, soil conditions, demolition of existing structures,
+        electrical work (fans, lights, power points), and ceiling colour upgrades. Book a free site
+        visit and we'll provide your exact price — fully itemised, no surprises.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Common Questions</span>
+      <h2>Insulated Patio FAQ</h2>
+
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              {faq.question}
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--cta" data-animate="fade-up">
+    <div class="container cta-container">
+      <h2>Ready to Transform Your Outdoor Space?</h2>
+      <p>
+        Book your free site visit today. We'll assess your space, discuss options, and provide
+        a detailed quote — no obligation.
+      </p>
+      <div class="cta-buttons">
+        <a href="/contact/" class="btn btn--primary">Get Your Free Quote</a>
+        <a href="/patios-perth/" class="btn btn--outline">View All Patio Options</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumb */
+  .breadcrumb {
+    padding-top: calc(var(--header-height) + var(--space-sm));
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .breadcrumb a {
+    color: var(--orange);
+    font-weight: 600;
+    transition: opacity var(--transition-fast);
+  }
+  .breadcrumb a:hover { opacity: 0.7; }
+
+  /* Hero */
+  .hero { padding-top: var(--space-lg); }
+  .hero .label { margin-bottom: var(--space-xs); display: block; }
+  .hero h1 { margin-top: var(--space-xs); }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--orange);
+    margin-top: var(--space-xs);
+  }
+  .hero-intro {
+    font-size: 1.125rem;
+    max-width: 720px;
+    margin-top: var(--space-sm);
+    color: var(--body-text);
+  }
+  .hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Image placeholders */
+  .image-placeholder {
+    background: var(--tint);
+    border-radius: 12px;
+  }
+  .hero-image {
+    margin-top: var(--space-md);
+    aspect-ratio: 16 / 7;
+    width: 100%;
+  }
+
+  /* Feature grid (benefits with stats) */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .feature {
+    background: var(--white);
+    border-radius: 12px;
+    padding: var(--space-md);
+    border: 1px solid transparent;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  .feature:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 40px rgba(41, 60, 70, 0.12);
+  }
+  .feature h4 { margin-bottom: 0.5rem; }
+  .feature-stat {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--orange);
+    margin-top: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(241, 90, 41, 0.1);
+    border-radius: 50px;
+  }
+
+  /* Panel spec cards */
+  .panel-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .panel-card {
+    background: var(--pale-bg);
+    border-radius: 12px;
+    padding: var(--space-md);
+    text-align: center;
+    border: 2px solid transparent;
+    position: relative;
+  }
+  .panel-card--popular {
+    border-color: var(--orange);
+  }
+  .panel-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: var(--white);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 0.2rem 0.75rem;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+  .panel-thickness {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--dark-blue);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .panel-thickness span {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .panel-rvalue {
+    display: inline-block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+    padding: 0.125rem 0.75rem;
+    background: rgba(241, 90, 41, 0.1);
+    border-radius: 50px;
+  }
+  .panel-card p {
+    font-size: 0.875rem;
+    color: var(--body-text);
+  }
+  .table-note {
+    margin-top: var(--space-md);
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    max-width: 720px;
+  }
+
+  /* Comparison table */
+  .table-wrapper {
+    margin-top: var(--space-lg);
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(41, 60, 70, 0.08);
+  }
+  .comparison-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    text-align: left;
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid var(--tint);
+  }
+  .comparison-table th {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.25rem;
+  }
+  .comparison-table th:first-child {
+    color: var(--mid-blue);
+    background: var(--pale-bg);
+  }
+  .col-insulated {
+    color: var(--white);
+    background: var(--orange);
+  }
+  .comparison-table th:nth-child(3),
+  .comparison-table th:nth-child(4) {
+    color: var(--mid-blue);
+    background: var(--tint);
+  }
+  .feature-cell {
+    font-weight: 600;
+    color: var(--dark-blue);
+    background: var(--pale-bg);
+  }
+  .check-cell {
+    color: var(--dark-blue);
+    font-weight: 500;
+    background: rgba(241, 90, 41, 0.04);
+  }
+  .neutral-cell {
+    color: var(--mid-blue);
+  }
+
+  /* Cost grid */
+  .cost-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .cost-card {
+    background: var(--pale-bg);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+  .cost-card h4 { margin-bottom: 0.25rem; }
+  .cost-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--mid-blue);
+    margin-bottom: var(--space-xs);
+  }
+  .cost-figure {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--dark-blue);
+    margin-bottom: 0.125rem;
+  }
+  .cost-range {
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+    margin-bottom: var(--space-sm);
+  }
+  .cost-note {
+    margin-top: var(--space-md);
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    max-width: 720px;
+  }
+
+  /* FAQ Accordion */
+  .faq-list {
+    max-width: 760px;
+    margin-top: var(--space-lg);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--tint);
+  }
+  .faq-item:first-child {
+    border-top: 1px solid var(--tint);
+  }
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark-blue);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::marker { content: ''; }
+  .faq-chevron {
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    padding-bottom: var(--space-sm);
+  }
+  .faq-answer p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .section--cta {
+    background: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+  }
+  .section--cta h2 { color: var(--white); }
+  .section--cta p {
+    max-width: 600px;
+    margin-inline: auto;
+    margin-top: var(--space-sm);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-md);
+  }
+  .cta-container { padding-block: var(--space-md); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .feature-grid,
+    .panel-specs,
+    .cost-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-buttons,
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,716 @@
+---
+/**
+ * Parent patio services page — /patios-perth/
+ * SEO hub for all patio-related content. Links down to child pages (insulated, etc).
+ * Copy adapted from proven Google Ads landing pages.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Trust bar items (proven from landing page)
+const trustItems = [
+  { text: '100+ 5-Star Google Reviews' },
+  { text: 'Engineering & Council Handled' },
+  { text: 'NCC Compliant' },
+  { text: 'Family Owned Perth Business' },
+];
+
+// Process steps (proven from landing page — expanded with time tags)
+const steps = [
+  {
+    number: '01',
+    title: 'Free Site Visit',
+    description: 'We come to your home, assess the site, discuss your vision, and walk you through options that suit your space and budget. No obligation, no pressure.',
+    tag: 'Typically 45 minutes',
+  },
+  {
+    number: '02',
+    title: 'Custom Design & Quote',
+    description: 'You\'ll receive a detailed, itemised quote with specifications — not a vague estimate. Designed to your home\'s exact conditions and your preferences.',
+    tag: 'Quote within 48 hours',
+  },
+  {
+    number: '03',
+    title: 'Council Approval',
+    description: 'We handle everything: professional drafting, structural engineering certification, and CDC or DA lodgement with your local council.',
+    tag: 'CDC: 1–3 weeks | DA: 6–12 weeks',
+  },
+  {
+    number: '04',
+    title: 'Professional Installation',
+    description: 'Our experienced crew handles footings, steel frame, panels, gutters, downpipes, and full cleanup. We keep you updated every step of the way.',
+    tag: 'Typically 2–3 days on site',
+  },
+];
+
+// Real Google Reviews (from landing page)
+const testimonials = [
+  {
+    quote: 'Absolutely on point with quality, service and price. Dealing with the team was super easy. Thank you Godfrey and especially Henry for your impressive workmanship and super friendly service. Highly recommend, you won\'t go wrong choosing them!',
+    name: 'Tony G.',
+    location: 'Perth',
+    initial: 'T',
+  },
+  {
+    quote: 'Quote was done politely by Marnin; and the work done (as quoted on time) by his team — the guys were very clean, friendly and efficient.',
+    name: 'Lisa Gioconda',
+    location: 'Perth',
+    initial: 'L',
+  },
+  {
+    quote: 'From the outset where a quote was supplied (which was very competitive against other quotes) to the final nail being driven in, was so seamless. Workmanship was top notch and every little issue was communicated to me with a suggestion of how to get around it.',
+    name: 'Martyn Evans',
+    location: 'Perth',
+    initial: 'M',
+  },
+];
+
+// FAQ (proven from landing page)
+const faqs = [
+  {
+    question: 'How much does a patio cost in Perth?',
+    answer: 'Insulated patios typically range from $12,000 for a small attached flat patio to $45,000+ for large gable or flyover designs. Non-insulated options start lower. The final cost depends on size, roof style, site conditions, and council requirements. Our quotes are fully itemised with no hidden costs — engineering, drafting, and council fees are included.',
+  },
+  {
+    question: 'Do I need council approval for a patio?',
+    answer: 'Almost always, yes. Patios are classified as Class 10a buildings under the National Construction Code, which means they require a building permit. If your patio meets all standard setback and height requirements (R-Codes), it qualifies for a CDC (Complying Development Certificate) — typically approved in 1–3 weeks. If variations are needed, a DA (Development Application) is required, taking 6–12 weeks. We handle the entire process for you.',
+  },
+  {
+    question: 'What\'s the difference between insulated and non-insulated?',
+    answer: 'Standard patios use single-skin Colorbond sheets — cheaper but they transmit heat and amplify rain noise. Insulated panels (SolarSpan) are a sandwich of steel, EPS foam insulation, and a pre-finished steel ceiling. You get thermal insulation (up to R2.4), acoustic dampening, and a flat ceiling finish all in one panel. They also span further without battens, giving you cleaner lines and fewer posts.',
+  },
+  {
+    question: 'How long does the whole process take?',
+    answer: 'From acceptance to completion, a typical patio takes 6–8 weeks: 1–2 weeks for drafting and engineering, 1–3 weeks for CDC approval, 1 week for materials, and 2–3 days for installation. DA projects take longer (12+ weeks). We keep you updated throughout.',
+  },
+  {
+    question: 'Can you attach to my existing house roof?',
+    answer: 'Yes — most of our patios are attached to the existing house. We assess your fascia, wall type, and existing roof to determine the best attachment method. For homes where attachment isn\'t ideal, freestanding and flyover designs are excellent alternatives that don\'t touch your existing roof at all.',
+  },
+  {
+    question: 'Can you do patio, fencing, and decking together?',
+    answer: 'Absolutely — that\'s one of the things we do best. Bundling your outdoor project under one team means everything is coordinated, the finishes match, and you\'ve got a single point of contact from start to finish.',
+  },
+];
+---
+
+<BaseLayout
+  title="Patios Perth — Custom Patio Builders"
+  description="Custom patio builders in Perth. Insulated & non-insulated patios, carports, and outdoor living areas. SolarSpan panels, engineering-certified designs. 1,200+ jobs completed."
+>
+  <!-- JSON-LD: LocalBusiness + Service -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://secureworksgroup.com.au/#business",
+        "name": "SecureWorks Group",
+        "url": "https://secureworksgroup.com.au",
+        "telephone": "+61489267774",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Perth",
+          "addressRegion": "WA",
+          "addressCountry": "AU"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Perth"
+        },
+        "priceRange": "$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "100"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://secureworksgroup.com.au/patios-perth/#service",
+        "name": "Patio Building Perth",
+        "provider": { "@id": "https://secureworksgroup.com.au/#business" },
+        "serviceType": "Patio Construction",
+        "areaServed": {
+          "@type": "City",
+          "name": "Perth"
+        },
+        "description": "Custom patio design and construction in Perth. Insulated and non-insulated options including SolarSpan panels, flat, gable, flyover and freestanding roof styles."
+      }
+    ]
+  })} />
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Patios Perth</span>
+      <h1>Custom Patios Built for Perth's Climate</h1>
+      <p class="hero-intro">
+        From simple shade structures to fully insulated outdoor rooms. We build the right patio
+        for your home, your budget, and the way you actually live.
+      </p>
+      <p class="hero-intro">
+        With over 1,200 jobs completed across Perth's northern suburbs, we know what works in
+        our climate and what doesn't. Every patio is custom-designed, engineering-certified, and
+        built by our own crew — not subcontractors.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn--primary">Get Your Free Quote</a>
+        <a href="#patio-types" class="btn btn--outline">See Your Options</a>
+      </div>
+      <img src="/images/hero-patio.jpg" alt="Perth patio installation by SecureWorks Group" width="1200" height="525" style="aspect-ratio: 16/7; object-fit: cover; width: 100%; border-radius: 12px; margin-top: var(--space-md);" />
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <div class="trust-bar" data-animate="fade-in">
+    <div class="container trust-bar-inner">
+      {trustItems.map((item) => (
+        <div class="trust-item">
+          <span class="trust-text">{item.text}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ========== PROBLEM / AGITATE ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">The Problem</span>
+      <h2>Your Outdoor Area Isn't Working</h2>
+      <p>
+        Perth summers push past 40 degrees. If your patio can't keep up, it's costing you
+        comfort, usability, and property value.
+      </p>
+
+      <div class="problem-grid" data-stagger>
+        <div class="problem-card">
+          <h4>Unbearable Heat</h4>
+          <p>
+            Standard tin patios trap and radiate heat, making your outdoor area unusable from
+            October to April. You built it to enjoy — not to avoid.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h4>Rain Noise Nightmare</h4>
+          <p>
+            When it finally rains in Perth, a Colorbond roof turns into a drum kit. Conversations
+            stop, the TV gets drowned out, and entertaining is off the table.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h4>Looks Like a Carport</h4>
+          <p>
+            Exposed beams, visible screws, corrugated underside — most patios look industrial,
+            not like an extension of your home. Not the look you're going for.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h4>Doesn't Add Value</h4>
+          <p>
+            Cheap structures actually detract from your property's presentation. Buyers see a
+            dated patio and mentally subtract from their offer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PATIO TYPES OVERVIEW ========== -->
+  <section class="section section--alt" id="patio-types" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Your Options</span>
+      <h2>Insulated vs Non-Insulated Patios</h2>
+      <p>
+        The biggest choice you'll make is whether to go insulated or non-insulated. Both are solid
+        options — it comes down to how you plan to use the space, your budget, and what matters
+        most to you.
+      </p>
+
+      <div class="type-grid" data-stagger>
+        <!-- Insulated -->
+        <div class="type-card">
+          <img src="/images/insulated-patio-garden-view.jpg" alt="Insulated SolarSpan patio with flat ceiling finish in Perth garden" loading="lazy" width="600" height="375" style="aspect-ratio: 16/10; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Insulated Patios</h3>
+          <p>
+            SolarSpan panels by Bondor combine roof sheeting, insulation, and a flat ceiling into
+            a single panel. Up to 22 degrees cooler underneath, silent in heavy rain, and a flat
+            ceiling ready for downlights and fans. If you're creating a proper outdoor room — with
+            a TV, outdoor kitchen, or regular entertaining — insulated is the way to go.
+          </p>
+          <p>
+            Insulation values range from R1.2 (50mm panels) up to R2.4 (100mm). The flat ceiling
+            finish means you can add downlights, fans, and speakers without visible framework.
+            Spans up to 8m+ beam-to-beam without battens.
+          </p>
+          <a href="/patios-perth/insulated/" class="btn btn--primary">Insulated Patios</a>
+        </div>
+
+        <!-- Non-Insulated -->
+        <div class="type-card">
+          <img src="/images/elevated-patio-exterior.jpg" alt="Non-insulated Colorbond patio with steel frame in Perth" loading="lazy" width="600" height="375" style="aspect-ratio: 16/10; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Non-Insulated Patios</h3>
+          <p>
+            Non-insulated patios use Colorbond steel sheeting — Trimdek, SpanPlus, or Corrugated
+            profiles — over a steel or aluminium frame. They're the more affordable option and
+            still provide excellent shade and weather protection.
+          </p>
+          <p>
+            These are ideal for carports, basic shade structures, or areas where you don't need
+            the acoustic or thermal performance of insulated panels. The exposed framework gives
+            an honest, industrial look that suits many modern Perth homes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ROOF STYLES ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Design Options</span>
+      <h2>Choose Your Roof Style</h2>
+      <p>
+        Every home is different. We design your patio to complement your property and maximise
+        your outdoor space.
+      </p>
+
+      <div class="roof-grid" data-stagger>
+        <div class="roof-card">
+          <img src="/images/flat-patio-daytime.jpg" alt="Flat skillion patio with clean modern lines in Perth" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Flat / Skillion</h3>
+          <span class="roof-tag">Most Popular</span>
+          <p>
+            Clean, modern lines with a single slope away from the house. Attaches directly to your
+            fascia via riser brackets or receiving channel. The most popular and cost-effective
+            option for contemporary Perth homes.
+          </p>
+        </div>
+        <div class="roof-card">
+          <img src="/images/flyover-patio-exterior.jpg" alt="Flyover patio extending over existing roof in Perth home" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Flyover</h3>
+          <p>
+            The patio roof spans over your existing house roof, creating a seamless extension.
+            Independent post support means no attachment to your fascia. Catches breezes beautifully
+            and suits homes where fascia attachment isn't ideal.
+          </p>
+        </div>
+        <div class="roof-card">
+          <img src="/images/gable-patio-classic.jpg" alt="Gable patio with peaked roof over entertaining area" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Gable</h3>
+          <p>
+            A pitched roof with a peak in the centre creates impressive height and volume. Hot air
+            rises and escapes through the ridge. Custom trusses fabricated locally to your exact
+            specifications. Suits federation homes and large entertaining areas.
+          </p>
+        </div>
+        <div class="roof-card">
+          <img src="/images/freestanding-patio-pool-view.jpg" alt="Freestanding patio pavilion beside pool in Perth backyard" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Freestanding</h3>
+          <p>
+            A standalone structure not attached to the house — ideal for poolside pavilions, outdoor
+            kitchens, or garden retreats. Complete flexibility with placement, positioned anywhere
+            on your block.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section class="section section--process" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Your Journey</span>
+      <h2>How It Works</h2>
+      <p class="process-intro">
+        From first call to enjoying your new patio — here's exactly what to expect.
+      </p>
+
+      <div class="process-steps" data-stagger>
+        {steps.map((step) => (
+          <div class="step">
+            <span class="step-number">{step.number}</span>
+            <div class="step-content">
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+              <span class="step-tag">{step.tag}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Reviews</span>
+      <h2>What Our Clients Say</h2>
+
+      <div class="testimonials-grid" data-stagger>
+        {testimonials.map((t) => (
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 stars">
+              {[...Array(5)].map(() => (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5a623" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <blockquote>"{t.quote}"</blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">{t.initial}</div>
+              <div>
+                <span class="testimonial-name">{t.name}</span>
+                <span class="testimonial-location">{t.location}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Common Questions</span>
+      <h2>Things Worth Knowing</h2>
+
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              {faq.question}
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--cta" data-animate="fade-up">
+    <div class="container cta-container">
+      <h2>Ready to Transform Your Outdoor Space?</h2>
+      <p>
+        Book your free site visit today. We'll assess your space, discuss options, and provide
+        a detailed quote — no obligation.
+      </p>
+      <div class="cta-buttons">
+        <a href="/contact/" class="btn btn--primary">Get Your Free Quote</a>
+        <a href="tel:0489267774" class="btn btn--outline">Call 0489 267 774</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero { padding-top: calc(var(--space-xl) + var(--space-md)); }
+  .hero-intro {
+    font-size: 1.125rem;
+    max-width: 720px;
+    margin-top: var(--space-sm);
+    color: var(--body-text);
+  }
+  .hero .label { margin-bottom: var(--space-xs); display: block; }
+  .hero h1 { margin-top: var(--space-xs); }
+  .hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Image placeholders */
+  .image-placeholder {
+    background: var(--tint);
+    border-radius: 12px;
+  }
+  .hero-image {
+    margin-top: var(--space-md);
+    aspect-ratio: 16 / 7;
+    width: 100%;
+  }
+  .type-image {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    margin-bottom: var(--space-sm);
+    border-radius: 8px;
+  }
+  .roof-image {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    margin-bottom: var(--space-sm);
+    border-radius: 8px;
+  }
+
+  /* Trust bar */
+  .trust-bar {
+    background: var(--dark-blue);
+    padding: var(--space-sm) 0;
+  }
+  .trust-bar-inner {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .trust-text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+  }
+
+  /* Problem / Agitate */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+  .problem-card {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--pale-bg);
+    border-radius: 12px;
+    border-left: 3px solid var(--mid-blue);
+  }
+  .problem-card h4 { margin-bottom: 0.25rem; }
+  .problem-card p { font-size: 0.9375rem; }
+
+  /* Type comparison grid */
+  .type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .type-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+  .type-card h3 { margin-bottom: var(--space-xs); }
+  .type-card p { margin-bottom: var(--space-sm); }
+  .type-card .btn { margin-top: var(--space-xs); }
+
+  /* Roof styles grid */
+  .roof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .roof-card h3 { margin-bottom: 0.25rem; }
+  .roof-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Process steps */
+  .section--process {
+    background: var(--dark-blue);
+    color: var(--white);
+  }
+  .section--process .label { color: var(--orange); }
+  .section--process h2 { color: var(--white); }
+  .process-intro {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-md);
+  }
+  .process-steps {
+    display: grid;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    max-width: 800px;
+  }
+  .step {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+  .step-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+  }
+  .step-content h4 {
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .step-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9375rem;
+  }
+  .step-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+    background: var(--white);
+    padding: 0.2rem 0.75rem;
+    border-radius: 50px;
+    margin-top: 0.5rem;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: var(--space-sm);
+  }
+  .testimonial-card blockquote {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    font-style: italic;
+    flex: 1;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--tint);
+  }
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dark-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--dark-blue);
+  }
+  .testimonial-location {
+    font-size: 0.8125rem;
+    color: var(--mid-blue);
+  }
+
+  /* FAQ Accordion */
+  .faq-list {
+    max-width: 760px;
+    margin-top: var(--space-lg);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--tint);
+  }
+  .faq-item:first-child {
+    border-top: 1px solid var(--tint);
+  }
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark-blue);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::marker { content: ''; }
+  .faq-chevron {
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    padding-bottom: var(--space-sm);
+  }
+  .faq-answer p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .section--cta {
+    background: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+  }
+  .section--cta h2 { color: var(--white); }
+  .section--cta p {
+    max-width: 600px;
+    margin-inline: auto;
+    margin-top: var(--space-sm);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-md);
+  }
+  .cta-container { padding-block: var(--space-md); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .type-grid,
+    .problem-grid,
+    .roof-grid {
+      grid-template-columns: 1fr;
+    }
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .trust-bar-inner {
+      gap: var(--space-sm);
+      justify-content: center;
+    }
+    .cta-buttons,
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

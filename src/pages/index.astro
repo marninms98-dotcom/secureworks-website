@@ -1,0 +1,970 @@
+---
+/**
+ * index.astro — Homepage
+ * The most important page. Premium feel, consultative tone.
+ * Sections: Hero → Services → Stats → Testimonials → Process → FAQ → Form → Final CTA
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MultiStepForm from '../components/MultiStepForm.astro';
+import ScrollHero from '../components/ScrollHero.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+
+// Service card data
+const services = [
+  {
+    title: 'Insulated Patios',
+    description: 'SolarSpan panels turn your patio into genuine living space — cool in summer, dry in winter, quiet when it rains.',
+    href: '/patios-perth/',
+    image: '/images/insulated-patio-wide.jpg',
+    alt: 'Insulated patio with flat ceiling in Perth backyard',
+  },
+  {
+    title: 'Colorbond Fencing',
+    description: 'Clean lines, zero maintenance, and privacy that lasts. We handle everything from old fence removal to final install.',
+    href: '/fencing-perth/',
+    image: '/images/colorbond-fence-lattice-wide.jpg',
+    alt: 'Colorbond fencing with lattice top installed in Perth',
+  },
+  {
+    title: 'Decking',
+    description: 'Composite or hardwood — built level, finished properly, and designed to handle Perth summers without lifting or warping.',
+    href: '/decking-perth/',
+    image: '/images/deck-patio-golden.jpg',
+    alt: 'Composite decking with patio at golden hour',
+  },
+  {
+    title: 'Full Transformations',
+    description: 'Patio, fencing, and decking in one project with one team. Less disruption, better result, single point of contact.',
+    href: '/contact/',
+    image: '/images/patio-lifestyle-golden.jpg',
+    alt: 'Complete outdoor living transformation with patio and decking',
+  },
+];
+
+// Testimonial data — real Google reviews
+const testimonials = [
+  {
+    quote: 'Absolutely on point with quality, service and price. Dealing with the team was super easy. Thank you Godfrey and especially Henry for your impressive workmanship and super friendly service. Highly recommend — you won\'t go wrong choosing them!',
+    name: 'Tony G.',
+    suburb: 'Perth',
+  },
+  {
+    quote: 'Quote was done politely by Marnin; and the work done (as quoted on time) by his team — the guys were very clean, friendly and efficient.',
+    name: 'Lisa Gioconda',
+    suburb: 'Perth',
+  },
+  {
+    quote: 'From the outset where a quote was supplied (which was very competitive against other quotes) to the final nail being driven in, was so seamless. Workmanship was top notch and every little issue was communicated to me with a suggestion of how to get around it. I do not hesitate in recommending this company to anyone.',
+    name: 'Martyn Evans',
+    suburb: 'Perth',
+  },
+];
+
+// Process steps
+const steps = [
+  {
+    number: '01',
+    title: 'Free Site Visit',
+    description: 'We come to your home, assess the site, discuss your vision, take measurements, and walk you through options. No obligation, no pressure.',
+    tag: 'Typically 45 minutes',
+  },
+  {
+    number: '02',
+    title: 'Custom Design & Quote',
+    description: 'You\'ll receive a detailed, itemised quote with specifications — not a vague estimate. Designed to your home\'s exact conditions and your preferences.',
+    tag: 'Quote within 48 hours',
+  },
+  {
+    number: '03',
+    title: 'Council Approval',
+    description: 'We handle everything: professional drafting, structural engineering certification, and lodgement with your local council.',
+    tag: 'CDC: 1–3 weeks',
+  },
+  {
+    number: '04',
+    title: 'Professional Installation',
+    description: 'Our experienced crew handles everything — footings, steel frame, panels, gutters, downpipes, and full cleanup. Enjoy your new space that weekend.',
+    tag: 'Typically 2–3 days on site',
+  },
+];
+
+// FAQ data
+const faqs = [
+  {
+    question: 'How much does an insulated patio cost in Perth?',
+    answer: 'Insulated patios in Perth typically range from $12,000 for a small attached flat patio to $45,000+ for large gable or flyover designs. The final cost depends on size, roof style, site conditions, and council requirements. Our quotes are fully itemised with no hidden costs — engineering, drafting, and council fees are included.',
+  },
+  {
+    question: 'Do I need council approval for a patio?',
+    answer: 'Almost always, yes. Patios are classified as Class 10a buildings under the National Construction Code, which means they require a building permit. If your patio meets all standard setback and height requirements, it qualifies for a CDC (Complying Development Certificate) — typically approved in 1–3 weeks. If variations are needed, a DA is required, taking 6–12 weeks. We handle the entire process for you.',
+  },
+  {
+    question: 'What\'s the difference between insulated and non-insulated?',
+    answer: 'Standard patios use single-skin Colorbond sheets — cheaper but they transmit heat and amplify rain noise. Insulated panels (SolarSpan) are a sandwich of steel, EPS foam insulation, and a pre-finished steel ceiling. You get thermal insulation (up to R2.4), acoustic dampening, and a flat ceiling finish all in one panel. They also span further without battens, giving you cleaner lines and fewer posts.',
+  },
+  {
+    question: 'How long does the whole process take?',
+    answer: 'From acceptance to completion, a typical insulated patio takes 6–8 weeks: 1–2 weeks for drafting and engineering, 1–3 weeks for CDC approval, 1 week for materials, and 2–3 days for installation. DA projects take longer (12+ weeks). We keep you updated throughout.',
+  },
+  {
+    question: 'Can you attach to my existing house roof?',
+    answer: 'Yes — most of our patios are attached to the existing house. We assess your fascia, wall type, and existing roof to determine the best attachment method. For homes where attachment isn\'t ideal, freestanding and flyover designs are excellent alternatives that don\'t touch your existing roof at all.',
+  },
+  {
+    question: 'Can you do patio, fencing, and decking together?',
+    answer: 'Absolutely — that\'s one of the things we do best. Bundling your outdoor project under one team means everything is coordinated, the finishes match, and you\'ve got a single point of contact from start to finish.',
+  },
+];
+---
+
+<BaseLayout title="Perth's Outdoor Living Specialists">
+
+  <!-- Ambient cursor glow — follows mouse across the page -->
+  <div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
+
+  <!-- ========== 3D SCROLL HERO ========== -->
+  <ScrollHero />
+
+  <!-- ========== CASE STUDY ========== -->
+  <CaseStudy />
+
+  <!-- ========== SERVICES GRID ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">What We Do</span>
+        <h2>Built for How You Live</h2>
+        <p>Every project starts with understanding your space. Here's what we build.</p>
+      </div>
+      <div class="services-grid" data-stagger="0.15">
+        {services.map((service) => (
+          <a href={service.href} class="service-card">
+            <div class="service-card__img-wrap">
+              <img src={service.image} alt={service.alt} loading="lazy" />
+            </div>
+            <div class="service-card__body">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <span class="service-card__link">
+                Learn more
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"/>
+                  <path d="m12 5 7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MID-PAGE CTA ========== -->
+  <section class="section cta-strip" data-animate="fade-up">
+    <div class="container cta-strip__inner">
+      <div>
+        <h2>Not sure where to start?</h2>
+        <p>Tell us a bit about your space and we'll point you in the right direction. No pressure, no obligations.</p>
+      </div>
+      <a href="/contact/" class="btn btn--primary btn--glow">Let's Talk</a>
+    </div>
+  </section>
+
+  <!-- ========== SOCIAL PROOF STATS ========== -->
+  <section class="stats-strip" id="stats-section">
+    <div class="container stats__inner">
+      <div class="stat" data-count="300" data-suffix="+">
+        <span class="stat__number">0</span>
+        <span class="stat__label">Jobs Completed</span>
+      </div>
+      <div class="stat__divider" aria-hidden="true"></div>
+      <div class="stat" data-count="59" data-suffix="%">
+        <span class="stat__number">0</span>
+        <span class="stat__label">Repeat Customer Rate</span>
+      </div>
+      <div class="stat__divider" aria-hidden="true"></div>
+      <div class="stat" data-count="4" data-suffix="+">
+        <span class="stat__number">0</span>
+        <span class="stat__label">Years Building in Perth</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">What Our Customers Say</span>
+        <h2>Real Feedback From Real Projects</h2>
+      </div>
+      <div class="testimonials-grid" data-stagger="0.15">
+        {testimonials.map((t) => (
+          <div class="testimonial-card">
+            <div class="testimonial-card__top">
+              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+                {[...Array(5)].map(() => (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#F15A29" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+              <span class="testimonial-card__badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <path d="m9 11 3 3L22 4"/>
+                </svg>
+                Google Review
+              </span>
+            </div>
+            <blockquote>{t.quote}</blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar">{t.name.charAt(0)}</div>
+              <div>
+                <span class="testimonial-card__name">{t.name}</span>
+                <span class="testimonial-card__suburb">{t.suburb}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS / HOW IT WORKS ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">How It Works</span>
+        <h2>From First Chat to Finished Space</h2>
+        <p>We keep things straightforward. Here's what the process looks like.</p>
+      </div>
+      <div class="process-grid" data-stagger="0.15">
+        {steps.map((step, i) => (
+          <div class="process-step">
+            <div class="process-step__number">{step.number}</div>
+            <div class="process-step__line" aria-hidden="true"></div>
+            <div class="process-step__content">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+              {step.tag && <span class="process-step__tag">{step.tag}</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA DARK ========== -->
+  <section class="section cta-strip cta-strip--dark" data-animate="fade-up">
+    <div class="container cta-strip__inner">
+      <div>
+        <h2>Let's work out what suits your space</h2>
+        <p>Whether you've got a clear plan or just an idea, we're happy to come have a look and chat through the options.</p>
+      </div>
+      <a href="/contact/" class="btn btn--primary btn--glow">Start Your Project</a>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ACCORDION ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Common Questions</span>
+        <h2>Things Worth Knowing</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              {faq.question}
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INLINE FORM ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container form-section">
+      <div class="form-section__text">
+        <span class="label">Start Your Project</span>
+        <h2>Tell Us What You're Thinking</h2>
+        <p>Pick your project type and we'll get back to you for a no-obligation chat. Free site visit and quote within 48 hours.</p>
+      </div>
+      <div class="form-section__form">
+        <MultiStepForm />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="section final-cta" data-animate="fade-up">
+    <div class="final-cta__grain" aria-hidden="true"></div>
+    <div class="container final-cta__inner">
+      <span class="label">Ready When You Are</span>
+      <h2>Your Outdoor Space, Done Right</h2>
+      <p>Tell us what you're thinking and we'll take it from there. No hard sell, just a conversation about what's possible.</p>
+      <div class="final-cta__actions">
+        <a href="/contact/" class="btn btn--primary btn--glow">Start Your Project</a>
+        <a href="tel:1300000000" class="btn btn--outline btn--glass">Call Us</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ========== AMBIENT CURSOR GLOW ========== */
+  .ambient-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    background: radial-gradient(
+      600px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(241, 90, 41, 0.04),
+      rgba(41, 60, 70, 0.02) 40%,
+      transparent 70%
+    );
+  }
+
+  .ambient-glow.is-active {
+    opacity: 1;
+  }
+
+  /* Film grain texture — used by final CTA */
+  .final-cta__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ========== SECTION HEADERS ========== */
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-header .label {
+    margin-bottom: var(--space-xs);
+    display: block;
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: var(--mid-blue);
+  }
+
+  /* ========== SERVICES GRID ========== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--tint);
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(41, 60, 70, 0.15);
+  }
+
+  .service-card__img-wrap {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-card__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .service-card:hover .service-card__img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .service-card__body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    flex: 1;
+  }
+
+  .service-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--orange);
+    margin-top: var(--space-sm);
+    transition: gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .service-card:hover .service-card__link {
+    gap: 0.75rem;
+  }
+
+  /* ========== CTA STRIP ========== */
+  .cta-strip {
+    background: var(--pale-bg);
+  }
+
+  .cta-strip--dark {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--near-black) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-strip--dark::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(241, 90, 41, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-strip--dark h2 {
+    color: var(--white);
+  }
+
+  .cta-strip--dark p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .cta-strip__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .cta-strip__inner h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-strip__inner p {
+    max-width: 520px;
+    color: var(--mid-blue);
+  }
+
+  /* ========== STATS STRIP ========== */
+  .stats-strip {
+    background: var(--dark-blue);
+    padding-block: var(--space-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(241, 90, 41, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 50%, rgba(93, 127, 148, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .stats__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    text-align: center;
+    position: relative;
+  }
+
+  .stat__divider {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
+    flex-shrink: 0;
+  }
+
+  .stat__number {
+    display: block;
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1.1;
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  .stat__label {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--tint);
+    transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 8px 32px rgba(41, 60, 70, 0.08);
+  }
+
+  .testimonial-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .testimonial-card__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .testimonial-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--mid-blue);
+    padding: 0.2rem 0.5rem;
+    background: var(--pale-bg);
+    border-radius: 100px;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    flex: 1;
+    font-style: italic;
+  }
+
+  .testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--tint);
+  }
+
+  .testimonial-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--dark-blue), var(--mid-blue));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .testimonial-card__name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--dark-blue);
+  }
+
+  .testimonial-card__suburb {
+    font-size: 0.8rem;
+    color: var(--mid-blue);
+  }
+
+  /* ========== PROCESS / TIMELINE ========== */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md) var(--space-lg);
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
+  .process-step {
+    position: relative;
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .process-step__number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+  }
+
+  .process-step:hover .process-step__number {
+    opacity: 1;
+  }
+
+  .process-step__line {
+    position: absolute;
+    left: 0;
+    top: 3.5rem;
+    width: 2.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .process-step:hover .process-step__line {
+    opacity: 0.4;
+  }
+
+  .process-step__content h3 {
+    margin-bottom: 0.375rem;
+  }
+
+  .process-step__content p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+  }
+
+  .process-step__tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+    background: var(--tint);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+
+  /* ========== FAQ ACCORDION ========== */
+  .faq-list {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--tint);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--tint);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: 1.25rem 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark-blue);
+    cursor: pointer;
+    list-style: none;
+    transition: color var(--transition-fast);
+  }
+
+  .faq-question:hover {
+    color: var(--orange);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::marker {
+    content: '';
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding-bottom: var(--space-sm);
+  }
+
+  .faq-answer p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    line-height: 1.7;
+  }
+
+  /* ========== INLINE FORM SECTION ========== */
+  .form-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .form-section__text .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .form-section__text h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .form-section__text p {
+    font-size: 1.1rem;
+    color: var(--mid-blue);
+    line-height: 1.7;
+  }
+
+  /* ========== FINAL CTA ========== */
+  .final-cta {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--near-black) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta__inner {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .final-cta .label {
+    margin-bottom: var(--space-xs);
+    display: block;
+  }
+
+  .final-cta h2 {
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .final-cta p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-md);
+  }
+
+  .final-cta__actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero__heading {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .stats__inner {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .stat__divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    }
+
+    .cta-strip__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-strip__inner p {
+      max-width: none;
+    }
+
+    .form-section {
+      grid-template-columns: 1fr;
+    }
+
+    .ambient-glow {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__actions {
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+      margin-inline: auto;
+    }
+
+    .hero__actions .btn {
+      width: 100%;
+    }
+
+    .final-cta__actions {
+      flex-direction: column;
+    }
+
+    .final-cta__actions .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Homepage Enhancements
+   * - Ambient cursor glow
+   * - Counter animations on stats
+   */
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initHomepage() {
+    // --- Ambient Cursor Glow ---
+    const glow = document.getElementById('ambient-glow');
+    if (glow && window.innerWidth > 768) {
+      let glowActive = false;
+      document.addEventListener('mousemove', (e) => {
+        if (!glowActive) {
+          glow.classList.add('is-active');
+          glowActive = true;
+        }
+        glow.style.setProperty('--glow-x', e.clientX + 'px');
+        glow.style.setProperty('--glow-y', e.clientY + 'px');
+      });
+    }
+
+    // --- Counter Animations ---
+    const statSection = document.getElementById('stats-section');
+    if (statSection) {
+      const stats = statSection.querySelectorAll('.stat');
+      stats.forEach((stat) => {
+        const target = parseInt(stat.getAttribute('data-count') || '0', 10);
+        const suffix = stat.getAttribute('data-suffix') || '';
+        const numberEl = stat.querySelector('.stat__number');
+        if (!numberEl) return;
+
+        // Animate counter when scrolled into view
+        const counter = { val: 0 };
+        ScrollTrigger.create({
+          trigger: statSection,
+          start: 'top 80%',
+          once: true,
+          onEnter: () => {
+            gsap.to(counter, {
+              val: target,
+              duration: 2,
+              ease: 'power2.out',
+              onUpdate: () => {
+                const current = Math.round(counter.val);
+                // Format with comma for 1000+
+                const formatted = current >= 1000
+                  ? current.toLocaleString()
+                  : String(current);
+                numberEl.textContent = formatted + suffix;
+              },
+            });
+          },
+        });
+      });
+    }
+  }
+
+  // Run on initial load
+  initHomepage();
+
+  // Re-run after View Transitions
+  document.addEventListener('astro:after-swap', () => {
+    requestAnimationFrame(initHomepage);
+  });
+</script>

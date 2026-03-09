@@ -1,0 +1,494 @@
+---
+/**
+ * Composite Decking Perth — Child Service Page
+ * Detailed composite decking page with timber comparison.
+ * Links back to parent /decking-perth/ only (silo rules).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "SecureWorks Group",
+      "url": "https://secureworksgroup.com.au",
+      "telephone": "1300000000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Perth",
+        "addressRegion": "WA",
+        "addressCountry": "AU"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "priceRange": "$$"
+    },
+    {
+      "@type": "Service",
+      "name": "Composite Decking Perth",
+      "description": "Composite decking installation in Perth. Low-maintenance, splinter-free, fade-resistant decking for pool surrounds and entertaining areas by SecureWorks Group.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "SecureWorks Group"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "serviceType": "Composite Decking Installation"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Composite Decking Perth — Low-Maintenance, Splinter-Free Decking"
+  description="Composite decking installation in Perth. No oiling, no sanding, no splinters. Fade-resistant, termite-proof. Perfect for pool surrounds and entertaining. SecureWorks Group."
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+
+  <!-- ========== BREADCRUMB ========== -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/decking-perth/">Decking Perth</a>
+      <span aria-hidden="true">/</span>
+      <span>Composite Decking</span>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Composite Decking Perth</span>
+      <h1>Composite Decking — Set and Forget</h1>
+      <p class="hero-subtitle">
+        A deck that looks like timber, feels solid underfoot, and never needs oiling, sanding, or staining. Composite decking is purpose-built for Australian conditions — and in Perth's climate, where UV exposure and termite pressure are relentless, it makes more sense than ever. We supply and install premium composite decking for pool surrounds, entertaining areas, and front entries across Perth's northern suburbs.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Get a Composite Decking Quote</a>
+    </div>
+    <div class="container">
+      <img src="/images/outdoor-living-decking-blinds.jpg" alt="Composite decking with outdoor blinds and patio" width="1200" height="525" style="aspect-ratio: 16/7; object-fit: cover; width: 100%; border-radius: 12px; margin-top: var(--space-md);" />
+    </div>
+  </section>
+
+  <!-- ========== WHAT IS COMPOSITE ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container content-block">
+      <span class="label">What Is Composite</span>
+      <h2>Composite Decking Explained</h2>
+      <p>
+        Composite decking boards are manufactured from a blend of recycled wood fibres (typically 40-60%) and high-density polyethylene (HDPE) polymer. The result is a board that has the look and weight of real timber but with none of timber's weaknesses — no rotting, no splintering, no warping, and no termite vulnerability.
+      </p>
+      <p>
+        Modern composite boards feature co-extruded caps — a protective polymer shell that wraps around the core on all four sides. This cap layer provides UV resistance, stain resistance, and scratch resistance far beyond what raw timber or even first-generation composites could achieve. The surface texture replicates natural timber grain so convincingly that most people cannot tell the difference once installed.
+      </p>
+      <p>
+        The boards are hollow-core or solid-core depending on the brand and application. We recommend solid-core boards for high-traffic areas and pool surrounds where the added density provides a more solid feel underfoot. All composite systems use hidden clip fixings, eliminating visible screws for a clean, seamless finish.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== PERTH BENEFITS ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Built for Perth</span>
+      <h2>Why Composite Decking Works in Perth</h2>
+
+      <div class="benefits-grid" data-stagger>
+        <div class="benefit-card">
+          <h3>No Splinters</h3>
+          <p>
+            This is the number one reason Perth families choose composite for pool decks and entertaining areas. Kids running barefoot, wet feet from the pool, pets — nobody is pulling splinters out at the end of the day. The smooth, consistent surface stays safe year after year without degrading.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>No Oiling or Sanding</h3>
+          <p>
+            A hardwood deck in Perth needs oiling at least once a year — usually twice if you want it to look good. That means sanding back, cleaning, and spending a weekend applying oil. Composite decking needs none of this. A hose-down with soapy water once or twice a year is all the maintenance required.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Fade Resistant</h3>
+          <p>
+            Perth gets some of the highest UV levels in the world. Untreated timber greys out within months. Even well-maintained hardwood gradually loses colour between oiling cycles. Premium composite boards use UV-stabilised pigments in the co-extruded cap layer, holding their colour for the life of the product — backed by manufacturer warranties of 15 to 25 years.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Termite Proof</h3>
+          <p>
+            WA has some of the most active termite populations in Australia. Timber decking in contact with the ground — or even close to it — is an invitation for subterranean termites. Composite decking contains no organic material that termites can consume. Your deck and, by extension, your home are safer.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Slip Resistant</h3>
+          <p>
+            Quality composite boards are tested and rated for wet slip resistance, making them ideal around pools and in areas that catch irrigation overspray. The textured surface provides grip even when soaking wet — which is exactly what you need for a pool deck in Perth where the deck-to-pool transition happens a hundred times every summer.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>Sustainable Choice</h3>
+          <p>
+            Most composite boards are manufactured from recycled materials — recovered timber waste and recycled plastics that would otherwise end up in landfill. You get a deck that lasts 25+ years and reduces demand on old-growth timber forests. At end of life, composite boards are themselves recyclable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMPOSITE VS TIMBER COMPARISON ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Honest Comparison</span>
+      <h2>Composite vs Timber Decking — The Full Picture</h2>
+      <p class="section-intro">
+        We install both composite and hardwood decking, so we have no bias here. This is an honest breakdown to help you decide what is right for your situation.
+      </p>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Composite</th>
+              <th>Hardwood Timber</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Annual Maintenance</td>
+              <td>Hose-down only</td>
+              <td>Sand + oil every 12 months</td>
+            </tr>
+            <tr>
+              <td>Lifespan</td>
+              <td>25+ years</td>
+              <td>15-20 years (if maintained)</td>
+            </tr>
+            <tr>
+              <td>Splinters</td>
+              <td>None — ever</td>
+              <td>Develops over time, especially when dry</td>
+            </tr>
+            <tr>
+              <td>Colour Fade</td>
+              <td>Minimal (UV-stabilised)</td>
+              <td>Significant without regular oiling</td>
+            </tr>
+            <tr>
+              <td>Termite Risk</td>
+              <td>Zero</td>
+              <td>Moderate to high (WA conditions)</td>
+            </tr>
+            <tr>
+              <td>Heat Retention</td>
+              <td>Can get warm in direct sun</td>
+              <td>Generally cooler underfoot</td>
+            </tr>
+            <tr>
+              <td>Upfront Cost</td>
+              <td>Higher per m2</td>
+              <td>Lower per m2</td>
+            </tr>
+            <tr>
+              <td>10-Year Total Cost</td>
+              <td>Lower (no maintenance spend)</td>
+              <td>Higher (oil + labour costs compound)</td>
+            </tr>
+            <tr>
+              <td>Natural Look</td>
+              <td>Very close — textured grain</td>
+              <td>Authentic natural timber</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-block" style="margin-top: var(--space-md);">
+        <p>
+          The most common concern about composite decking is heat retention in direct sun. Modern composites have improved significantly, but in Perth's 40-degree peak summer days, a dark-coloured composite board in full sun will be warm underfoot. We address this by recommending lighter colour options for sun-exposed pool decks and pairing decks with our insulated patio structures for shaded sections.
+        </p>
+        <p>
+          Where cost is a deciding factor, composite has a higher per-metre material cost than hardwood. However, when you factor in hidden clip fixings (included), no finishing costs at install, and zero annual maintenance spend over the deck's life, composite typically costs less over a ten-year period than a well-maintained hardwood deck.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POPULAR STYLES ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Styles & Colours</span>
+      <h2>Popular Composite Decking Styles</h2>
+      <p class="section-intro">
+        We work with leading Australian composite decking brands that offer a wide range of timber-look colours and textures. Here are the most popular finishes our Perth clients choose.
+      </p>
+
+      <div class="styles-grid" data-stagger>
+        <div class="style-card">
+          <img src="/images/patio-deck-golden.jpg" alt="Spotted gum look composite decking in warm light" loading="lazy" width="450" height="300" style="aspect-ratio: 3/2; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-xs);" />
+          <h3>Spotted Gum Look</h3>
+          <p>Warm mid-tones with subtle grain variation. The most popular composite colour in Perth — suits both modern and traditional homes.</p>
+        </div>
+        <div class="style-card">
+          <img src="/images/drone-bush-patio-deck.jpg" alt="Rich dark composite decking resembling Merbau timber" loading="lazy" width="450" height="300" style="aspect-ratio: 3/2; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-xs);" />
+          <h3>Walnut / Merbau Look</h3>
+          <p>Rich, dark brown tones that replicate the look of oiled Merbau. Best in shaded or covered areas where heat retention is not a concern.</p>
+        </div>
+        <div class="style-card">
+          <img src="/images/patio-decking-wide-angle.jpg" alt="Coastal grey composite decking with wide angle view" loading="lazy" width="450" height="300" style="aspect-ratio: 3/2; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-xs);" />
+          <h3>Coastal Grey</h3>
+          <p>A weathered, silvery finish that suits coastal properties in Hillarys, Mindarie, and Ocean Reef. Hides sand and stays cooler than darker tones.</p>
+        </div>
+        <div class="style-card">
+          <img src="/images/outdoor-living-decking-blinds.jpg" alt="Charcoal composite decking under covered patio" loading="lazy" width="450" height="300" style="aspect-ratio: 3/2; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-xs);" />
+          <h3>Charcoal</h3>
+          <p>Bold, contemporary look. Pairs well with light-rendered homes and Colorbond Monument fencing. We recommend this for covered decks under patios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--alt cta-section" data-animate="fade-up">
+    <div class="container cta-block">
+      <h2>Let Us Quote Your Composite Deck</h2>
+      <p>
+        Tell us about your project — pool surround, entertaining area, front entry — and we will visit your home, discuss materials and layout, and provide a fixed-price quote. We bring composite board samples so you can see and feel the product before you commit.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn--primary">Request a Consultation</a>
+        <a href="/decking-perth/" class="btn btn--outline">Back to Decking Services</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Breadcrumb */
+  .breadcrumb {
+    padding-top: calc(var(--header-height) + var(--space-sm));
+    padding-bottom: 0;
+  }
+
+  .breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+  }
+
+  .breadcrumb a {
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-sm);
+    max-width: 700px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    max-width: 640px;
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  .hero-image {
+    margin-top: var(--space-md);
+    border-radius: 12px;
+  }
+
+  /* Image Placeholder */
+  .image-placeholder {
+    background: var(--tint);
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* Content block */
+  .content-block {
+    max-width: 780px;
+  }
+
+  .content-block h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .content-block .label {
+    display: block;
+  }
+
+  .section-intro {
+    max-width: 700px;
+    margin-bottom: var(--space-lg);
+    color: var(--mid-blue);
+  }
+
+  .section .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .benefit-card {
+    background: var(--pale-bg);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .benefit-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .benefit-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+  }
+
+  /* Comparison Table */
+  .comparison-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--tint);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.875rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--tint);
+  }
+
+  .comparison-table thead th {
+    background: var(--dark-blue);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+
+  .comparison-table thead th:first-child {
+    border-radius: 12px 0 0 0;
+  }
+
+  .comparison-table thead th:last-child {
+    border-radius: 0 12px 0 0;
+  }
+
+  .comparison-table tbody tr:nth-child(even) {
+    background: var(--pale-bg);
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table td:first-child {
+    font-weight: 600;
+    color: var(--dark-blue);
+  }
+
+  /* Styles Grid */
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .style-card .image-placeholder {
+    margin-bottom: var(--space-xs);
+  }
+
+  .style-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .style-card p {
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+  }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .styles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .styles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

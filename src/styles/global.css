@@ -1,0 +1,200 @@
+/* ============================================
+   SecureWorks WA — Global Styles
+   Brand variables, base resets, and utilities
+   ============================================ */
+
+/* --- Brand Colour Variables --- */
+:root {
+  /* Primary */
+  --orange: #F15A29;
+  --orange-hover: #d94d20;
+
+  /* Blues */
+  --dark-blue: #293C46;
+  --mid-blue: #4C6A7C;
+  --light-blue: #5d7f94;
+
+  /* Backgrounds */
+  --pale-bg: #f4f7f9;
+  --tint: #edf1f4;
+
+  /* Text */
+  --body-text: #3a4f5c;
+  --near-black: #1a2a32;
+
+  /* Surfaces */
+  --white: #ffffff;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 8rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 80px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+
+  /* Fonts */
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--body-text);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--dark-blue);
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+h4 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
+
+p + p {
+  margin-top: 1em;
+}
+
+/* Label style — used for section eyebrows */
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--orange);
+}
+
+/* --- Layout Utilities --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+}
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section--alt {
+  background-color: var(--pale-bg);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background-color: var(--orange-hover);
+}
+
+.btn--secondary {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.btn--secondary:hover {
+  background-color: var(--near-black);
+}
+
+.btn--outline {
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+/* --- Scroll Reveal Animation (GSAP driven) ---
+   GSAP sets initial opacity/transform via JS.
+   No CSS opacity:0 here — content stays visible if JS fails. */
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .section {
+    padding-block: var(--space-lg);
+  }
+}

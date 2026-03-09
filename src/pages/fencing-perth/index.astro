@@ -1,0 +1,369 @@
+---
+/**
+ * Fencing Perth — Parent Service Page
+ * Overview of all fencing services: Colorbond, pool fencing, gates.
+ * SEO-optimised for "fencing Perth" keywords.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "SecureWorks Group",
+      "url": "https://secureworksgroup.com.au",
+      "telephone": "1300000000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Perth",
+        "addressRegion": "WA",
+        "addressCountry": "AU"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "priceRange": "$$"
+    },
+    {
+      "@type": "Service",
+      "name": "Fencing Perth",
+      "description": "Professional fencing installation in Perth. Colorbond fencing, pool fencing, gates and screening by SecureWorks Group.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "SecureWorks Group"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Perth"
+      },
+      "serviceType": "Fencing Installation"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Fencing Perth — Colorbond Fencing, Pool Fencing & Gates"
+  description="Professional fencing installation in Perth. Colorbond, pool fencing, gates & screening. Wind-rated for WA conditions. 1,200+ jobs completed. Get a consultation today."
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+
+  <!-- ========== HERO ========== -->
+  <section class="hero section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Fencing Perth</span>
+      <h1>Fencing That Handles Perth Conditions</h1>
+      <p class="hero-subtitle">
+        From coastal gusts to scorching summers, your fence needs to stand up to everything Perth throws at it. We install Colorbond fencing, pool-compliant barriers, automated gates and privacy screening — all engineered for Western Australian wind ratings and built to last.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn--primary">Discuss Your Fencing Project</a>
+        <a href="/fencing-perth/colorbond/" class="btn btn--outline">Explore Colorbond Fencing</a>
+      </div>
+    </div>
+    <div class="container">
+      <img src="/images/colorbond-fence-lattice-wide.jpg" alt="Colorbond fencing installation in Perth suburb" width="1200" height="525" style="aspect-ratio: 16/7; object-fit: cover; width: 100%; border-radius: 12px;" />
+    </div>
+  </section>
+
+  <!-- ========== WHY FENCING MATTERS ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container content-block">
+      <span class="label">Why It Matters</span>
+      <h2>More Than Just a Boundary Line</h2>
+      <p>
+        A good fence does more than mark where your property ends. It defines your outdoor space, provides security for your family and pets, blocks out street noise and wind, and adds genuine value to your home. In Perth's northern suburbs — where blocks are getting smaller and neighbours are getting closer — the right fencing solution is essential to comfortable outdoor living.
+      </p>
+      <p>
+        Whether you need a full boundary replacement, a pool-compliant barrier that meets WA building regulations, or a statement front fence with an automated gate, we approach every fencing project the same way: assess your site, understand what you need, and recommend the best solution for your block and budget.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FENCING TYPES ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">Our Fencing Services</span>
+      <h2>Fencing Options for Every Perth Property</h2>
+      <p class="section-intro">
+        We specialise in steel and composite fencing systems that are purpose-built for WA conditions. No timber that warps, splits, or gets eaten by termites. Every option below is low-maintenance and rated for Perth's wind regions.
+      </p>
+
+      <div class="services-grid" data-stagger>
+        <!-- Colorbond Fencing -->
+        <div class="service-card">
+          <img src="/images/colorbond-fence-install.jpg" alt="Colorbond steel fence installation by SecureWorks crew" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Colorbond Fencing</h3>
+          <p>
+            Australia's most popular fencing material for good reason. Colorbond steel is termite-proof, fire-resistant, and rated for N2/N3 wind regions. Available in nine colours to complement your home. We install boundary fences, side returns, and front feature panels.
+          </p>
+          <a href="/fencing-perth/colorbond/" class="btn btn--outline btn--sm">Learn More</a>
+        </div>
+
+        <!-- Pool Fencing -->
+        <div class="service-card">
+          <img src="/images/team-fencing-action.jpg" alt="SecureWorks team installing pool fencing in Perth" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Pool Fencing</h3>
+          <p>
+            WA pool barrier regulations are strict — and they should be. We install compliant pool fencing in glass, aluminium, and tubular steel. Every installation meets AS1926 standards and we coordinate with your council inspection to make sure it passes first time.
+          </p>
+        </div>
+
+        <!-- Gates & Automation -->
+        <div class="service-card">
+          <img src="/images/colorbond-fence-lattice-wide.jpg" alt="Colorbond gate and fencing with lattice detail in Perth" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Gates & Automation</h3>
+          <p>
+            Sliding gates, swing gates, pedestrian gates — manual or automated. We supply and install gate systems integrated with your fencing, including motors, intercoms, and keypad access. Popular in Hillarys, Mindarie, and Joondalup for added street presence and security.
+          </p>
+        </div>
+
+        <!-- Privacy Screening -->
+        <div class="service-card">
+          <img src="/images/team-drilling-fence.jpg" alt="SecureWorks installer drilling privacy screening panel" loading="lazy" width="600" height="450" style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px; margin-bottom: var(--space-sm);" />
+          <h3>Privacy Screening</h3>
+          <p>
+            Aluminium slat screening adds a modern look while blocking sightlines from neighbours or the street. Available in a range of Colorbond colours and custom spacings. Often paired with our patio builds for a fully enclosed outdoor living area.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PERTH-SPECIFIC BENEFITS ========== -->
+  <section class="section section--alt" data-animate="fade-up">
+    <div class="container content-block">
+      <span class="label">Built for WA</span>
+      <h2>Why Perth Fencing Needs to Be Different</h2>
+      <p>
+        Perth is one of the windiest capital cities in Australia. Standard fencing designs from eastern states suppliers often do not account for the sustained afternoon sea breezes and winter storm gusts that hit properties across the northern corridor from Scarborough to Two Rocks. Every fence we install is rated to the correct wind region for your specific location — N2 for standard suburban, N3 for coastal and exposed sites.
+      </p>
+      <p>
+        Then there is the climate. Perth's hot, dry summers and sandy soils demand materials that will not rust, warp, or degrade under UV. Colorbond steel with its Activate technology and baked-on paint finish is engineered for exactly these conditions. Combined with galvanised steel posts set in concrete footings designed for WA sand, our fences are built for the long haul — not just the first few years.
+      </p>
+      <p>
+        We also understand local council requirements across Joondalup, Wanneroo, and Stirling. Front fence height limits, pool barrier compliance, and retaining wall setback rules vary between councils, and we handle these details during the quoting stage so there are no surprises once construction starts.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== OUR PROCESS ========== -->
+  <section class="section" data-animate="fade-up">
+    <div class="container">
+      <span class="label">How It Works</span>
+      <h2>Our Fencing Process</h2>
+      <div class="process-grid" data-stagger>
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Site Assessment</h3>
+          <p>We visit your property, measure the run, check levels and soil conditions, and discuss your priorities — privacy, security, aesthetics, or all three.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Tailored Quote</h3>
+          <p>You receive a detailed, fixed-price quote within 48 hours. No hidden costs, no line items you do not understand. We explain exactly what is included.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Professional Install</h3>
+          <p>Our crew handles everything — old fence removal, post holes, concrete footings, panel installation, and clean-up. Most standard boundary fences are completed in one to two days.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Final Walkthrough</h3>
+          <p>We walk you through the finished fence, check every panel and post, and make sure you are completely satisfied before we leave site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--alt cta-section" data-animate="fade-up">
+    <div class="container cta-block">
+      <h2>Ready to Sort Your Fencing?</h2>
+      <p>
+        Whether it is a full boundary replacement, a pool fence for compliance, or a front feature fence with an automated gate — let us work out what suits your property. No pressure, no obligation. Just a straight conversation about what will work best.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-sm);
+    max-width: 700px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    max-width: 640px;
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-image {
+    border-radius: 12px;
+  }
+
+  /* Image Placeholder */
+  .image-placeholder {
+    background: var(--tint);
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* Content block (text-heavy sections) */
+  .content-block {
+    max-width: 780px;
+  }
+
+  .content-block h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .content-block .label {
+    display: block;
+  }
+
+  .section-intro {
+    max-width: 700px;
+    margin-bottom: var(--space-lg);
+    color: var(--mid-blue);
+  }
+
+  .section .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--tint);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .service-card .image-placeholder {
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card p {
+    margin-bottom: var(--space-sm);
+    font-size: 0.9375rem;
+  }
+
+  .btn--sm {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .process-step {
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .process-step h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .process-step p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+  }
+
+  /* CTA Section */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    color: var(--mid-blue);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

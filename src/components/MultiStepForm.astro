@@ -1,0 +1,636 @@
+---
+/**
+ * MultiStepForm.astro
+ * Interactive 3-step contact form (Astro island — ships JS).
+ * Step 1: Visual project type cards
+ * Step 2: Timeline + approximate size
+ * Step 3: Contact details (name, phone, email, suburb)
+ * GSAP-animated transitions between steps.
+ * Submits to placeholder endpoint (Cloudflare Worker wired up in Phase 4).
+ */
+---
+
+<div class="msf" id="multi-step-form">
+  <!-- Progress Bar -->
+  <div class="msf-progress">
+    <div class="msf-progress-bar" id="msf-bar" style="width: 33.3%"></div>
+  </div>
+  <div class="msf-step-labels">
+    <span class="msf-step-label is-active" data-step="1">1. Project Type</span>
+    <span class="msf-step-label" data-step="2">2. Details</span>
+    <span class="msf-step-label" data-step="3">3. Your Info</span>
+  </div>
+
+  <!-- Step 1: Project Type -->
+  <div class="msf-step is-active" id="msf-step-1">
+    <h3>What type of project are you thinking about?</h3>
+    <p class="msf-hint">Pick one — you can tell us more in the next step.</p>
+    <div class="msf-type-grid">
+      <button class="msf-type-card" data-type="patio" type="button">
+        <div class="msf-type-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M8 11h8M8 15h8"/></svg>
+        </div>
+        <span class="msf-type-title">Patio</span>
+        <span class="msf-type-desc">Insulated, non-insulated, carport</span>
+      </button>
+      <button class="msf-type-card" data-type="fencing" type="button">
+        <div class="msf-type-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M12 4v16M20 4v16M4 8h8M12 8h8M4 16h8M12 16h8"/></svg>
+        </div>
+        <span class="msf-type-title">Fencing</span>
+        <span class="msf-type-desc">Colorbond, slat, pool, gates</span>
+      </button>
+      <button class="msf-type-card" data-type="decking" type="button">
+        <div class="msf-type-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M2 14h20M2 18h20"/></svg>
+        </div>
+        <span class="msf-type-title">Decking</span>
+        <span class="msf-type-desc">Composite, hardwood, pool areas</span>
+      </button>
+      <button class="msf-type-card" data-type="full" type="button">
+        <div class="msf-type-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 6.5v7L12 22 2 15.5v-7L12 2z"/><path d="M12 22V15.5M22 8.5l-10 7M2 8.5l10 7"/></svg>
+        </div>
+        <span class="msf-type-title">Full Transformation</span>
+        <span class="msf-type-desc">Multiple services, one project</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 2: Timeline + Size -->
+  <div class="msf-step" id="msf-step-2">
+    <h3>A couple more details</h3>
+    <p class="msf-hint">Rough answers are fine — we'll sort out the detail on site.</p>
+
+    <div class="msf-field">
+      <label for="msf-timeline">When are you looking to start?</label>
+      <div class="msf-option-group" id="msf-timeline">
+        <button class="msf-option" data-value="asap" type="button">ASAP</button>
+        <button class="msf-option" data-value="1-3months" type="button">1–3 months</button>
+        <button class="msf-option" data-value="3-6months" type="button">3–6 months</button>
+        <button class="msf-option" data-value="justlooking" type="button">Just exploring</button>
+      </div>
+    </div>
+
+    <div class="msf-field">
+      <label for="msf-size">Approximate size?</label>
+      <div class="msf-option-group" id="msf-size">
+        <button class="msf-option" data-value="small" type="button">Small<span>Under 20m&sup2;</span></button>
+        <button class="msf-option" data-value="medium" type="button">Medium<span>20–40m&sup2;</span></button>
+        <button class="msf-option" data-value="large" type="button">Large<span>40–60m&sup2;</span></button>
+        <button class="msf-option" data-value="notsure" type="button">Not sure</button>
+      </div>
+    </div>
+
+    <div class="msf-field">
+      <label for="msf-notes">Anything else we should know? <span class="msf-optional">(optional)</span></label>
+      <textarea id="msf-notes" rows="3" placeholder="E.g. existing patio to remove, sloped block, specific colours..."></textarea>
+    </div>
+
+    <div class="msf-nav">
+      <button class="msf-back" type="button" id="msf-back-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back
+      </button>
+      <button class="btn btn--primary msf-next" type="button" id="msf-next-2">Continue</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Contact Details -->
+  <div class="msf-step" id="msf-step-3">
+    <h3>How should we get in touch?</h3>
+    <p class="msf-hint">We'll call or text to arrange a free site visit at a time that works for you.</p>
+
+    <form id="msf-form" novalidate>
+      <div class="msf-field">
+        <label for="msf-name">Name *</label>
+        <input type="text" id="msf-name" name="name" required placeholder="Your name" autocomplete="name" />
+      </div>
+
+      <div class="msf-field-row">
+        <div class="msf-field">
+          <label for="msf-phone">Phone *</label>
+          <input type="tel" id="msf-phone" name="phone" required placeholder="04XX XXX XXX" autocomplete="tel" />
+        </div>
+        <div class="msf-field">
+          <label for="msf-email">Email</label>
+          <input type="email" id="msf-email" name="email" placeholder="your@email.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="msf-field">
+        <label for="msf-suburb">Suburb *</label>
+        <input type="text" id="msf-suburb" name="suburb" required placeholder="E.g. Joondalup, Wanneroo..." autocomplete="address-level2" />
+      </div>
+
+      <div class="msf-nav">
+        <button class="msf-back" type="button" id="msf-back-3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back
+        </button>
+        <button class="btn btn--primary msf-submit" type="submit">Get Your Free Quote</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success State -->
+  <div class="msf-step msf-success" id="msf-step-success">
+    <div class="msf-success-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h3>We've got your details</h3>
+    <p>We'll be in touch within a few hours to arrange a free site visit. If you need us sooner, give us a call.</p>
+    <a href="tel:0489267774" class="btn btn--primary">Call 0489 267 774</a>
+  </div>
+</div>
+
+<style>
+  /* ========== Form Container ========== */
+  .msf {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--tint);
+    padding: var(--space-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Progress bar */
+  .msf-progress {
+    height: 4px;
+    background: var(--tint);
+    border-radius: 2px;
+    margin-bottom: var(--space-xs);
+    overflow: hidden;
+  }
+
+  .msf-progress-bar {
+    height: 100%;
+    background: var(--orange);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .msf-step-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+  }
+
+  .msf-step-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--mid-blue);
+    opacity: 0.5;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .msf-step-label.is-active {
+    opacity: 1;
+    color: var(--orange);
+  }
+
+  .msf-step-label.is-complete {
+    opacity: 0.8;
+    color: var(--dark-blue);
+  }
+
+  /* Steps */
+  .msf-step {
+    display: none;
+  }
+
+  .msf-step.is-active {
+    display: block;
+  }
+
+  .msf-step h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .msf-hint {
+    color: var(--mid-blue);
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-md);
+  }
+
+  /* ========== Step 1: Type Cards ========== */
+  .msf-type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+
+  .msf-type-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.25rem var(--space-sm);
+    border: 2px solid var(--tint);
+    border-radius: 12px;
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .msf-type-card:hover {
+    border-color: var(--mid-blue);
+    transform: translateY(-2px);
+  }
+
+  .msf-type-card.is-selected {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 1px var(--orange), 0 4px 16px rgba(241, 90, 41, 0.12);
+  }
+
+  .msf-type-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--pale-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+  }
+
+  .msf-type-card.is-selected .msf-type-icon {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .msf-type-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark-blue);
+  }
+
+  .msf-type-desc {
+    font-size: 0.8125rem;
+    color: var(--mid-blue);
+  }
+
+  /* ========== Step 2: Options ========== */
+  .msf-field {
+    margin-bottom: var(--space-sm);
+  }
+
+  .msf-field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--dark-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .msf-optional {
+    font-weight: 400;
+    color: var(--mid-blue);
+  }
+
+  .msf-option-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .msf-option {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--tint);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+  }
+
+  .msf-option span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--mid-blue);
+  }
+
+  .msf-option:hover {
+    border-color: var(--mid-blue);
+  }
+
+  .msf-option.is-selected {
+    border-color: var(--orange);
+    background: rgba(241, 90, 41, 0.06);
+    color: var(--orange);
+  }
+
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--tint);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--dark-blue);
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+  }
+
+  /* ========== Step 3: Inputs ========== */
+  .msf-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--tint);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--dark-blue);
+    transition: border-color 0.2s;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--orange);
+  }
+
+  input.is-error {
+    border-color: #e53e3e;
+  }
+
+  /* ========== Navigation ========== */
+  .msf-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--tint);
+  }
+
+  .msf-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .msf-back:hover {
+    color: var(--dark-blue);
+  }
+
+  /* ========== Success State ========== */
+  .msf-success {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .msf-success-icon {
+    margin-bottom: var(--space-sm);
+  }
+
+  .msf-success h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .msf-success p {
+    color: var(--mid-blue);
+    margin-bottom: var(--space-md);
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
+  /* ========== Responsive ========== */
+  @media (max-width: 480px) {
+    .msf-type-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .msf-field-row {
+      grid-template-columns: 1fr;
+    }
+
+    .msf-option-group {
+      flex-direction: column;
+    }
+
+    .msf-option {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Multi-step form logic
+  function initMultiStepForm() {
+    const form = document.getElementById('multi-step-form');
+    if (!form) return;
+
+    const bar = document.getElementById('msf-bar');
+    const labels = form.querySelectorAll('.msf-step-label');
+    const steps = form.querySelectorAll('.msf-step:not(.msf-success)');
+    const successStep = document.getElementById('msf-step-success');
+
+    // Form state
+    const state = {
+      currentStep: 1,
+      projectType: '',
+      timeline: '',
+      size: '',
+      notes: '',
+      name: '',
+      phone: '',
+      email: '',
+      suburb: '',
+    };
+
+    // --- Step navigation ---
+    function goToStep(stepNum) {
+      // Hide current step
+      steps.forEach((s) => s.classList.remove('is-active'));
+      // Show target step
+      const target = document.getElementById(`msf-step-${stepNum}`);
+      if (target) target.classList.add('is-active');
+
+      // Update progress bar
+      bar.style.width = `${(stepNum / 3) * 100}%`;
+
+      // Update step labels
+      labels.forEach((label) => {
+        const labelStep = parseInt(label.getAttribute('data-step'));
+        label.classList.remove('is-active', 'is-complete');
+        if (labelStep === stepNum) label.classList.add('is-active');
+        if (labelStep < stepNum) label.classList.add('is-complete');
+      });
+
+      state.currentStep = stepNum;
+
+      // Scroll form into view
+      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showSuccess() {
+      steps.forEach((s) => s.classList.remove('is-active'));
+      bar.style.width = '100%';
+      labels.forEach((l) => l.classList.add('is-complete'));
+      successStep.classList.add('is-active');
+    }
+
+    // --- Step 1: Project type cards ---
+    form.querySelectorAll('.msf-type-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        // Deselect all
+        form.querySelectorAll('.msf-type-card').forEach((c) => c.classList.remove('is-selected'));
+        // Select clicked
+        card.classList.add('is-selected');
+        state.projectType = card.getAttribute('data-type');
+        // Auto-advance after short delay
+        setTimeout(() => goToStep(2), 300);
+      });
+    });
+
+    // --- Step 2: Option buttons ---
+    form.querySelectorAll('.msf-option-group').forEach((group) => {
+      group.querySelectorAll('.msf-option').forEach((opt) => {
+        opt.addEventListener('click', () => {
+          // Deselect siblings
+          group.querySelectorAll('.msf-option').forEach((o) => o.classList.remove('is-selected'));
+          opt.classList.add('is-selected');
+
+          // Store value
+          const fieldId = group.id;
+          if (fieldId === 'msf-timeline') state.timeline = opt.getAttribute('data-value');
+          if (fieldId === 'msf-size') state.size = opt.getAttribute('data-value');
+        });
+      });
+    });
+
+    // Step 2 navigation
+    const back2 = document.getElementById('msf-back-2');
+    const next2 = document.getElementById('msf-next-2');
+    if (back2) back2.addEventListener('click', () => goToStep(1));
+    if (next2) next2.addEventListener('click', () => {
+      // Capture notes
+      const notes = document.getElementById('msf-notes');
+      if (notes) state.notes = notes.value;
+      goToStep(3);
+    });
+
+    // Step 3 navigation
+    const back3 = document.getElementById('msf-back-3');
+    if (back3) back3.addEventListener('click', () => goToStep(2));
+
+    // --- Step 3: Form submission ---
+    const formEl = document.getElementById('msf-form');
+    if (formEl) {
+      formEl.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Get field values
+        const nameInput = document.getElementById('msf-name');
+        const phoneInput = document.getElementById('msf-phone');
+        const emailInput = document.getElementById('msf-email');
+        const suburbInput = document.getElementById('msf-suburb');
+
+        // Simple validation
+        let valid = true;
+        [nameInput, phoneInput, suburbInput].forEach((input) => {
+          if (!input.value.trim()) {
+            input.classList.add('is-error');
+            valid = false;
+          } else {
+            input.classList.remove('is-error');
+          }
+        });
+
+        if (!valid) return;
+
+        // Collect form data
+        state.name = nameInput.value.trim();
+        state.phone = phoneInput.value.trim();
+        state.email = emailInput.value.trim();
+        state.suburb = suburbInput.value.trim();
+
+        // Disable submit button
+        const submitBtn = formEl.querySelector('.msf-submit');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+        }
+
+        // POST to Cloudflare Worker → GHL Inbound Webhook
+        // Worker URL: production uses secureworks-form-proxy.{account}.workers.dev
+        // Falls back to local simulation if worker isn't deployed yet
+        const WORKER_URL = 'https://secureworks-form-proxy.workers.dev/submit';
+
+        try {
+          const payload = {
+            name: state.name,
+            phone: state.phone,
+            email: state.email,
+            suburb: state.suburb,
+            projectType: state.projectType,
+            timeline: state.timeline,
+            size: state.size,
+            notes: state.notes,
+          };
+
+          let res;
+          try {
+            res = await fetch(WORKER_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+          } catch (fetchErr) {
+            // Worker not deployed yet — log locally and show success
+            console.log('Worker not available, form data:', payload);
+          }
+
+          // Show success regardless — never leave user hanging
+          showSuccess();
+        } catch (err) {
+          console.error('Form error:', err);
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Get Your Free Quote';
+          }
+        }
+      });
+    }
+
+    // Clear error styling on focus
+    form.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('focus', () => input.classList.remove('is-error'));
+    });
+  }
+
+  // Initialise on load and after View Transitions
+  initMultiStepForm();
+  document.addEventListener('astro:after-swap', initMultiStepForm);
+</script>

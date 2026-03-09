@@ -1,0 +1,436 @@
+---
+/**
+ * Contact Page — Multi-step form placeholder, contact info, service areas.
+ * Form structure matches CLAUDE.md spec: Step 1 visual cards, Step 2 timeline+size, Step 3 contact.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MultiStepForm from '../components/MultiStepForm.astro';
+
+// Service areas — from BaseLayout footer
+const serviceAreas = [
+  'Joondalup', 'Wanneroo', 'Stirling', 'Balcatta',
+  'Scarborough', 'Hillarys', 'Mindarie', 'Clarkson',
+  'Ellenbrook', 'Midland',
+];
+
+// Process steps — proven from landing pages
+const processSteps = [
+  { step: '1', title: 'Free Site Visit', time: '45 minutes', description: 'We come to your home, assess the site, discuss your vision, and walk you through options. No obligation, no pressure.' },
+  { step: '2', title: 'Design & Quote', time: '48 hours', description: 'You\'ll receive a detailed, itemised quote with specifications — not a vague estimate. Engineering and council fees included.' },
+  { step: '3', title: 'Council Approval', time: '1–3 weeks', description: 'We handle everything: professional drafting, structural engineering certification, and council lodgement.' },
+  { step: '4', title: 'Build & Enjoy', time: '2–5 days', description: 'Our crew handles footings, frame, roof, gutters, and full cleanup. Enjoy your new space that weekend.' },
+];
+---
+
+<BaseLayout title="Contact Us" description="Get in touch with SecureWorks Group for your next outdoor living project. Free site visit and quote within 48 hours. Perth's northern suburbs.">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="/images/patio-lifestyle-golden.jpg" alt="Outdoor living space at golden hour" width="1920" height="1080" fetchpriority="high" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero-content" style="position: relative; z-index: 3;">
+      <span class="label" data-animate="fade-in">Contact</span>
+      <h1 data-animate="fade-up">Get in Touch</h1>
+      <p class="hero-subtitle" data-animate="fade-up">
+        Tell us a bit about what you're thinking and we'll get back to you
+        for a no-obligation chat. Free site visit and quote within 48 hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form + Contact Info -->
+  <section class="section">
+    <div class="container contact-grid">
+
+      <!-- Multi-Step Form -->
+      <div data-animate="slide-left">
+        <MultiStepForm />
+      </div>
+
+      <!-- Contact Info Sidebar -->
+      <aside class="contact-info" data-animate="slide-right">
+        <div class="info-block">
+          <h3>Phone</h3>
+          <a href="tel:1300000000" class="info-value">1300 XXX XXX</a>
+          <span class="info-note">Mon–Fri 7am–5pm | Sat by appointment</span>
+        </div>
+
+        <div class="info-block">
+          <h3>Email</h3>
+          <a href="mailto:info@secureworksgroup.com.au" class="info-value">info@secureworksgroup.com.au</a>
+          <span class="info-note">We usually reply within a few hours</span>
+        </div>
+
+        <div class="info-block">
+          <h3>Office Hours</h3>
+          <div class="hours-list">
+            <div class="hours-row">
+              <span>Monday – Friday</span>
+              <span>7:00am – 5:00pm</span>
+            </div>
+            <div class="hours-row">
+              <span>Saturday</span>
+              <span>By appointment</span>
+            </div>
+            <div class="hours-row">
+              <span>Sunday</span>
+              <span>Closed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h3>Service Areas</h3>
+          <p class="info-note" style="margin-bottom: 0.5rem;">Perth's northern suburbs and surrounds</p>
+          <div class="area-tags">
+            {serviceAreas.map((area) => (
+              <span class="area-tag">{area}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="info-block info-block--highlight">
+          <h3>What to Expect</h3>
+          <ul class="expect-list">
+            <li>Free site visit — no obligation</li>
+            <li>Detailed quote within 48 hours</li>
+            <li>Engineering & council fees included</li>
+            <li>No hidden costs — ever</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="label">Your Journey</span>
+        <h2>From First Call to Finished Space</h2>
+        <p class="section-subtitle">Here's exactly what to expect. No surprises, no chasing tradespeople, no council headaches.</p>
+      </div>
+      <div class="process-grid" data-stagger="0.15">
+        {processSteps.map((step) => (
+          <div class="process-step">
+            <div class="process-number">{step.step}</div>
+            <h3>{step.title}</h3>
+            <span class="process-time">{step.time}</span>
+            <p>{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--alt">
+    <div class="container cta-block" data-animate="fade-up">
+      <h2>Prefer to Chat in Person?</h2>
+      <p>We're happy to come out to your place for a look. We'll assess your space, discuss options honestly, and provide a detailed quote. No obligation.</p>
+      <div class="cta-actions">
+        <a href="tel:1300000000" class="btn btn--primary">Call Us Now</a>
+        <a href="mailto:info@secureworksgroup.com.au" class="btn btn--outline">Send an Email</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: -5%;
+    z-index: 0;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(26, 42, 50, 0.7) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(26, 42, 50, 0.6) 0%, rgba(26, 42, 50, 0.9) 100%);
+  }
+
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 640px;
+  }
+
+  .hero .label {
+    color: var(--orange);
+  }
+
+  .hero h1 {
+    color: var(--white);
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+
+  /* Contact grid — two columns */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+
+  /* Contact info sidebar */
+  .contact-info {
+    background: var(--pale-bg);
+    border-radius: 16px;
+    padding: var(--space-md);
+  }
+
+  .info-block {
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--tint);
+  }
+
+  .info-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .info-block h3 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--mid-blue);
+    margin-bottom: 0.375rem;
+  }
+
+  .info-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+    transition: color var(--transition-fast);
+    margin-bottom: 0.25rem;
+  }
+
+  .info-value:hover {
+    color: var(--orange);
+  }
+
+  .info-note {
+    font-size: 0.8125rem;
+    color: var(--mid-blue);
+  }
+
+  /* "What to expect" highlight block */
+  .info-block--highlight {
+    background: rgba(241, 90, 41, 0.06);
+    margin-inline: calc(-1 * var(--space-sm));
+    padding-inline: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-radius: 8px;
+  }
+
+  .expect-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .expect-list li {
+    font-size: 0.875rem;
+    color: var(--dark-blue);
+    font-weight: 500;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .expect-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* Hours */
+  .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9375rem;
+  }
+
+  .hours-row span:last-child {
+    font-weight: 600;
+    color: var(--dark-blue);
+  }
+
+  /* Area tags */
+  .area-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .area-tag {
+    font-size: 0.8125rem;
+    padding: 0.25rem 0.625rem;
+    background: var(--tint);
+    border-radius: 20px;
+    color: var(--dark-blue);
+    font-weight: 500;
+  }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-header .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--mid-blue);
+  }
+
+  /* Process steps */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .process-step {
+    text-align: center;
+  }
+
+  .process-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    margin-bottom: var(--space-sm);
+  }
+
+  .process-step h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .process-time {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--orange);
+    background: rgba(241, 90, 41, 0.1);
+    padding: 0.125rem 0.5rem;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+  }
+
+  .process-step p {
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+    line-height: 1.6;
+  }
+
+  /* CTA block */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+    color: var(--mid-blue);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .type-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

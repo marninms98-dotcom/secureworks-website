@@ -1,0 +1,386 @@
+---
+/**
+ * ScrollHero.astro — Cinematic video intro + static hero
+ *
+ * Sequence:
+ * 1. Video plays full-screen, NO text, NO header — pure immersion
+ * 2. Video ends → fades to completed property shot
+ * 3. Text staggers in (eyebrow → heading → sub → buttons)
+ * 4. Header fades in from top
+ * 5. From here it's a static hero — scroll into the rest of the site
+ *
+ * Mobile: skips video entirely, shows static hero with text immediately.
+ */
+---
+
+<!-- Immediately hide header on desktop before paint — prevents flash -->
+<script is:inline>
+  if (window.innerWidth > 768) {
+    document.documentElement.setAttribute('data-hero-video', '');
+  }
+</script>
+
+<section class="scroll-hero" id="scroll-hero">
+  <!-- Autoplay video — plays once, no loop -->
+  <video
+    class="scroll-hero__video"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    poster="/frames/frame_0000.webp"
+  >
+    <source src="/video/hero-transformation.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Static final frame — revealed after video ends -->
+  <div class="scroll-hero__static">
+    <img
+      src="/frames/frame_0120.webp"
+      alt="Completed outdoor living transformation — flyover patio, merbau deck, and carport"
+      width="1280"
+      height="716"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Mobile fallback — shows immediately, no video -->
+  <div class="scroll-hero__fallback">
+    <img
+      src="/frames/frame_0120.webp"
+      alt="Completed outdoor living transformation — flyover patio, merbau deck, and carport"
+      width="1280"
+      height="716"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Overlay — starts minimal during video, strengthens when text appears -->
+  <div class="scroll-hero__overlay"></div>
+  <div class="scroll-hero__grain" aria-hidden="true"></div>
+
+  <!-- Hero content — hidden during video, revealed after -->
+  <div class="scroll-hero__content">
+    <span class="hero__eyebrow label hero__reveal" style="--i:0">Perth's Outdoor Living Specialists</span>
+    <h1 class="hero__heading hero__reveal" style="--i:1">Your Backyard,<br>Reimagined</h1>
+    <p class="hero__sub hero__reveal" style="--i:2">
+      Insulated patios, Colorbond fencing, and decking — designed around your home
+      and built by a team that's completed over 300 projects across Perth.
+    </p>
+    <div class="hero__actions hero__reveal" style="--i:3">
+      <a href="/contact/" class="btn btn--primary btn--glow">Start Your Project</a>
+      <a href="/projects/" class="btn btn--outline btn--glass">View Our Work</a>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-hero__scroll-cue">
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<script>
+  function initHeroSequence() {
+    const hero = document.querySelector('.scroll-hero');
+    const video = document.querySelector('.scroll-hero__video') as HTMLVideoElement;
+    if (!hero) return;
+
+    const isDesktop = window.innerWidth > 768;
+
+    function revealAll() {
+      hero.classList.add('is-revealed');
+      // Remove the data attribute — header CSS transition handles the rest
+      document.documentElement.removeAttribute('data-hero-video');
+    }
+
+    if (isDesktop && video) {
+      // --- DESKTOP: Cinematic sequence ---
+      video.loop = false;
+
+      // Fade video out near the end for smooth transition to static frame
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return;
+        const timeLeft = video.duration - video.currentTime;
+        if (timeLeft < 1.0) {
+          video.style.opacity = String(Math.max(timeLeft / 1.0, 0));
+        }
+      });
+
+      // When video ends: reveal text + header
+      video.addEventListener('ended', revealAll);
+
+      // Safety net — if video fails to load/play
+      video.addEventListener('error', revealAll);
+
+      // Fallback timeout — reveal after 12s no matter what
+      setTimeout(() => {
+        if (!hero.classList.contains('is-revealed')) revealAll();
+      }, 12000);
+
+    } else {
+      // --- MOBILE: Skip video, show everything immediately ---
+      hero.classList.add('is-revealed', 'is-mobile');
+      document.documentElement.removeAttribute('data-hero-video');
+    }
+  }
+
+  // Run on initial load and on Astro page transitions
+  initHeroSequence();
+  document.addEventListener('astro:after-swap', initHeroSequence);
+</script>
+
+<style>
+  .scroll-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== VIDEO (desktop only) ===== */
+  .scroll-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 0%;
+    z-index: 1;
+    /* Scale up to crop watermark from bottom-right.
+       Origin at top so bottom gets cropped heavily,
+       pushing the house UP in frame. Compensates for
+       camera tilt in the video. */
+    transform: scale(1.22);
+    transform-origin: center 0%;
+    will-change: opacity;
+  }
+
+  /* ===== STATIC FINAL FRAME (behind video, revealed when video fades) ===== */
+  .scroll-hero__static {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .scroll-hero__static img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 0%;
+    /* Match video crop exactly */
+    transform: scale(1.22);
+    transform-origin: center 0%;
+  }
+
+  /* ===== MOBILE FALLBACK ===== */
+  .scroll-hero__fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .scroll-hero__fallback img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== OVERLAY ===== */
+  /* Starts subtle during video, strengthens when text appears */
+  .scroll-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.15;
+    background:
+      radial-gradient(ellipse at 50% 45%, rgba(26, 42, 50, 0.45) 0%, transparent 65%),
+      linear-gradient(180deg, rgba(26, 42, 50, 0.15) 0%, rgba(26, 42, 50, 0.25) 40%, rgba(26, 42, 50, 0.6) 85%, rgba(26, 42, 50, 0.95) 100%);
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+  }
+
+  .scroll-hero.is-revealed .scroll-hero__overlay {
+    opacity: 1;
+  }
+
+  .scroll-hero__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ===== HERO CONTENT ===== */
+  .scroll-hero__content {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    max-width: 780px;
+    padding-inline: var(--space-sm);
+    color: var(--white);
+  }
+
+  /* Text is invisible until .is-revealed is added */
+  .hero__reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: none;
+  }
+
+  /* When revealed, stagger each element in */
+  .scroll-hero.is-revealed .hero__reveal {
+    animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.2s + var(--i) * 0.18s);
+  }
+
+  @keyframes heroFadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== SCROLL CUE ===== */
+  .scroll-hero__scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+  }
+
+  .scroll-hero.is-revealed .scroll-hero__scroll-cue {
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.2s;
+  }
+
+  /* ===== HERO TEXT STYLES ===== */
+  .hero__eyebrow {
+    display: inline-block;
+    margin-bottom: var(--space-sm);
+    padding: 0.375rem 1rem;
+    background: rgba(241, 90, 41, 0.15);
+    border: 1px solid rgba(241, 90, 41, 0.3);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero__heading {
+    color: var(--white);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-md);
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--orange), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { top: -100%; }
+    100% { top: 200%; }
+  }
+
+  /* ===== BUTTON STYLES ===== */
+  .btn--glow {
+    position: relative;
+    box-shadow: 0 0 20px rgba(241, 90, 41, 0.3);
+    transition: box-shadow var(--transition-base), background-color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .btn--glow:hover {
+    box-shadow: 0 0 30px rgba(241, 90, 41, 0.5);
+  }
+
+  .btn--glass {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .btn--glass:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--white);
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .scroll-hero__video,
+    .scroll-hero__static {
+      display: none;
+    }
+
+    .scroll-hero__fallback {
+      display: block;
+    }
+
+    /* On mobile, text appears immediately (no video to wait for) */
+    .scroll-hero.is-mobile .hero__reveal {
+      animation-delay: calc(0.1s + var(--i) * 0.12s);
+    }
+
+    .hero__heading {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero__actions {
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+      margin-inline: auto;
+    }
+
+    .hero__actions .btn {
+      width: 100%;
+    }
+  }
+</style>

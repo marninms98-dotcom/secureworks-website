@@ -1,0 +1,651 @@
+---
+/**
+ * About Page — Company story, team, values, and differentiators.
+ * Copy adapted from proven landing page messaging.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Team members
+const team = [
+  { name: 'Marnin Stobbe', role: 'Founder & CEO', image: '/images/team-crew-thumbsup.jpg', alt: 'Marnin Stobbe, founder and CEO of SecureWorks Group' },
+  { name: 'Shaun', role: 'Operations Manager', image: '/images/team-member-hivis.jpg', alt: 'Shaun, SecureWorks operations manager on site' },
+  { name: 'Team Member', role: 'Lead Installer', image: '/images/team-crew-onsite.jpg', alt: 'SecureWorks lead installer working on site' },
+  { name: 'Team Member', role: 'Installer', image: '/images/branded-ute.jpg', alt: 'SecureWorks branded vehicle and crew on location' },
+];
+
+// Company values
+const values = [
+  {
+    title: 'Quality Craftsmanship',
+    description: 'Engineering-certified structures with proper footings, premium materials, and finishes that last. Every patio, fence, and deck is built to handle Perth conditions for decades.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    title: 'Clear Communication',
+    description: 'You\'ll know what\'s happening at every stage. Fully itemised quotes with no hidden costs, regular build updates, and a single point of contact from consultation through to final walkthrough.',
+    icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+  },
+  {
+    title: 'Reliability',
+    description: 'We show up when we say we will, build what we quoted, and stand behind our work. Our 59% repeat customer rate isn\'t a marketing stat — it\'s how we know we\'re doing it right.',
+    icon: 'M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z',
+  },
+];
+
+// Differentiators — proven messaging from landing pages
+const differentiators = [
+  {
+    title: 'Custom Designed, Not Kit',
+    description: 'We don\'t sell Stratco Outback kits or pre-made systems. Every project is designed from scratch for your home — your site conditions, your roof, your block, your preferences.',
+  },
+  {
+    title: 'Engineering-Certified',
+    description: 'Professional structural engineering, council-approved plans, and proper footings rated for Perth wind loads. We handle all the paperwork — drafting, engineering certification, and council lodgement.',
+  },
+  {
+    title: 'One Team, All Trades',
+    description: 'Patios, fencing, and decking under one roof. One project manager, one timeline, no coordinating between different tradies. Everything lines up, the finishes match, and you deal with one team.',
+  },
+];
+
+// Real Google reviews from landing pages
+const testimonials = [
+  {
+    quote: 'Absolutely on point with quality, service and price. Dealing with the team was super easy. Impressive workmanship and super friendly service. Highly recommend — you won\'t go wrong choosing them!',
+    name: 'Tony G.',
+    location: 'Perth',
+  },
+  {
+    quote: 'Quote was done politely by Marnin; and the work done (as quoted on time) by his team — the guys were very clean, friendly and efficient.',
+    name: 'Lisa Gioconda',
+    location: 'Perth',
+  },
+  {
+    quote: 'The most uncomplicated procedure I have ever had. From the outset where a quote was supplied (which was very competitive) to the final nail being driven in, was so seamless. Workmanship was top notch.',
+    name: 'Martyn Evans',
+    location: 'Perth',
+  },
+];
+
+// Trust signals from landing pages
+const trustSignals = [
+  'Fully Licensed & Insured',
+  'Engineering & Council Handled',
+  'Finance Available',
+  'Family Owned Perth Business',
+];
+---
+
+<BaseLayout title="About Us" description="Meet the team behind SecureWorks Group. Founded in 2022, we've completed 1,200+ outdoor living projects across Perth's northern suburbs.">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="/images/team-group-branded.jpg" alt="SecureWorks Group team" width="1920" height="1080" fetchpriority="high" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero-content" style="position: relative; z-index: 3;">
+      <span class="label" data-animate="fade-in">About Us</span>
+      <h1 data-animate="fade-up">About SecureWorks Group</h1>
+      <p class="hero-subtitle" data-animate="fade-up">
+        Perth's outdoor living specialists. We build insulated patios,
+        Colorbond fencing, and decking that turns underused backyard
+        into the space your family lives in most.
+      </p>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar" data-stagger="0.1">
+    <div class="container trust-bar-inner">
+      {trustSignals.map((signal) => (
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+          </svg>
+          <span>{signal}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Marnin's Story -->
+  <section class="section">
+    <div class="container story-grid">
+      <div class="story-image" data-animate="slide-left">
+        <img src="/images/drone-bush-patio-aerial.jpg" alt="Aerial view of completed patio and decking project by SecureWorks Group" loading="lazy" style="aspect-ratio: 4/5; object-fit: cover; width: 100%; border-radius: 12px;" />
+      </div>
+      <div class="story-text" data-animate="slide-right">
+        <span class="label">Our Story</span>
+        <h2>Started With a Ute and a Vision</h2>
+        <p>
+          SecureWorks Group started in 2022 when Marnin Stobbe saw a gap in
+          Perth's outdoor living market. Homeowners wanted quality work, honest
+          advice, and someone who actually showed up when they said they would.
+          Most builders weren't delivering on all three.
+        </p>
+        <p>
+          What began with patios quickly grew into fencing, decking, and complete
+          backyard transformations. Today we're a multi-division company with a
+          dedicated operations team and experienced installers — but the approach
+          hasn't changed. We listen to what you actually want, design something
+          that works for your space, and build it properly.
+        </p>
+        <p>
+          We partner with you on function, style, and design that works for how
+          you actually live. The right build turns underused backyard into the
+          room your family lives in most.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="stats-strip">
+    <div class="container stats-grid" data-stagger="0.1">
+      <div class="stat">
+        <span class="stat-number">1,200+</span>
+        <span class="stat-label">Jobs Completed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">59%</span>
+        <span class="stat-label">Repeat Customer Rate</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">100+</span>
+        <span class="stat-label">5-Star Google Reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="label">What We Stand For</span>
+        <h2>Built on Three Principles</h2>
+      </div>
+      <div class="values-grid" data-stagger="0.15">
+        {values.map((value) => (
+          <div class="value-card">
+            <div class="value-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={value.icon} />
+              </svg>
+            </div>
+            <h3>{value.title}</h3>
+            <p>{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="label">The Team</span>
+        <h2>The People Behind the Build</h2>
+        <p class="section-subtitle">
+          When we turn up to your place, you'll know who you're dealing with.
+          Same crew, start to finish — not a different subcontractor every week.
+        </p>
+      </div>
+      <div class="team-grid" data-stagger="0.1">
+        {team.map((member) => (
+          <div class="team-card">
+            <img src={member.image} alt={member.alt} loading="lazy" class="team-photo" style="aspect-ratio: 1/1; object-fit: cover;" />
+            <h4>{member.name}</h4>
+            <span class="team-role">{member.role}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="label">Why SecureWorks</span>
+        <h2>What Sets Us Apart</h2>
+      </div>
+      <div class="diff-grid" data-stagger="0.15">
+        {differentiators.map((diff, i) => (
+          <div class="diff-card">
+            <span class="diff-number">0{i + 1}</span>
+            <h3>{diff.title}</h3>
+            <p>{diff.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials — real Google reviews -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="label">Reviews</span>
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="testimonials-grid" data-stagger="0.15">
+        {testimonials.map((t) => (
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              {[1,2,3,4,5].map(() => (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--orange)" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <blockquote>"{t.quote}"</blockquote>
+            <div class="testimonial-author">
+              <span class="testimonial-name">{t.name}</span>
+              <span class="testimonial-location">{t.location}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container cta-block" data-animate="fade-up">
+      <h2>Let's Work Out What Suits Your Space</h2>
+      <p>Book a free site visit. We'll assess your space, discuss options, and provide a detailed quote — no obligation, no pressure.</p>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+        <a href="/projects/" class="btn btn--outline">View Our Work</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: -5%;
+    z-index: 0;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(26, 42, 50, 0.7) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(26, 42, 50, 0.6) 0%, rgba(26, 42, 50, 0.9) 100%);
+  }
+
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 720px;
+  }
+
+  .hero .label {
+    color: var(--orange);
+  }
+
+  .hero h1 {
+    color: var(--white);
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+
+  /* Trust bar */
+  .trust-bar {
+    background: var(--dark-blue);
+    border-top: 3px solid var(--orange);
+    padding-block: var(--space-sm);
+  }
+
+  .trust-bar-inner {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .trust-item svg {
+    color: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* Story section */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .story-text .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .story-text h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .story-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Placeholder images */
+  .placeholder-image {
+    width: 100%;
+    background: var(--tint);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Stats strip — dark bg like landing pages */
+  .stats-strip {
+    background: var(--dark-blue);
+    padding-block: var(--space-lg);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+  }
+
+  /* Section headers */
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-header .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--mid-blue);
+  }
+
+  /* Values */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .value-card {
+    text-align: center;
+    padding: var(--space-md);
+    border-radius: 12px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(41, 60, 70, 0.08);
+  }
+
+  .value-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--pale-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    margin-bottom: var(--space-sm);
+    color: var(--orange);
+  }
+
+  .value-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .value-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    line-height: 1.6;
+  }
+
+  /* Team */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin-bottom: var(--space-sm);
+    object-fit: cover;
+  }
+
+  .team-card h4 {
+    margin-bottom: 0.125rem;
+  }
+
+  .team-role {
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+    font-weight: 500;
+  }
+
+  /* Differentiators */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .diff-card {
+    padding: var(--space-md);
+    background: var(--pale-bg);
+    border-radius: 12px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .diff-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(41, 60, 70, 0.08);
+  }
+
+  .diff-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--orange);
+    opacity: 0.3;
+    line-height: 1;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .diff-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .diff-card p {
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    line-height: 1.6;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .testimonial-card blockquote {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    flex: 1;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--tint);
+  }
+
+  .testimonial-name {
+    display: block;
+    font-weight: 700;
+    color: var(--dark-blue);
+  }
+
+  .testimonial-location {
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+  }
+
+  /* CTA block */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+    color: var(--mid-blue);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .values-grid,
+    .diff-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-bar-inner {
+      gap: var(--space-sm);
+    }
+  }
+</style>

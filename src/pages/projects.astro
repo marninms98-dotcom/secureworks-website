@@ -1,0 +1,556 @@
+---
+/**
+ * Projects Page — Gallery showcase with filter bar and project cards.
+ * Project descriptions adapted from proven landing page gallery captions.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Project data — descriptions based on real gallery items from landing pages
+const projects = [
+  {
+    title: 'Insulated Patio & Hardwood Deck — Joondalup',
+    type: 'Patio',
+    description: 'Insulated SolarSpan ceiling with LED downlights and fan pre-wire, paired with a Merbau hardwood deck. Complete outdoor living space.',
+    image: '/images/aerial-patio-completed.jpg',
+    alt: 'Aerial view of completed insulated patio with hardwood decking in Joondalup',
+  },
+  {
+    title: 'Colorbond Fencing — Wanneroo',
+    type: 'Fencing',
+    description: '45 metres of Monument Colorbond fencing with matching sliding gate. Clean lines, zero maintenance, built to handle Perth conditions.',
+    image: '/images/colorbond-fence-lattice-wide.jpg',
+    alt: 'Colorbond fencing with lattice top panels installed in Wanneroo backyard',
+  },
+  {
+    title: 'Composite Deck — Scarborough',
+    type: 'Decking',
+    description: 'Raised composite deck off the back of the house with built-in seating and integrated lighting. Zero-maintenance boards with 25-year warranty.',
+    image: '/images/deck-patio-golden.jpg',
+    alt: 'Composite decking with patio photographed at golden hour in Scarborough',
+  },
+  {
+    title: 'Gable Patio — Hillarys',
+    type: 'Patio',
+    description: 'Insulated gable patio adding height and airflow. Classic peaked roof matched to the home\'s federation style with custom fascia details.',
+    image: '/images/gable-patio-decking-downlights.jpg',
+    alt: 'Gable patio with decking and LED downlights in Hillarys',
+  },
+  {
+    title: 'Aluminium Slat Screening — Balcatta',
+    type: 'Fencing',
+    description: 'Aluminium slat screening to the alfresco area for privacy without blocking the breeze. Woodland Grey powder-coat finish, BAL rated.',
+    image: '/images/outdoor-living-decking-blinds.jpg',
+    alt: 'Outdoor living area with aluminium screening and blinds in Balcatta',
+  },
+  {
+    title: 'Hardwood Deck — Ellenbrook',
+    type: 'Decking',
+    description: 'Merbau hardwood deck around the pool area with stainless steel balustrade. Designed for wet-area drainage and barefoot comfort.',
+    image: '/images/poolside-patio-luxury.jpg',
+    alt: 'Poolside hardwood decking with luxury patio in Ellenbrook',
+  },
+  {
+    title: 'Flyover Patio — Clarkson',
+    type: 'Patio',
+    description: 'Flyover patio sitting above the existing roofline for maximum height and an open feel. 75mm SolarSpan panels, up to 22 degrees cooler underneath.',
+    image: '/images/flyover-patio-exterior.jpg',
+    alt: 'Flyover patio exterior showing elevated roofline in Clarkson',
+  },
+  {
+    title: 'Full Transformation — Stirling',
+    type: 'Full Transformation',
+    description: 'Insulated patio, Colorbond fencing, and composite decking — all in one project. One team, one timeline, one contact from start to finish.',
+    image: '/images/freestanding-patio-outdoor-kitchen.jpg',
+    alt: 'Complete backyard transformation with freestanding patio and outdoor kitchen in Stirling',
+  },
+];
+
+// Stats
+const stats = [
+  { number: '1,200+', label: 'Projects Completed' },
+  { number: '100+', label: '5-Star Google Reviews' },
+  { number: '59%', label: 'Repeat Customer Rate' },
+];
+---
+
+<BaseLayout title="Our Projects" description="Browse SecureWorks Group's completed projects across Perth. Insulated patios, Colorbond fencing, composite and hardwood decking. 1,200+ jobs completed.">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="/images/drone-bush-patio-deck.jpg" alt="Aerial view of completed patio and decking project" width="1920" height="1080" fetchpriority="high" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero-content" style="position: relative; z-index: 3;">
+      <span class="label" data-animate="fade-in">Our Work</span>
+      <h1 data-animate="fade-up">Projects We've Built Across Perth</h1>
+      <p class="hero-subtitle" data-animate="fade-up">
+        Every project is different because every backyard is different.
+        Here's a look at what we've been building — from insulated patios
+        and Colorbond fencing to composite decking and complete transformations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <div class="stats-strip" data-stagger="0.1">
+    <div class="container stats-inner">
+      {stats.map((stat) => (
+        <div class="stat">
+          <span class="stat-number">{stat.number}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Filter Bar + Gallery -->
+  <section class="section">
+    <div class="container">
+      <!-- Filter buttons -->
+      <div class="filter-bar" data-animate="fade-up">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Patio">Patios</button>
+        <button class="filter-btn" data-filter="Fencing">Fencing</button>
+        <button class="filter-btn" data-filter="Decking">Decking</button>
+      </div>
+
+      <!-- Project grid -->
+      <div class="project-grid" data-stagger="0.1">
+        {projects.map((project) => (
+          <article class="project-card" data-type={project.type}>
+            <!-- Placeholder image -->
+            <div class="project-image">
+              <img src={project.image} alt={project.alt} loading="lazy" style="aspect-ratio: 3/2; object-fit: cover; width: 100%;" />
+              <span class="project-type-tag">{project.type}</span>
+            </div>
+            <div class="project-info">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-page CTA -->
+  <section class="section cta-strip cta-strip--dark" data-animate="fade-up">
+    <div class="container cta-strip-inner">
+      <div>
+        <h2>Got something similar in mind?</h2>
+        <p>Whether you've got a clear plan or just an idea, we're happy to come have a look and chat through the options.</p>
+      </div>
+      <a href="/contact/" class="btn btn--primary">Start Your Project</a>
+    </div>
+  </section>
+
+  <!-- What You Get section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="label">Every Project Includes</span>
+        <h2>What You Get With SecureWorks</h2>
+      </div>
+      <div class="includes-grid" data-stagger="0.1">
+        <div class="includes-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
+          <span>Free site visit & consultation</span>
+        </div>
+        <div class="includes-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
+          <span>Fully itemised quote — no hidden costs</span>
+        </div>
+        <div class="includes-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
+          <span>Engineering certification included</span>
+        </div>
+        <div class="includes-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
+          <span>Council approvals handled</span>
+        </div>
+        <div class="includes-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
+          <span>Full workmanship warranty</span>
+        </div>
+        <div class="includes-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
+          <span>Finance options available</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section section--alt">
+    <div class="container cta-block" data-animate="fade-up">
+      <h2>Ready to Transform Your Outdoor Space?</h2>
+      <p>Book your free site visit today. We'll assess your space, discuss options, and provide a detailed quote — no obligation.</p>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+        <a href="/about/" class="btn btn--outline">Learn About Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: -5%;
+    z-index: 0;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(26, 42, 50, 0.7) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(26, 42, 50, 0.6) 0%, rgba(26, 42, 50, 0.9) 100%);
+  }
+
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 680px;
+  }
+
+  .hero .label {
+    color: var(--orange);
+  }
+
+  .hero h1 {
+    color: var(--white);
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+
+  /* Stats strip — dark bg matching landing pages */
+  .stats-strip {
+    background: var(--dark-blue);
+    border-top: 3px solid var(--orange);
+    padding-block: var(--space-sm) var(--space-md);
+  }
+
+  .stats-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 600;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--mid-blue);
+    background: var(--tint);
+    transition: all var(--transition-fast);
+  }
+
+  .filter-btn:hover {
+    color: var(--dark-blue);
+    background: var(--pale-bg);
+  }
+
+  .filter-btn.is-active {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  /* Project grid */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  /* Project card */
+  .project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--tint);
+    transition: box-shadow var(--transition-base), transform var(--transition-base), opacity 0.3s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 24px rgba(41, 60, 70, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Project image area */
+  .project-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.08);
+  }
+
+  .placeholder-image {
+    width: 100%;
+    background: var(--tint);
+  }
+
+  .project-type-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 100px;
+  }
+
+  /* Project info */
+  .project-info {
+    padding: 1.25rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .project-info p {
+    font-size: 0.875rem;
+    color: var(--mid-blue);
+    line-height: 1.5;
+  }
+
+  /* Mid-page CTA strip */
+  .cta-strip--dark {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--near-black) 100%);
+    color: var(--white);
+  }
+
+  .cta-strip--dark h2 {
+    color: var(--white);
+  }
+
+  .cta-strip--dark p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .cta-strip-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .cta-strip-inner h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-strip-inner p {
+    max-width: 520px;
+  }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-header .label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Includes grid */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm) var(--space-md);
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .includes-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+  }
+
+  .includes-item svg {
+    flex-shrink: 0;
+  }
+
+  /* CTA block */
+  .cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .cta-block h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-block p {
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+    color: var(--mid-blue);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .includes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cta-strip-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-strip-inner p {
+      max-width: none;
+    }
+
+    .stats-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .includes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+function initFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const type = card.getAttribute('data-type');
+        if (filter === 'all' || type === filter) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+          card.style.pointerEvents = 'auto';
+          card.style.display = '';
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(10px)';
+          card.style.pointerEvents = 'none';
+          // Hide after animation
+          setTimeout(() => {
+            if (!btn.classList.contains('is-active') || filter === 'all') return;
+            if (card.getAttribute('data-type') !== filter) {
+              card.style.display = 'none';
+            }
+          }, 300);
+        }
+      });
+    });
+  });
+}
+
+initFilters();
+document.addEventListener('astro:after-swap', initFilters);
+</script>
