@@ -128,7 +128,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
           Back
         </button>
-        <button class="btn btn--primary msf-submit" type="submit">Get Your Free Quote</button>
+        <button class="btn btn--primary msf-submit" type="submit">Book Your Free Site Visit</button>
       </div>
     </form>
   </div>
@@ -583,12 +583,11 @@
           submitBtn.textContent = 'Sending...';
         }
 
-        // POST to Cloudflare Worker → GHL Inbound Webhook
-        // Worker URL: production uses secureworks-form-proxy.{account}.workers.dev
-        // Falls back to local simulation if worker isn't deployed yet
-        const WORKER_URL = 'https://secureworks-form-proxy.workers.dev/submit';
-
+        // POST to same-domain API route → GHL Inbound Webhook
         try {
+          // Build payload with attribution data from sessionStorage
+          const attribution = JSON.parse(sessionStorage.getItem('sw_attribution') || '{}');
+
           const payload = {
             name: state.name,
             phone: state.phone,
@@ -598,18 +597,25 @@
             timeline: state.timeline,
             size: state.size,
             notes: state.notes,
+            // Attribution fields
+            utm_source: attribution.utm_source || '',
+            utm_medium: attribution.utm_medium || '',
+            utm_campaign: attribution.utm_campaign || '',
+            utm_term: attribution.utm_term || '',
+            utm_content: attribution.utm_content || '',
+            gclid: attribution.gclid || '',
+            landing_page: attribution.landing_page || '',
+            page_url: window.location.pathname,
           };
 
-          let res;
           try {
-            res = await fetch(WORKER_URL, {
+            await fetch('/api/submit', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload),
             });
           } catch (fetchErr) {
-            // Worker not deployed yet — log locally and show success
-            console.log('Worker not available, form data:', payload);
+            console.log('API not available, form data:', payload);
           }
 
           // Show success regardless — never leave user hanging
@@ -618,7 +624,7 @@
           console.error('Form error:', err);
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Get Your Free Quote';
+            submitBtn.textContent = 'Book Your Free Site Visit';
           }
         }
       });
