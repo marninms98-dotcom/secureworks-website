@@ -1,16 +1,24 @@
 ---
 /**
- * ScrollHero.astro — Cinematic video intro + static hero
+ * ScrollHero.astro — Cinematic video intro + auto-sliding gallery hero
  *
  * Sequence:
  * 1. Video plays full-screen, NO text, NO header — pure immersion
- * 2. Video ends → fades to completed property shot
+ * 2. Video ends → fades to first gallery slide (completed aerial)
  * 3. Text staggers in (eyebrow → heading → sub → buttons)
  * 4. Header fades in from top
- * 5. From here it's a static hero — scroll into the rest of the site
+ * 5. Background becomes auto-sliding gallery of bush project photos
+ *    with crossfade + Ken Burns — hero stays alive, never static
  *
- * Mobile: skips video entirely, shows static hero with text immediately.
+ * Mobile: skips video, shows slideshow with text immediately.
  */
+
+const slides = [
+  { src: "/images/bush-patio-interior-ceiling.jpg", alt: "Insulated SolarSpan ceiling with V-line panels and integrated downlights" },
+  { src: "/images/drone-bush-patio-deck.jpg", alt: "Merbau deck and patio from above — completed outdoor living space" },
+  { src: "/images/verandah-bush-exterior.jpg", alt: "Completed verandah and patio exterior surrounded by eucalyptus" },
+  { src: "/images/verandah-bush-interior.jpg", alt: "Interior view looking out from under the insulated patio to the bush" },
+];
 ---
 
 <!-- Immediately hide header on desktop before paint — prevents flash -->
@@ -33,22 +41,26 @@
     <source src="/video/hero-transformation.mp4" type="video/mp4" />
   </video>
 
-  <!-- Static final frame — revealed after video ends -->
-  <div class="scroll-hero__static">
-    <img
-      src="/frames/frame_0120.webp"
-      alt="Completed outdoor living transformation — flyover patio, merbau deck, and carport"
-      width="1280"
-      height="716"
-      fetchpriority="high"
-    />
+  <!-- Auto-sliding gallery — crossfades behind text after video ends -->
+  <div class="scroll-hero__slideshow">
+    {slides.map((slide, i) => (
+      <div class={`scroll-hero__slide ${i === 0 ? 'is-active' : ''}`}>
+        <img
+          src={slide.src}
+          alt={slide.alt}
+          width="1920"
+          height="1080"
+          loading={i === 0 ? "eager" : "lazy"}
+        />
+      </div>
+    ))}
   </div>
 
-  <!-- Mobile fallback — shows immediately, no video -->
+  <!-- Mobile fallback — first slide shown immediately -->
   <div class="scroll-hero__fallback">
     <img
-      src="/frames/frame_0120.webp"
-      alt="Completed outdoor living transformation — flyover patio, merbau deck, and carport"
+      src="/images/drone-bush-patio-aerial.jpg"
+      alt="Aerial view of completed bush property transformation"
       width="1280"
       height="716"
       fetchpriority="high"
@@ -61,15 +73,16 @@
 
   <!-- Hero content — hidden during video, revealed after -->
   <div class="scroll-hero__content">
-    <span class="hero__eyebrow label hero__reveal" style="--i:0">Perth's Outdoor Living Specialists</span>
-    <h1 class="hero__heading hero__reveal" style="--i:1">Your Backyard,<br>Reimagined</h1>
+    <span class="hero__eyebrow label hero__reveal" style="--i:0">Perth's Outdoor Living Builders</span>
+    <h1 class="hero__heading hero__reveal" style="--i:1">The Best Part of Your Home<br>Isn't Built Yet</h1>
     <p class="hero__sub hero__reveal" style="--i:2">
-      Insulated patios, Colorbond fencing, and decking — designed around your home
-      and built by a team that's completed over 300 projects across Perth.
+      Add liveable space to your home for a fraction of the cost of a traditional
+      extension — and it'll be the room your family uses most. Patio, deck, and
+      fencing designed and built by one team.
     </p>
     <div class="hero__actions hero__reveal" style="--i:3">
-      <a href="/contact/" class="btn btn--primary btn--glow">Start Your Project</a>
-      <a href="/projects/" class="btn btn--outline btn--glass">View Our Work</a>
+      <a href="/contact/" class="btn btn--primary btn--glow">Book a Free Site Visit</a>
+      <a href="/projects/" class="btn btn--outline btn--glass">See Our Work</a>
     </div>
   </div>
 
@@ -83,48 +96,94 @@
   function initHeroSequence() {
     const hero = document.querySelector('.scroll-hero');
     const video = document.querySelector('.scroll-hero__video') as HTMLVideoElement;
+    const slides = document.querySelectorAll('.scroll-hero__slide');
     if (!hero) return;
 
     const isDesktop = window.innerWidth > 768;
+    let slideshowInterval: ReturnType<typeof setInterval>;
+
+    // --- SLIDESHOW ENGINE ---
+    // Crossfades between slides with Ken Burns zoom (CSS handles the zoom)
+    function startSlideshow() {
+      if (slides.length < 2) return;
+      let current = 0;
+
+      slideshowInterval = setInterval(() => {
+        const prev = current;
+        current = (current + 1) % slides.length;
+
+        // Fade out previous, fade in next
+        slides[prev].classList.remove('is-active');
+        slides[current].classList.add('is-active');
+      }, 5000); // 5s per slide
+    }
 
     function revealAll() {
       hero.classList.add('is-revealed');
-      // Remove the data attribute — header CSS transition handles the rest
       document.documentElement.removeAttribute('data-hero-video');
+      // Start slideshow after text has finished staggering in (~1.2s)
+      setTimeout(startSlideshow, 1500);
     }
 
     if (isDesktop && video) {
       // --- DESKTOP: Cinematic sequence ---
       video.loop = false;
 
-      // Fade video out near the end for smooth transition to static frame
-      video.addEventListener('timeupdate', () => {
-        if (!video.duration) return;
+      // Dynamic crop compensation — counteracts camera drifting the house lower.
+      const startScale = 1.28;
+      const endScale = 1.18;
+      let rafId: number;
+
+      video.style.transform = `scale(${startScale})`;
+
+      function updateVideoCrop() {
+        if (!video.duration || video.paused || video.ended) return;
+        const progress = video.currentTime / video.duration;
         const timeLeft = video.duration - video.currentTime;
-        if (timeLeft < 1.0) {
-          video.style.opacity = String(Math.max(timeLeft / 1.0, 0));
+
+        const scale = startScale + (endScale - startScale) * progress;
+        const originY = progress * 25;
+        video.style.transform = `scale(${scale})`;
+        video.style.transformOrigin = `center ${originY}%`;
+
+        // Fade out over last 1.5s for smooth transition to slideshow beneath
+        if (timeLeft < 1.5) {
+          video.style.opacity = String(Math.max(timeLeft / 1.5, 0));
         }
+
+        rafId = requestAnimationFrame(updateVideoCrop);
+      }
+
+      video.addEventListener('play', () => {
+        rafId = requestAnimationFrame(updateVideoCrop);
       });
 
-      // When video ends: reveal text + header
+      video.addEventListener('ended', () => cancelAnimationFrame(rafId));
+      video.addEventListener('pause', () => cancelAnimationFrame(rafId));
+
+      // When video ends: reveal text + header + start slideshow
       video.addEventListener('ended', revealAll);
 
-      // Safety net — if video fails to load/play
       video.addEventListener('error', revealAll);
 
-      // Fallback timeout — reveal after 12s no matter what
+      // Fallback timeout
       setTimeout(() => {
         if (!hero.classList.contains('is-revealed')) revealAll();
       }, 12000);
 
     } else {
-      // --- MOBILE: Skip video, show everything immediately ---
+      // --- MOBILE: Skip video, show everything + slideshow immediately ---
       hero.classList.add('is-revealed', 'is-mobile');
       document.documentElement.removeAttribute('data-hero-video');
+      startSlideshow();
     }
+
+    // Cleanup on page transition
+    document.addEventListener('astro:before-swap', () => {
+      clearInterval(slideshowInterval);
+    }, { once: true });
   }
 
-  // Run on initial load and on Astro page transitions
   initHeroSequence();
   document.addEventListener('astro:after-swap', initHeroSequence);
 </script>
@@ -149,30 +208,42 @@
     object-fit: cover;
     object-position: center 0%;
     z-index: 1;
-    /* Scale up to crop watermark from bottom-right.
-       Origin at top so bottom gets cropped heavily,
-       pushing the house UP in frame. Compensates for
-       camera tilt in the video. */
-    transform: scale(1.22);
+    /* Starting state — JS dynamically adjusts scale + origin
+       during playback to counteract camera drift */
+    transform: scale(1.28);
     transform-origin: center 0%;
-    will-change: opacity;
+    will-change: transform, opacity;
   }
 
-  /* ===== STATIC FINAL FRAME (behind video, revealed when video fades) ===== */
-  .scroll-hero__static {
+  /* ===== AUTO-SLIDING GALLERY (behind text, after video ends) ===== */
+  .scroll-hero__slideshow {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
 
-  .scroll-hero__static img {
+  .scroll-hero__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  /* Slides stack — each new active slide fades in ON TOP.
+     No fade-out = no white flash between transitions. */
+  .scroll-hero__slide.is-active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .scroll-hero__slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 0%;
-    /* Match video crop exactly */
-    transform: scale(1.22);
-    transform-origin: center 0%;
+    object-position: center 30%;
+    /* Slight overscale so object-fit has room — no zoom animation */
+    transform: scale(1.02);
   }
 
   /* ===== MOBILE FALLBACK ===== */
@@ -200,7 +271,7 @@
       radial-gradient(ellipse at 50% 45%, rgba(26, 42, 50, 0.45) 0%, transparent 65%),
       linear-gradient(180deg, rgba(26, 42, 50, 0.15) 0%, rgba(26, 42, 50, 0.25) 40%, rgba(26, 42, 50, 0.6) 85%, rgba(26, 42, 50, 0.95) 100%);
     pointer-events: none;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
   .scroll-hero.is-revealed .scroll-hero__overlay {
@@ -272,8 +343,9 @@
     padding: 0.375rem 1rem;
     background: rgba(241, 90, 41, 0.15);
     border: 1px solid rgba(241, 90, 41, 0.3);
-    border-radius: 100px;
-    font-size: 0.8rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -285,6 +357,7 @@
     margin-bottom: var(--space-sm);
     line-height: 1.05;
     letter-spacing: -0.02em;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
   .hero__sub {
@@ -354,8 +427,7 @@
 
   /* ===== MOBILE ===== */
   @media (max-width: 768px) {
-    .scroll-hero__video,
-    .scroll-hero__static {
+    .scroll-hero__video {
       display: none;
     }
 

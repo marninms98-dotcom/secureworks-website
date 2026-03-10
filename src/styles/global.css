@@ -4,28 +4,66 @@
    ============================================ */
 
 /* --- Brand Colour Variables --- */
+/* Aligned to SECUREWORKS-DESIGN-BRIEF.md — "Architectural Assurance" */
 :root {
-  /* Primary */
+  /* ── Anchor Colours ── */
   --orange: #F15A29;
-  --orange-hover: #d94d20;
-
-  /* Blues */
+  --orange-hover: #C4481F; /* orange-900 "Ember" */
   --dark-blue: #293C46;
   --mid-blue: #4C6A7C;
   --light-blue: #5d7f94;
 
-  /* Backgrounds */
-  --pale-bg: #f4f7f9;
-  --tint: #edf1f4;
+  /* ── Orange Family "Fired Steel" ── */
+  --orange-900: #C4481F;
+  --orange-700: #F15A29;
+  --orange-500: #F4845F;
+  --orange-300: #FADDD2;
+  --orange-100: #FDF2EE;
 
-  /* Text */
-  --body-text: #3a4f5c;
-  --near-black: #1a2a32;
+  /* ── Blue Family "Structural Walls" ── */
+  --blue-950: #1A272E;
+  --blue-800: #293C46;
+  --blue-600: #4C6A7C;
+  --blue-400: #8FA4B2;
+  --blue-200: #D4DEE4;
+  --blue-100: #EDF1F4;
 
-  /* Surfaces */
-  --white: #ffffff;
+  /* ── Warm Family "Sandstone" ── */
+  --warm-300: #E8E4DF;
+  --warm-200: #F0ECE8;
+  --warm-100: #F8F6F3;
+  --warm-50: #FCFBFA;
 
-  /* Spacing scale */
+  /* ── Backgrounds ── */
+  --pale-bg: #F8F6F3; /* warm-100 instead of cool #f4f7f9 */
+  --tint: #EDF1F4; /* blue-100 */
+
+  /* ── Text ── */
+  --body-text: #323232;
+  --near-black: #1A272E; /* blue-950 */
+
+  /* ── Surfaces ── */
+  --white: #FFFFFF;
+
+  /* ── Opacity Scale ── */
+  --opacity-prominent: 0.85;
+  --opacity-secondary: 0.55;
+  --opacity-subtle: 0.25;
+  --opacity-ghost: 0.08;
+  --opacity-whisper: 0.04;
+
+  /* ── Shadows (blue-toned, never grey/black) ── */
+  --shadow-lift: 0 1px 3px rgba(41,60,70,0.08);
+  --shadow-rise: 0 4px 12px rgba(41,60,70,0.10);
+  --shadow-float: 0 8px 30px rgba(41,60,70,0.14);
+  --shadow-monument: 0 16px 60px rgba(41,60,70,0.20);
+
+  /* ── Border Radius (sharp default) ── */
+  --radius-sharp: 0px;
+  --radius-eased: 3px;
+  --radius-pill: 100px;
+
+  /* ── Spacing scale ── */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -33,17 +71,19 @@
   --space-xl: 6rem;
   --space-2xl: 8rem;
 
-  /* Layout */
+  /* ── Layout ── */
   --max-width: 1200px;
   --header-height: 80px;
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 300ms ease;
+  /* ── Motion ── */
+  --ease-entrance: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  --ease-settle: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+  --transition-fast: 200ms var(--ease-entrance);
+  --transition-base: 300ms var(--ease-entrance);
 
-  /* Fonts */
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* ── Fonts ── */
+  --font-body: 'Plus Jakarta Sans', 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* --- Reset & Base --- */
@@ -113,12 +153,12 @@ p + p {
   margin-top: 1em;
 }
 
-/* Label style — used for section eyebrows */
+/* Label style — section eyebrows. Brand bible: 9pt, 700, tracked 2.5px, uppercase */
 .label {
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--orange);
 }
 
@@ -147,7 +187,7 @@ p + p {
   padding: 0.875rem 2rem;
   font-weight: 700;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-eased);
   transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 

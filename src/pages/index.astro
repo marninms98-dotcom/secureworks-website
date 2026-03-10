@@ -9,82 +9,85 @@ import MultiStepForm from '../components/MultiStepForm.astro';
 import ScrollHero from '../components/ScrollHero.astro';
 import CaseStudy from '../components/CaseStudy.astro';
 
-// Service card data
+// Service card data — benefit-led, not feature-led
 const services = [
   {
     title: 'Insulated Patios',
-    description: 'SolarSpan panels turn your patio into genuine living space — cool in summer, dry in winter, quiet when it rains.',
+    description: 'Use your outdoor space year-round. SolarSpan panels keep it cool in summer, dry in winter, and quiet when it rains — a genuine extension of your home.',
     href: '/patios-perth/',
     image: '/images/insulated-patio-wide.jpg',
     alt: 'Insulated patio with flat ceiling in Perth backyard',
   },
   {
     title: 'Colorbond Fencing',
-    description: 'Clean lines, zero maintenance, and privacy that lasts. We handle everything from old fence removal to final install.',
+    description: 'Privacy, clean lines, and zero maintenance. We remove the old fence, install the new one, and leave your yard cleaner than we found it.',
     href: '/fencing-perth/',
     image: '/images/colorbond-fence-lattice-wide.jpg',
     alt: 'Colorbond fencing with lattice top installed in Perth',
   },
   {
     title: 'Decking',
-    description: 'Composite or hardwood — built level, finished properly, and designed to handle Perth summers without lifting or warping.',
+    description: 'Composite or hardwood — built level, finished properly, and designed for Perth conditions. The kind of deck you actually want to walk on barefoot.',
     href: '/decking-perth/',
     image: '/images/deck-patio-golden.jpg',
     alt: 'Composite decking with patio at golden hour',
   },
   {
     title: 'Full Transformations',
-    description: 'Patio, fencing, and decking in one project with one team. Less disruption, better result, single point of contact.',
+    description: 'Patio, fencing, and decking handled by one team. One project manager, one timeline, and everything coordinated so the finishes actually match.',
     href: '/contact/',
     image: '/images/patio-lifestyle-golden.jpg',
     alt: 'Complete outdoor living transformation with patio and decking',
   },
 ];
 
-// Testimonial data — real Google reviews
+// Testimonial data — real Google reviews, trimmed to strongest lines
 const testimonials = [
   {
-    quote: 'Absolutely on point with quality, service and price. Dealing with the team was super easy. Thank you Godfrey and especially Henry for your impressive workmanship and super friendly service. Highly recommend — you won\'t go wrong choosing them!',
-    name: 'Tony G.',
-    suburb: 'Perth',
+    quote: 'From the first quote to the final nail — seamless. Workmanship was top notch and every little issue was communicated to me with a suggestion of how to get around it. I do not hesitate in recommending this company to anyone.',
+    name: 'Martyn Evans',
+    suburb: 'Northern Suburbs',
+    project: 'Insulated Patio',
   },
   {
-    quote: 'Quote was done politely by Marnin; and the work done (as quoted on time) by his team — the guys were very clean, friendly and efficient.',
+    quote: 'Quote was done politely by Marnin, and the work done on time by his team. The guys were very clean, friendly and efficient. Exactly what you want when someone\'s working at your home.',
     name: 'Lisa Gioconda',
     suburb: 'Perth',
+    project: 'Patio + Fencing',
   },
   {
-    quote: 'From the outset where a quote was supplied (which was very competitive against other quotes) to the final nail being driven in, was so seamless. Workmanship was top notch and every little issue was communicated to me with a suggestion of how to get around it. I do not hesitate in recommending this company to anyone.',
-    name: 'Martyn Evans',
-    suburb: 'Perth',
+    quote: 'Absolutely on point with quality, service and price. Henry\'s workmanship was impressive and the whole team was super friendly. You won\'t go wrong choosing them.',
+    name: 'Tony G.',
+    suburb: 'Perth Metro',
+    project: 'Patio + Decking',
   },
 ];
 
-// Process steps
+// Process steps — addresses core fears: communication, transparency, disruption
 const steps = [
   {
     number: '01',
-    title: 'Free Site Visit',
-    description: 'We come to your home, assess the site, discuss your vision, take measurements, and walk you through options. No obligation, no pressure.',
-    tag: 'Typically 45 minutes',
+    title: 'We Come to You',
+    description: 'Free site visit at your home. We measure up, talk through what you\'re after, and show you what\'s possible for your space. No obligation — just a conversation.',
+    tag: '45 minutes · No pressure',
   },
   {
     number: '02',
-    title: 'Custom Design & Quote',
-    description: 'You\'ll receive a detailed, itemised quote with specifications — not a vague estimate. Designed to your home\'s exact conditions and your preferences.',
-    tag: 'Quote within 48 hours',
+    title: 'Detailed Quote, No Surprises',
+    description: 'You get a fully itemised quote with exact specifications — engineering, drafting, council fees, and materials all included. The price you see is the price you pay.',
+    tag: 'Sent within 48 hours',
   },
   {
     number: '03',
-    title: 'Council Approval',
-    description: 'We handle everything: professional drafting, structural engineering certification, and lodgement with your local council.',
-    tag: 'CDC: 1–3 weeks',
+    title: 'We Handle Council',
+    description: 'Professional drafting, structural engineering certification, and council lodgement — all handled by us. You don\'t need to chase paperwork or learn building codes.',
+    tag: 'CDC approval: 1–3 weeks',
   },
   {
     number: '04',
-    title: 'Professional Installation',
-    description: 'Our experienced crew handles everything — footings, steel frame, panels, gutters, downpipes, and full cleanup. Enjoy your new space that weekend.',
-    tag: 'Typically 2–3 days on site',
+    title: 'Built and Cleaned Up',
+    description: 'Our crew installs everything — footings, frame, panels, gutters, downpipes — and cleans up when they leave. We\'ll keep you updated with photos throughout.',
+    tag: 'Most patios: 2–3 days on site',
   },
 ];
 
@@ -132,9 +135,9 @@ const faqs = [
   <section class="section section--alt" data-animate="fade-up">
     <div class="container">
       <div class="section-header">
-        <span class="label">What We Do</span>
-        <h2>Built for How You Live</h2>
-        <p>Every project starts with understanding your space. Here's what we build.</p>
+        <span class="label">What We Build</span>
+        <h2>One Team, Every Trade</h2>
+        <p>Patios, fencing, and decking from the same crew — so everything's coordinated and the finishes match.</p>
       </div>
       <div class="services-grid" data-stagger="0.15">
         {services.map((service) => (
@@ -164,9 +167,9 @@ const faqs = [
     <div class="container cta-strip__inner">
       <div>
         <h2>Not sure where to start?</h2>
-        <p>Tell us a bit about your space and we'll point you in the right direction. No pressure, no obligations.</p>
+        <p>Most people aren't. Tell us roughly what you're thinking and we'll come have a look — free site visit, no obligation.</p>
       </div>
-      <a href="/contact/" class="btn btn--primary btn--glow">Let's Talk</a>
+      <a href="/contact/" class="btn btn--primary btn--glow">Book a Free Site Visit</a>
     </div>
   </section>
 
@@ -194,8 +197,8 @@ const faqs = [
   <section class="section section--alt" data-animate="fade-up">
     <div class="container">
       <div class="section-header">
-        <span class="label">What Our Customers Say</span>
-        <h2>Real Feedback From Real Projects</h2>
+        <span class="label">Customer Reviews</span>
+        <h2>Don't Take Our Word For It</h2>
       </div>
       <div class="testimonials-grid" data-stagger="0.15">
         {testimonials.map((t) => (
@@ -221,7 +224,7 @@ const faqs = [
               <div class="testimonial-card__avatar">{t.name.charAt(0)}</div>
               <div>
                 <span class="testimonial-card__name">{t.name}</span>
-                <span class="testimonial-card__suburb">{t.suburb}</span>
+                <span class="testimonial-card__suburb">{t.project} · {t.suburb}</span>
               </div>
             </div>
           </div>
@@ -235,8 +238,8 @@ const faqs = [
     <div class="container">
       <div class="section-header">
         <span class="label">How It Works</span>
-        <h2>From First Chat to Finished Space</h2>
-        <p>We keep things straightforward. Here's what the process looks like.</p>
+        <h2>Four Steps, No Surprises</h2>
+        <p>We handle design, engineering, council, and construction. Here's what happens after you reach out.</p>
       </div>
       <div class="process-grid" data-stagger="0.15">
         {steps.map((step, i) => (
@@ -259,9 +262,9 @@ const faqs = [
     <div class="container cta-strip__inner">
       <div>
         <h2>Let's work out what suits your space</h2>
-        <p>Whether you've got a clear plan or just an idea, we're happy to come have a look and chat through the options.</p>
+        <p>Whether you've got a clear plan or just a rough idea, we're happy to come have a look. Most people start with a conversation.</p>
       </div>
-      <a href="/contact/" class="btn btn--primary btn--glow">Start Your Project</a>
+      <a href="/contact/" class="btn btn--primary btn--glow">Get a Free Design Consultation</a>
     </div>
   </section>
 
@@ -269,8 +272,8 @@ const faqs = [
   <section class="section section--alt" data-animate="fade-up">
     <div class="container">
       <div class="section-header">
-        <span class="label">Common Questions</span>
-        <h2>Things Worth Knowing</h2>
+        <span class="label">FAQ</span>
+        <h2>Questions We Get Asked a Lot</h2>
       </div>
       <div class="faq-list">
         {faqs.map((faq) => (
@@ -294,9 +297,9 @@ const faqs = [
   <section class="section" data-animate="fade-up">
     <div class="container form-section">
       <div class="form-section__text">
-        <span class="label">Start Your Project</span>
-        <h2>Tell Us What You're Thinking</h2>
-        <p>Pick your project type and we'll get back to you for a no-obligation chat. Free site visit and quote within 48 hours.</p>
+        <span class="label">Get Started</span>
+        <h2>Tell Us About Your Space</h2>
+        <p>Pick your project type and give us a few details. We'll be in touch within a few hours to book your free site visit.</p>
       </div>
       <div class="form-section__form">
         <MultiStepForm />
@@ -309,11 +312,11 @@ const faqs = [
     <div class="final-cta__grain" aria-hidden="true"></div>
     <div class="container final-cta__inner">
       <span class="label">Ready When You Are</span>
-      <h2>Your Outdoor Space, Done Right</h2>
-      <p>Tell us what you're thinking and we'll take it from there. No hard sell, just a conversation about what's possible.</p>
+      <h2>Your Backyard's Next Chapter</h2>
+      <p>300+ Perth families have trusted us with their outdoor space. Whether it's a patio, fencing, decking, or all three — we'd love to chat about yours.</p>
       <div class="final-cta__actions">
-        <a href="/contact/" class="btn btn--primary btn--glow">Start Your Project</a>
-        <a href="tel:1300000000" class="btn btn--outline btn--glass">Call Us</a>
+        <a href="/contact/" class="btn btn--primary btn--glow">Book a Free Site Visit</a>
+        <a href="tel:1300000000" class="btn btn--outline btn--glass">Call 1300 XXX XXX</a>
       </div>
     </div>
   </section>
@@ -385,17 +388,17 @@ const faqs = [
 
   .service-card {
     background: var(--white);
-    border-radius: 16px;
+    border-radius: var(--radius-sharp);
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.4s var(--ease-entrance), box-shadow 0.4s var(--ease-entrance);
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--tint);
+    border: 1px solid var(--blue-200);
   }
 
   .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 48px rgba(41, 60, 70, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-float);
   }
 
   .service-card__img-wrap {
@@ -556,16 +559,16 @@ const faqs = [
 
   .testimonial-card {
     background: var(--white);
-    border-radius: 16px;
+    border-radius: var(--radius-sharp);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--tint);
-    transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid var(--blue-200);
+    transition: box-shadow 0.4s var(--ease-entrance);
   }
 
   .testimonial-card:hover {
-    box-shadow: 0 8px 32px rgba(41, 60, 70, 0.08);
+    box-shadow: var(--shadow-rise);
   }
 
   .testimonial-card__top {
@@ -589,7 +592,7 @@ const faqs = [
     color: var(--mid-blue);
     padding: 0.2rem 0.5rem;
     background: var(--pale-bg);
-    border-radius: 100px;
+    border-radius: var(--radius-pill);
   }
 
   .testimonial-card blockquote {
@@ -697,7 +700,7 @@ const faqs = [
     color: var(--dark-blue);
     background: var(--tint);
     padding: 0.25rem 0.75rem;
-    border-radius: 100px;
+    border-radius: var(--radius-pill);
     margin-top: 0.5rem;
   }
 

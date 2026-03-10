@@ -1,9 +1,10 @@
 ---
 /**
- * CaseStudy.astro — Bush property transformation showcase
- * Sits directly below the hero. Shows real construction photos
- * in a cinematic editorial layout to immediately build credibility.
- * Before → During → After progression.
+ * CaseStudy.astro — Broader project gallery
+ * Sits directly below the hero. Dense photo grid showing
+ * a range of projects + team photos to build credibility.
+ * The bush project is already showcased in the hero slideshow,
+ * so this section broadens out to show variety.
  */
 ---
 
@@ -12,167 +13,168 @@
 
   <!-- Section intro -->
   <div class="case-study__header">
-    <span class="label">Real Project</span>
-    <h2 class="case-study__title">One Backyard.<br>Complete Transformation.</h2>
+    <span class="label">Our Work</span>
+    <h2 class="case-study__title">Built Across Perth</h2>
     <p class="case-study__sub">
-      Flyover patio, wraparound merbau deck, and carport — built from bare dirt
-      in the Perth hills.
+      Patios, decking, fencing, and outdoor kitchens — from suburban backyards to bush properties.
     </p>
   </div>
 
-  <!-- Photo grid — editorial asymmetric layout -->
+  <!-- Dense photo grid — all landscape, no portrait issues -->
   <div class="case-study__grid">
 
-    <!-- Large hero shot — completed aerial -->
-    <div class="case-study__item case-study__item--hero">
-      <img
-        src="/images/drone-bush-patio-aerial.jpg"
-        alt="Aerial drone view of completed bush property — flyover patio, merbau deck, and carport surrounded by eucalyptus"
-        loading="lazy"
-        width="1280"
-        height="720"
-      />
-      <div class="case-study__caption">
-        <span class="case-study__tag">Completed</span>
-        Aerial view — flyover patio, wraparound deck & carport
-      </div>
-    </div>
-
-    <!-- During construction -->
-    <div class="case-study__item case-study__item--tall">
-      <img
-        src="/images/aerial-patio-construction.jpg"
-        alt="Patio steel frame and posts going up during construction"
-        loading="lazy"
-        width="720"
-        height="960"
-      />
-      <div class="case-study__caption">
-        <span class="case-study__tag">During</span>
-        Steel frame taking shape
-      </div>
-    </div>
-
-    <!-- Interior ceiling detail -->
-    <div class="case-study__item">
-      <img
-        src="/images/bush-patio-interior-ceiling.jpg"
-        alt="Insulated patio ceiling interior with V-line panels and downlights"
-        loading="lazy"
-        width="960"
-        height="720"
-      />
-      <div class="case-study__caption">
-        <span class="case-study__tag">Detail</span>
-        SolarSpan ceiling with integrated downlights
-      </div>
-    </div>
-
-    <!-- Deck close-up -->
-    <div class="case-study__item">
-      <img
-        src="/images/drone-bush-patio-deck.jpg"
-        alt="Merbau deck and patio from drone angle showing the completed outdoor living space"
-        loading="lazy"
-        width="960"
-        height="720"
-      />
-      <div class="case-study__caption">
-        <span class="case-study__tag">Completed</span>
-        Merbau deck wraps the full entertaining area
-      </div>
-    </div>
-
-    <!-- Bush exterior -->
+    <!-- Row 1: wide + regular -->
     <div class="case-study__item case-study__item--wide">
       <img
-        src="/images/verandah-bush-exterior.jpg"
-        alt="Completed verandah and patio exterior in bush setting with eucalyptus trees"
+        src="/images/gable-patio-decking-downlights.jpg"
+        alt="Gable patio with merbau decking and downlights at dusk"
         loading="lazy"
-        width="1280"
-        height="720"
       />
       <div class="case-study__caption">
-        <span class="case-study__tag">Completed</span>
-        The finished space sits naturally in the bush landscape
+        <span class="case-study__tag">Patio</span>
+        Gable patio + merbau decking + downlights
+      </div>
+    </div>
+
+    <div class="case-study__item">
+      <img
+        src="/images/patio-decking-garden.jpg"
+        alt="Flat patio with composite decking and landscaped garden"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Patio</span>
+        Flat patio + composite decking
+      </div>
+    </div>
+
+    <!-- Row 2: three regular -->
+    <div class="case-study__item">
+      <img
+        src="/images/gable-patio-decking-new.jpg"
+        alt="Gable patio with composite decking, pool fencing and downlights"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Patio</span>
+        Gable patio + decking + pool fencing
+      </div>
+    </div>
+
+    <div class="case-study__item">
+      <img
+        src="/images/team-group-branded.jpg"
+        alt="SecureWorks team in branded uniforms"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Team</span>
+        The SecureWorks crew
+      </div>
+    </div>
+
+    <div class="case-study__item">
+      <img
+        src="/images/poolside-patio-luxury.jpg"
+        alt="Poolside patio with luxury outdoor living setup"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Patio</span>
+        Poolside patio
+      </div>
+    </div>
+
+    <!-- Row 3: regular + wide -->
+    <div class="case-study__item">
+      <img
+        src="/images/flyover-patio-exterior.jpg"
+        alt="Flyover patio exterior view"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Patio</span>
+        Flyover patio
+      </div>
+    </div>
+
+    <div class="case-study__item case-study__item--wide">
+      <img
+        src="/images/elevated-patio-exterior.jpg"
+        alt="Elevated patio with steel posts on sloped block"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Patio</span>
+        Elevated patio on sloped block
+      </div>
+    </div>
+
+    <!-- Row 4: three regular -->
+    <div class="case-study__item">
+      <img
+        src="/images/deck-patio-golden.jpg"
+        alt="Composite decking with patio at golden hour"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Decking</span>
+        Composite decking at golden hour
+      </div>
+    </div>
+
+    <div class="case-study__item">
+      <img
+        src="/images/colorbond-fence-lattice-wide.jpg"
+        alt="Colorbond fencing with lattice top extension"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Fencing</span>
+        Colorbond + lattice top
+      </div>
+    </div>
+
+    <div class="case-study__item">
+      <img
+        src="/images/bush-patio-exterior-clouds.jpg"
+        alt="Flyover patio and merbau deck — bush property with blue sky"
+        loading="lazy"
+      />
+      <div class="case-study__caption">
+        <span class="case-study__tag">Patio</span>
+        Bush property — patio + deck
       </div>
     </div>
 
   </div>
 
-  <!-- Stats strip for this project -->
+  <!-- Stats strip — company-wide -->
   <div class="case-study__stats">
     <div class="case-study__stat">
-      <span class="case-study__stat-number">8</span>
-      <span class="case-study__stat-label">Week Build</span>
+      <span class="case-study__stat-number">300+</span>
+      <span class="case-study__stat-label">Jobs Completed</span>
     </div>
     <div class="case-study__stat-divider" aria-hidden="true"></div>
     <div class="case-study__stat">
-      <span class="case-study__stat-number">65m<sup>2</sup></span>
-      <span class="case-study__stat-label">Patio Area</span>
+      <span class="case-study__stat-number">59%</span>
+      <span class="case-study__stat-label">Repeat Customers</span>
     </div>
     <div class="case-study__stat-divider" aria-hidden="true"></div>
     <div class="case-study__stat">
-      <span class="case-study__stat-number">40m<sup>2</sup></span>
-      <span class="case-study__stat-label">Merbau Deck</span>
+      <span class="case-study__stat-number">4</span>
+      <span class="case-study__stat-label">Year Track Record</span>
     </div>
     <div class="case-study__stat-divider" aria-hidden="true"></div>
     <div class="case-study__stat">
-      <span class="case-study__stat-number">R1.8</span>
-      <span class="case-study__stat-label">Insulation Rating</span>
-    </div>
-  </div>
-
-  <!-- More of our work — horizontal scroll strip -->
-  <div class="case-study__more">
-    <h3 class="case-study__more-title">More Of Our Work</h3>
-    <div class="case-study__scroll-strip">
-      <div class="case-study__scroll-item">
-        <img src="/images/gable-patio-decking-downlights.jpg" alt="Gable patio with merbau decking and downlights" loading="lazy" />
-        <span class="case-study__scroll-label">Gable Patio + Decking</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/colorbond-fence-lattice-wide.jpg" alt="Colorbond fencing with lattice top" loading="lazy" />
-        <span class="case-study__scroll-label">Colorbond Fencing</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/flyover-patio-exterior.jpg" alt="Flyover patio exterior view" loading="lazy" />
-        <span class="case-study__scroll-label">Flyover Patio</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/team-crew-thumbsup.jpg" alt="SecureWorks crew giving thumbs up on site" loading="lazy" />
-        <span class="case-study__scroll-label">The Crew</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/flat-patio-decking-downlights.jpg" alt="Flat insulated patio with decking and downlights at night" loading="lazy" />
-        <span class="case-study__scroll-label">Flat Patio + Lights</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/poolside-patio-luxury.jpg" alt="Poolside patio with luxury outdoor living setup" loading="lazy" />
-        <span class="case-study__scroll-label">Poolside Patio</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/deck-patio-golden.jpg" alt="Composite decking with patio at golden hour" loading="lazy" />
-        <span class="case-study__scroll-label">Decking</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/team-group-branded.jpg" alt="SecureWorks team in branded uniforms" loading="lazy" />
-        <span class="case-study__scroll-label">Our Team</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/freestanding-patio-outdoor-kitchen.jpg" alt="Freestanding patio with outdoor kitchen setup" loading="lazy" />
-        <span class="case-study__scroll-label">Outdoor Kitchen</span>
-      </div>
-      <div class="case-study__scroll-item">
-        <img src="/images/two-storey-balcony-front.jpg" alt="Two storey balcony patio build" loading="lazy" />
-        <span class="case-study__scroll-label">Two Storey Balcony</span>
-      </div>
+      <span class="case-study__stat-number">Perth</span>
+      <span class="case-study__stat-label">Based & Built</span>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="case-study__cta">
-    <a href="/projects/" class="btn btn--primary">See More Projects</a>
+    <a href="/projects/" class="btn btn--primary">See All Projects</a>
   </div>
 </section>
 
@@ -181,7 +183,7 @@
     position: relative;
     background: var(--near-black);
     color: var(--white);
-    padding: var(--space-xl) 0 var(--space-lg);
+    padding: var(--space-lg) 0 var(--space-md);
     overflow: hidden;
   }
 
@@ -200,7 +202,7 @@
     z-index: 2;
     text-align: center;
     max-width: 680px;
-    margin: 0 auto var(--space-lg);
+    margin: 0 auto var(--space-md);
     padding-inline: var(--space-sm);
   }
 
@@ -227,43 +229,38 @@
     margin-inline: auto;
   }
 
-  /* Photo grid — asymmetric editorial */
+  /* Photo grid — clean 3-column, all landscape */
   .case-study__grid {
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 4px;
-    max-width: 1200px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    max-width: 1400px;
     margin-inline: auto;
     padding-inline: var(--space-sm);
   }
 
-  /* Hero image spans full width */
-  .case-study__item--hero {
-    grid-column: 1 / -1;
-  }
-
-  /* Tall image spans 2 rows on right */
-  .case-study__item--tall {
-    grid-row: span 2;
-  }
-
-  /* Wide image spans full width */
+  /* Wide images span 2 columns */
   .case-study__item--wide {
-    grid-column: 1 / -1;
+    grid-column: span 2;
   }
 
   .case-study__item {
     position: relative;
     overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+
+  .case-study__item--wide {
+    aspect-ratio: 21 / 10;
   }
 
   .case-study__item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -314,8 +311,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-lg);
-    padding: var(--space-lg) var(--space-sm) 0;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-sm) 0;
     max-width: 800px;
     margin-inline: auto;
   }
@@ -354,77 +351,12 @@
     flex-shrink: 0;
   }
 
-  /* More work — horizontal scroll strip */
-  .case-study__more {
-    position: relative;
-    z-index: 2;
-    padding: var(--space-lg) 0 0;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: var(--space-sm);
-  }
-
-  .case-study__more-title {
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: var(--space-sm);
-  }
-
-  .case-study__scroll-strip {
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: var(--space-sm);
-  }
-
-  .case-study__scroll-strip::-webkit-scrollbar {
-    display: none;
-  }
-
-  .case-study__scroll-item {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-  }
-
-  .case-study__scroll-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .case-study__scroll-item:hover img {
-    transform: scale(1.06);
-  }
-
-  .case-study__scroll-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0.75rem 1rem;
-    background: linear-gradient(0deg, rgba(26, 42, 50, 0.8) 0%, transparent 100%);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-  }
-
   /* CTA */
   .case-study__cta {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding-top: var(--space-lg);
+    padding-top: var(--space-md);
   }
 
   /* ========== RESPONSIVE ========== */
@@ -438,13 +370,13 @@
       gap: 3px;
     }
 
-    .case-study__item--hero,
     .case-study__item--wide {
       grid-column: 1;
     }
 
-    .case-study__item--tall {
-      grid-row: span 1;
+    .case-study__item,
+    .case-study__item--wide {
+      aspect-ratio: 16 / 10;
     }
 
     /* Show captions on mobile (no hover) */
